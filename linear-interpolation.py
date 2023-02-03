@@ -6,7 +6,6 @@
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 
-plt.style.use('seaborn-poster')
 
 x = [0, 1, 2]
 y = [1, 3, 2]

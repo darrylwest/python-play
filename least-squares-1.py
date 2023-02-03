@@ -7,7 +7,6 @@ import numpy as np
 from scipy import optimize
 import matplotlib.pyplot as plt
 
-plt.style.use('seaborn-poster')
 
 # let's generate x and y, and add some noise into y
 x = np.linspace(0, 10, 101)

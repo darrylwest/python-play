@@ -7,7 +7,6 @@ import numpy as np
 import numpy.polynomial.polynomial as poly
 import matplotlib.pyplot as plt
 
-plt.style.use('seaborn-poster')
 
 x = [0, 1, 2]
 y = [1, 3, 2]

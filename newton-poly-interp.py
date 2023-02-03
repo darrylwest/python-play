@@ -6,7 +6,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.style.use('seaborn-poster')
 
 def divided_diff(x, y):
     '''

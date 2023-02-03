@@ -6,7 +6,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.style.use('seaborn-poster')
 
 def plot_vect(x, b, xlim, ylim):
     plt.figure(figsize = (10, 6))

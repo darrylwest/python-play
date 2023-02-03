@@ -7,7 +7,6 @@ from scipy.interpolate import CubicSpline
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.style.use('seaborn-poster')
 
 x = [0, 1, 2]
 y = [1, 3, 2]
