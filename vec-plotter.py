@@ -6,7 +6,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 def plot_vect(x, b, xlim, ylim):
     plt.figure(figsize = (10, 6))
     plt.quiver(0,0,x[0],x[1],\
