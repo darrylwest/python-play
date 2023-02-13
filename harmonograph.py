@@ -20,6 +20,6 @@ x = A[0]*np.sin(t*f[0])*np.exp(-d[0]*t) + A[1]*np.sin(t*f[1])*np.exp(-d[1]*t)
 y = A[2]*np.sin(t*f[2])*np.exp(-d[2]*t) + A[3]*np.sin(t*f[3])*np.exp(-d[3]*t)
 
 # plot them!
-plt.plot(x,y,'k',linewidth=.1)
+plt.plot(x,y,'r',linewidth=.1)
 plt.axis('off')
 plt.show()
