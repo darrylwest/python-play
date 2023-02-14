@@ -33,6 +33,7 @@ def f2(x):
 def check(x):
     a1 = f1(x)
     a2 = f2(x)
-    print("x=", x, "f1(x)=", a1, "f2(x)=", a2, "ok?", a1 == a2)
+    print("x =", x, "f1(x) =", a1, "f2(x) =", a2, "ok?", a1 == a2)
 
 check(3)
+
