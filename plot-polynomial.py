@@ -32,7 +32,7 @@ plt.plot([0,0],[9,-9],color='gray')
 
 # fig = plt.figure(figsize=(3.0, 3.0))
 
-filename = 'poly.png'
+filename = 'poly.pdf'
 plt.savefig(filename)
 
 # plt.show()
