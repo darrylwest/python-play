@@ -3,6 +3,9 @@
 # 2023-02-16 20:52:16
 #
 
+# import matplotlib
+# matplotlib.use("SVG")
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -24,9 +27,14 @@ x = [-3, -1, 0, 2]
 y = [0, 0, -6, 0]
 plt.plot(x, y, 'ro')
 
+plt.plot([-4,3],[0,0],color='gray')
+plt.plot([0,0],[9,-9],color='gray')
+
 # fig = plt.figure(figsize=(3.0, 3.0))
+
 filename = 'poly.png'
 plt.savefig(filename)
+
 # plt.show()
 
 print("see file: ", filename)
