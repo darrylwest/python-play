@@ -14,7 +14,7 @@ plt.xlabel('y = (x + 3)*(x - 2)*(x + 1)')
 plt.title('graph of y = x^3 + 2x^2 - 5x - 6')
 
 
-x = np.linspace(-3.4, 2.4, 100)
+x = np.linspace(-3.4, 2.4, 500)
 y = f(x)
 
 plt.plot(x, y)
@@ -24,10 +24,10 @@ x = [-3, -1, 0, 2]
 y = [0, 0, -6, 0]
 plt.plot(x, y, 'ro')
 
-plt.savefig('poly.png')
+# fig = plt.figure(figsize=(3.0, 3.0))
+filename = 'poly.png'
+plt.savefig(filename)
 # plt.show()
 
-print("see file 'poly.png'")
-
-
+print("see file: ", filename)
 
