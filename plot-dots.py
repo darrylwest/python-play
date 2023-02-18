@@ -22,6 +22,7 @@ for idx in range(0, len(xvals)):
 
 plt.axis([-10,10, -6,6])
 plt.grid()
+plt.title("My Title",fontsize='large',fontweight='bold')
 
 plt.show()
 
