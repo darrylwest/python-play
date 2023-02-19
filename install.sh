@@ -7,7 +7,7 @@ set -eu
 
 python3 -m pip install --upgrade pip
 
-packages="numpy sympy scipy matplotlib pandas bokey dask pymc3"
+packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3"
 
 for p in $packages
 do
