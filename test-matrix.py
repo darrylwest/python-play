@@ -26,6 +26,8 @@ def iterate_matrix(matrix):
 
 iterate_matrix(matrix)
 
+plt.title("A simple line from Matrix",fontsize='large',fontweight='bold',loc='right')
+
 plt.plot(x, y)
 plt.show()
 

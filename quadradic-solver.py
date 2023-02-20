@@ -3,13 +3,27 @@
 # 2023-02-19 17:53:39
 #
 
+# use Quadratic Equation to solve ax2 + bx + c; print and save a graph of the equation
+
 import argparse
-import scipy as sym
+import scipy as sp
+import sympy as sym
+import numpy as np
 from numpy.lib.scimath import sqrt
+import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(description='Enter three coefficient values to calculate the quadratic roots')
 parser.add_argument('numbers', metavar='N', type=float, nargs='+', help='the coefficients a, b, and c') 
 args = parser.parse_args()
+
+def plotit(a, b, c):
+    # x = sym.symbols('x')
+    x = np.linspace(-12, 12, 1000)
+    y = a*x**2 + b*x + c
+    plt.plot(x, y)
+    plt.grid()
+    return plt
+
 
 if len(args.numbers) != 3:
     print("Error: please supply values for a, b and c, e.g., 2 7 5")
@@ -20,6 +34,10 @@ else:
     quadp = (-b + sqrt(b**2 - 4*a*c)) / (2*a)
     quadn = (-b - sqrt(b**2 - 4*a*c)) / (2*a)
 
-    print('solution for ', args.numbers, 'is:', quadp, ',', quadn)
+    print('Solution for ', args.numbers, 'is:', quadp, ',', quadn)
+    plt = plotit(a, b, c)
+    title = ' '.join(['Solution',str(a),str(b),str(c),'=',str(quadp),',',str(quadn)])
+    plt.title(title,fontsize='large',fontweight='bold')
+    plt.savefig('plot.pdf')
+    # plt.show()
 
-# plot it out?
