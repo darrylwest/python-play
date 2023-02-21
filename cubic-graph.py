@@ -27,6 +27,10 @@ plt.plot(x, y, label='2nd der')
 y = -147*x + 433
 plt.plot(x, y, label='tangent')
 
+
+plt.plot([-13,14],[0,0],color='gray')
+plt.plot([0,0],[-500,1200],color='gray')
+
 plt.legend()
 plt.grid()
 
