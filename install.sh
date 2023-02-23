@@ -3,8 +3,10 @@
 # 2023-02-15 15:13:31
 #
 
+
 set -eu
 
+cocalc key sk_2vaIqnuOdJfAVLhd
 python3 -m pip install --upgrade pip
 
 packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn gmpy2 redis"
