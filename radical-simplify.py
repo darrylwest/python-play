@@ -8,8 +8,13 @@ import math
 
 x = sym.symbols('x')
 
-expr = math.sqrt(10 * x) * (-4 * math.sqrt(2 * x) + 2*x)
+expr = [ 
+        x * x**2 * 3*x, 
+        (x + 9)*(x - 9), 
+        x**2 - 3*x - 28,
+        3*x + 4 > 6
+        ]
 
-# this doesnt do what I want
-print(sym.simplify(expr))
+for i in range(0, len(expr)):
+    print(expr[i], sym.simplify(expr[i]), sym.solve(expr[i]))
 

@@ -7,7 +7,7 @@ set -eu
 
 python3 -m pip install --upgrade pip
 
-packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn"
+packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn gmpy2 redis"
 
 for p in $packages
 do
