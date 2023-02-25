@@ -6,8 +6,11 @@
 
 set -eu
 
-cocalc key sk_2vaIqnuOdJfAVLhd
+#
+# cocalc key sk_2vaIqnuOdJfAVLhd
 python3 -m pip install --upgrade pip
+
+# ptpython
 
 packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn gmpy2 redis"
 
