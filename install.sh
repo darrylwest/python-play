@@ -7,10 +7,11 @@
 set -eu
 
 #
-# cocalc key sk_2vaIqnuOdJfAVLhd
+#
 python3 -m pip install --upgrade pip
 
-# ptpython
+# repl: ptpython
+# pip3 install --upgrade jupyterlab-vim
 
 packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn gmpy2 redis"
 
