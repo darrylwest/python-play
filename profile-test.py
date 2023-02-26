@@ -11,6 +11,8 @@
 import random
 import timeit
 
+print('get time diff between map, comprehension and simpleloop, please wait...', flush=True)
+
 TAX_RATE = .08
 txns = [random.randrange(100) for _ in range(100000)]
 def get_price(txn):
@@ -30,11 +32,11 @@ def get_prices_with_loop():
 
 
 r1 = timeit.timeit(get_prices_with_map, number=100)
-r2 = timeit.timeit(get_prices_with_comprehension, number=100)
-r3 = timeit.timeit(get_prices_with_loop, number=100)
+print('map :', r1, flush=True)
 
-print('get time diff between map, comprehension and simpleloop:')
-print('map :', r1)
-print('comp:', r2)
-print('loop:', r3)
+r2 = timeit.timeit(get_prices_with_comprehension, number=100)
+print('comp:', r2, flush=True)
+
+r3 = timeit.timeit(get_prices_with_loop, number=100)
+print('loop:', r3, flush=True)
 
