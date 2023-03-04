@@ -37,9 +37,10 @@ else:
     print('Solution for ', args.numbers, 'is:', quadp, ',', quadn)
     plt = plotit(a, b, c)
     title = ' '.join(['Solution',str(a),str(b),str(c),'=',str(quadp),',',str(quadn)])
+    plt.suptitle("x = (-b ± √b^2 - 4ac) / 2*a",fontsize='large',fontweight='bold')
     plt.title(title,fontsize='large',fontweight='bold')
-    filename = 'plot.pdf'
-    plt.savefig(filename)
+    fname = '/tmp/plot.pdf'
+    plt.savefig(fname)
+    print(f"Plot written to {fname}.")
     # plt.show()
-    print(f"Plot created and stored in {filename}.")
 
