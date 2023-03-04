@@ -38,6 +38,8 @@ else:
     plt = plotit(a, b, c)
     title = ' '.join(['Solution',str(a),str(b),str(c),'=',str(quadp),',',str(quadn)])
     plt.title(title,fontsize='large',fontweight='bold')
-    plt.savefig('plot.pdf')
+    filename = 'plot.pdf'
+    plt.savefig(filename)
     # plt.show()
+    print(f"Plot created and stored in {filename}.")
 
