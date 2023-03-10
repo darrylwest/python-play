@@ -3,7 +3,6 @@
 # 2023-02-15 15:13:31
 #
 
-
 set -eu
 
 #
@@ -13,7 +12,7 @@ python3 -m pip install --upgrade pip
 # repl: ptpython
 # pip3 install --upgrade jupyterlab-vim
 
-packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn gmpy2 redis"
+packages="numpy sympy scipy matplotlib pandas bokeh dask pymc3 statsmodels sklearn gmpy2 redis schedule"
 
 for p in $packages
 do
