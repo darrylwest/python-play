@@ -13,9 +13,10 @@
 
 ## References
 
+* [Python Maps](https://www.geeksforgeeks.org/python-map-function/)
 * [Tricks Article](https://towardsdatascience.com/5-python-tricks-that-distinguish-senior-developers-from-juniors-826d57ab3940)
 * [Performance Tips](https://wiki.python.org/moin/PythonSpeed/PerformanceTips)
 * [List Comprehensions](https://realpython.com/list-comprehension-python/)
 
-###### darryl.west | 2023-02-25
+###### darryl.west | 2023-03-12
 
