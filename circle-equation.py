@@ -5,8 +5,8 @@
 
 import argparse
 import numpy as np
-import sympy as sym
-import math
+from numpy.lib.scimath import sqrt
+import matplotlib.pyplot as plt
 from collections import namedtuple
 
 parser = argparse.ArgumentParser(description='Enter the circle center and radius as x y r')
@@ -14,8 +14,19 @@ parser.add_argument('numbers', metavar='3', type=float, nargs='+', help='the cir
 
 args = parser.parse_args()
 
-Circle = namedtuple('Circle', 'cx cy radius')
+figure, axes = plt.subplots()
+cx = args.numbers[0]
+cy = args.numbers[1]
+radius = args.numbers[2]
 
-circle = Circle(args.numbers[0], args.numbers[1], args.numbers[2])
+angle = np.linspace(0, 2*np.pi, 360)
 
-print(f'{circle.cx = }, {circle.cy = }, radius = {circle.radius}')
+x = radius * np.cos(angle) + cx
+y = radius * np.sin(angle) + cy
+
+axes.plot(x, y)
+axes.set_aspect( 1 )
+
+plt.title('Circle')
+plt.grid()
+plt.show()
