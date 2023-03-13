@@ -15,18 +15,32 @@ parser.add_argument('numbers', metavar='3', type=float, nargs='+', help='the cir
 args = parser.parse_args()
 
 figure, axes = plt.subplots()
+
 cx = args.numbers[0]
 cy = args.numbers[1]
 radius = args.numbers[2]
 
-angle = np.linspace(0, 2*np.pi, 360)
+axes.plot(cx, cy, 'ro')
+axes.plot([cx-(radius*1.1),cx+(radius*1.04)],[cy,cy],color='green',linewidth=0.5)
+axes.plot([cx,cx],[cy-(radius*1.04),cy+(radius*1.1)],color='green',linewidth=0.5)
 
-x = radius * np.cos(angle) + cx
-y = radius * np.sin(angle) + cy
+a = np.pi / 6
+x = radius * np.cos(a) + cx
+y = radius * np.sin(a) + cy
+axes.plot(x, y, 'ro')
+plt.xlabel(f'Point at {x:.3f},{y:.3f}')
+
+plt.plot
+
+theta = np.linspace(0, 2*np.pi, 360)
+
+x = radius * np.cos(theta) + cx
+y = radius * np.sin(theta) + cy
 
 axes.plot(x, y)
 axes.set_aspect( 1 )
 
-plt.title('Circle')
+plt.title(f'Circle at ({cx},{cy}), r={radius}')
+# plt.legend()
 plt.grid()
-plt.show()
+plt.savefig("circle.pdf")
