@@ -21,11 +21,12 @@ def f(x):
 
     return r1 - r2
 
-x = np.linspace(-30, 30, 300)
-y = f(x)
+if __name__ == "__main__":
+    x = np.linspace(-30, 30, 300)
+    y = f(x)
 
-# show any errors
-z = y[(abs(y) > 0.00005)]
+    # show any errors
+    z = y[(abs(y) > 0.00005)]
 
-print(f'{z = }')
+    print(f'{z = }')
 
