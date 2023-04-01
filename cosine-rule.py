@@ -35,8 +35,8 @@ if __name__ == "__main__":
     b, A, c = (17, 75, 24)
     print(f"b={b}, A={A}, c={c} = {cos_rule_sas(b, A, c)}")
 
-    # a, b, c = (15, 60, 50)
-    # print(f"a={a}, b={b}, c={c} = A = {cos_rule_sss(a, b, c)}")
+    a, b, c = (15, 60, 50)
+    print(f"a={a}, b={b}, c={c} = A = {cos_rule_sss(a, b, c)}")
 
 
 # TODO: CLI cos-rule --pattern n n n 
