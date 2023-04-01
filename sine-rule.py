@@ -53,3 +53,7 @@ if __name__ == "__main__":
     B = sin_rule_ass(A, a, b)
     print(f"{A}, {a}, {b} = {B} degrees") 
 
+    A, a, b = (30, 19, 37)
+    B = sin_rule_ass(A, a, b)
+    print(f"{A}, {a}, {b} = {B} degrees, {180-B} obtuse") 
+
