@@ -7,6 +7,7 @@ import math
 
 # implement two sine rules, angle, side, angle -> side and angle, side, side -> angle (acute)
 # verify with this tool: https://www.omnicalculator.com/math/triangle-angle
+# or: https://www.calculatorsoup.com/calculators/geometry-plane/triangle-law-of-sines.php
 
 #
 # returns the length of b opposite B
