@@ -18,6 +18,18 @@ def sin_rule_asa(A, a, B):
     ab = math.radians(B)
     return (math.sin(ab) * a) / math.sin(aa)
 
+#
+# returns the angle B opposite side b
+# A = angle in degrees
+# a = side opposite A
+# b = side opposite B
+#
+def sin_rule_ass(A, a, b):
+    aa = math.radians(A)
+    B = math.asin((math.sin(aa) * b)/a)
+    return math.degrees(B)
+
+
 if __name__ == "__main__":
     A, a, B = (58, 14, 75)
     b = sin_rule_asa(A, a, B)
@@ -28,4 +40,16 @@ if __name__ == "__main__":
     b = sin_rule_asa(A, a, B)
 
     print(f"{A}, {a}, {B} = {b}") 
+
+    A, a, b = (46, 11.92, 14)
+    B = sin_rule_ass(A, a, b)
+    print(f"{A}, {a}, {b} = {B} degrees") 
+
+    A, a, b = (58, 14, 16)
+    B = sin_rule_ass(A, a, b)
+    print(f"{A}, {a}, {b} = {B} degrees") 
+
+    A, a, b = (75, 16, 12)
+    B = sin_rule_ass(A, a, b)
+    print(f"{A}, {a}, {b} = {B} degrees") 
 
