@@ -6,6 +6,7 @@ import math
 
 
 # implement two sine rules, angle, side, angle -> side and angle, side, side -> angle (acute)
+# verify with this tool: https://www.omnicalculator.com/math/triangle-angle
 
 #
 # returns the length of b opposite B
@@ -20,15 +21,18 @@ def sin_rule_asa(A, a, B):
 
 #
 # returns the angle B opposite side b
+#
 # A = angle in degrees
 # a = side opposite A
 # b = side opposite B
+#
+# NOTE: be careful to check if the angle is supposed to be
+# acute or obtuse
 #
 def sin_rule_ass(A, a, b):
     aa = math.radians(A)
     B = math.asin((math.sin(aa) * b)/a)
     return math.degrees(B)
-
 
 if __name__ == "__main__":
     A, a, B = (58, 14, 75)
