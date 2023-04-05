@@ -32,12 +32,12 @@ if __name__ == "__main__":
     # a = width_of_orion_belt()
     # print(cos_rule_sss(a, 915, 736))
 
-    b, A, c = (17, 75, 24)
-    print(f"b={b}, A={A}, c={c} = {cos_rule_sas(b, A, c)}")
 
-    a, b, c = (15, 60, 50)
+    a, b, c = (861, 673, 989)
     print(f"a={a}, b={b}, c={c} = A = {cos_rule_sss(a, b, c)}")
 
+    b, A, c = (673, 58.79, 989)
+    print(f"b={b}, A={A}, c={c} = {cos_rule_sas(b, A, c)}")
 
 # TODO: CLI cos-rule --pattern n n n 
 # where --pattern = sss or sas
