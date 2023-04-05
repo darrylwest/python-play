@@ -7,11 +7,19 @@ import sympy as sym
 import math
 
 def foo(x, *args, **kwargs):
-    print(x)
-    print(args)
-    print(kwargs)
+    print(f'x = {x}')
+    if x != 40:
+        print(args)
+        print(kwargs)
 
+    print('-------------')
 
-foo(42, 2,3,4, foo='bar')
-foo(43, 6,4, slober='flarb')
+    return x + 1
+
+n = 40
+n = foo(n)
+n = foo(n, 2,3,4, foo='bar')
+n = foo(n, 6,4, slober='flarb')
+
+print(f"n = {n}")
 
