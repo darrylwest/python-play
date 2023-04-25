@@ -30,7 +30,7 @@ def divide_degrees(a, b, c, d):
     return divide_radians(a, radians(b), c, radians(d))
 
 # z3 = mult_radians(8, 4*pi/3, 2, 2*pi/3)
-z3 = divide_degrees(20, 140, 4, 35)
+z3 = divide_degrees(75, 289, 25, 83)
 
 print("z3:", round(z3.real,3), round(z3.imag, 3), "j")
 
