@@ -6,8 +6,15 @@ import numpy as np
 import sympy as sym
 # import scipy
 
+def f_sqrt(x):
+    return x**2 - 275
+
+def f_sqrt_prime(x):
+    return 2*x
+
 def f(x):
     return x**3 - 3*x + 1
+    # return x^3 - 2*x + 2
 
 def f_prime(x):
     return 3*x**2 - 3 
@@ -43,8 +50,9 @@ def newtons_method(
 
     return None
 
+guess = 2.0
 tol = 0.0000000000001
-x = newtons_method(2, f, f_prime, tol, tol, 20)
+x = newtons_method(guess, f, f_prime, tol, tol, 20)
 y = f(x)
 
 print("Result: ",x, y)
