@@ -14,7 +14,6 @@ def f_sqrt_prime(x):
 
 def f(x):
     return x**3 - 3*x + 1
-    # return x^3 - 2*x + 2
 
 def f_prime(x):
     return 3*x**2 - 3 
@@ -30,9 +29,7 @@ def newtons_method(
     for i in range(max_iterations):
         y = f(x0)
 
-
         yprime = f_prime(x0)
-
 
         if abs(yprime) < epsilon:
             print("epsilon...")
