@@ -48,3 +48,4 @@ plt.figure(figsize = (12, 8))
 plt.plot(x, y, 'bo')
 plt.plot(x_new, y_new)
 plt.show()
+
