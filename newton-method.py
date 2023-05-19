@@ -13,7 +13,7 @@ def f_sqrt_prime(x):
     return 2*x
 
 def f(x):
-    return x ** 3 - 500
+    return x ** 3 - 0.1
     # return x**3 - 3*x + 1
 
 def f_prime(x):
@@ -49,7 +49,7 @@ def newtons_method(
 
     return None
 
-guess = 8.0
+guess = 0.1
 tol = 0.0000000000001
 x = newtons_method(guess, f, f_prime, tol, tol, 20)
 y = f(x)
