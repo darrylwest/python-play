@@ -9,7 +9,7 @@ implement a Taylor series about x = 0 to calculate (approximate) the value of e
 or any power of e.  
 """
 
-from sympy import factorial, exp
+from sympy import factorial
 
 def f(x, n):
     return float(x**n / factorial(n))

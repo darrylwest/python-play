@@ -30,6 +30,6 @@ def main():
     print(args.b)
     print(args.c)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
 

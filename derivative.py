@@ -4,7 +4,8 @@
 #
 import numpy as np
 import sympy as sym
-import math
+
+sym.init_printing()
 
 x = sym.symbols('x')
 

@@ -1,29 +1,17 @@
 #!/usr/bin/env python3
 # dpw@Darryls-iMac.localdomain
-# 2023-02-03 21:33:41
+# 2023-05-19 18:52:43
 #
 
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+def frx(x):
+    return 1/(1 - x)
 
-sns.set_style('white')
+def taylor(x):
+    return [x ** n for n in range(200)]
 
-x = np.linspace(-np.pi, np.pi, 200)
-y = np.zeros(len(x))
+value = 0.8
+results = taylor(value)
 
-labels = ['First Order', 'Third Order', 'Fifth Order', 'Seventh Order']
-
-plt.figure(figsize = (10,8))
-for n, label in zip(range(4), labels):
-    y = y + ((-1)**n * (x)**(2*n+1)) / np.math.factorial(2*n+1)
-    plt.plot(x,y, label = label)
-
-plt.plot(x, np.sin(x), 'k', label = 'Analytic')
-plt.grid()
-plt.title('Taylor Series Approximations of Various Orders')
-plt.xlabel('x')
-plt.ylabel('y')
-plt.legend()
-plt.show()
+print(frx(value), "estimate:", sum(results))
+print(results[:10])
 
