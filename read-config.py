@@ -12,6 +12,8 @@ def read_config():
 
     print(config.sections())
     print('compression', config['DEFAULT']['Compression'])
+    print('origins', config['app']['origins'])
+    print('origins', config['app']['port'])
 
     for key in config['DEFAULT']:
         print(key)
