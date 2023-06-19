@@ -5,8 +5,8 @@
 import begin
 
 class Counter:
-    def __init__(self):
-        self.count = 0
+    def __init__(self, initial_count = 0):
+        self.count = initial_count
 
     def __call__(self):
         self.count += 1
@@ -15,7 +15,7 @@ class Counter:
 @begin.start
 def main():
 
-    count = Counter()
+    count = Counter(100)
     print(count())
     print(count())
     print(count())
