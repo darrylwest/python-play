@@ -16,7 +16,7 @@ def run_threaded(func):
 
 schedule.every(5).seconds.do(run_threaded, job)
 
-n = 60
+n = 10
 while n > 0:
     schedule.run_pending()
     time.sleep(1)

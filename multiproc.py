@@ -15,7 +15,7 @@ def func(x):
 
 if __name__ == '__main__':
     n = 3
-    print(f"running with {n} processes")
+    print(f"running with a pool of {n} processes and requestion 7 ops...")
     with multiprocessing.Pool(processes=n) as pool:
         data = pool.map(func, [1, 2, 3, 4, 5, 6, 7])
 
