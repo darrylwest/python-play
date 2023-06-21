@@ -4,6 +4,8 @@
 
 import begin
 
+# this is like a closure, but better.
+
 class Counter:
     def __init__(self, initial_count = 0):
         self.count = initial_count
@@ -16,7 +18,6 @@ class Counter:
 def main():
 
     count = Counter(100)
-    print(count())
-    print(count())
-    print(count())
-    print(count())
+    for n in range(10):
+        print(count())
+
