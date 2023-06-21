@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.11
 # dpw@Darryls-iMac.localdomain
 # 2023-03-07 21:25:22
 #
