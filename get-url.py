@@ -9,4 +9,5 @@ url = 'https://raincitysoftware.com'
 r = rq.get(url)
 
 print(r.text)
+print(f'response status: {r.status_code}')
 
