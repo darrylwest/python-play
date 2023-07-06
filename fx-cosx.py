@@ -22,10 +22,8 @@ exact_solution = -np.sin(x_diff)
 
 # Plot solution
 plt.figure(figsize = (12, 8))
-plt.plot(x_diff, forward_diff, '--', \
-         label = 'Finite difference approximation')
-plt.plot(x_diff, exact_solution, \
-         label = 'Exact solution')
+plt.plot(x_diff, forward_diff, '--', label = 'Finite difference approximation')
+plt.plot(x_diff, exact_solution, label = 'Exact solution')
 plt.legend()
 plt.show()
 
