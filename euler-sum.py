@@ -15,7 +15,7 @@ def f(x, n):
     return float(x**n / factorial(n))
 
 def sum_series(x, *args, **kwargs):
-    max_iterations = 10
+    max_iterations = 100
     result = 0.0
     
     for i in range(max_iterations):
