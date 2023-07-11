@@ -13,6 +13,7 @@
 
 ## References
 
+* [PEP8](https://peps.python.org/pep-0008/)
 * [Python Maps](https://www.geeksforgeeks.org/python-map-function/)
 * [Tricks Article](https://towardsdatascience.com/5-python-tricks-that-distinguish-senior-developers-from-juniors-826d57ab3940)
 * [Performance Tips](https://wiki.python.org/moin/PythonSpeed/PerformanceTips)
@@ -22,5 +23,5 @@
 * [decorators/functools](https://towardsdatascience.com/python-decorators-for-data-science-6913f717669a)
 * [one-liners](https://medium.com/@chenyumei8866/20-extremely-useful-single-line-python-codes-bc553ea4832a)
 
-###### darryl.west | 2023-06-03
+###### darryl.west | 2023-07-11
 
