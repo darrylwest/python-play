@@ -22,55 +22,55 @@ class SimpsonsData:
     n: int = 10
     dx: float = 1.0
 
-
 class SimpsonsCalculator():
     def __init__(self, ctx: SimpsonsData):
         self.ctx = ctx
-        print(ctx)
 
-def my_func(x):
-    return np.sin(x)
+    def __repr__(self):
+        return ('f{self.__class__.name}:{self.ctx}')
 
-def calc_intervals(ctx: SimpsonsData):
-    stack = []
-    x = ctx.a
-    while x <= ctx.b:
-        v = my_func(x)
-        print(f'{x} {v}')
+    def func(self, x):
+        return np.sin(x)
 
-        stack.append(v)
+    def process_list(self, lst):
+        acc = lst[0] + lst[-1]
+        for idx, v in enumerate(lst[1:-1]):
+            if idx % 2 == 0:
+                acc += 4 * v
+            else:
+                acc += 2 * v
 
-        x += ctx.dx
+            print(idx, v, acc)
 
-    return stack
+        result = acc * (self.ctx.dx / 3)
 
-def process_list(lst):
-    acc = lst[0] + lst[-1]
-    for idx, v in enumerate(lst[1:-1]):
-        if idx % 2 == 0:
-            acc += 4 * v
-        else:
-            acc += 2 * v
+        # print(f"sum: {result}")
 
-        print(idx, v, acc)
+        return result
 
-    result = acc * (np.pi / 10 / 3)
+    def calc(self):
+        ctx = self.ctx
+        stack = []
+        x = ctx.a
+        while x <= ctx.b:
+            v = self.func(x)
 
-    print(f"sum: {result}")
+            # print(f'{x} {v}')
 
-    return result
+            stack.append(v)
+
+            x += ctx.dx
+
+        return self.process_list(stack)
+
 
 @begin.start
 def main(arg1 = None):
 
-    count = 10
+    count = 64
     ctx = SimpsonsData(0, np.pi, count, np.pi/count)
-    calc = SimpsonsCalculator(ctx)
-    print(calc)
+    src = SimpsonsCalculator(ctx)
+    result = src.calc()
 
+    print(f'Data: {ctx}, result: {result}')
 
-    stack = calc_intervals(ctx)
-    print(f"list size: {len(stack)}")
-    process_list(stack)
-
-    
