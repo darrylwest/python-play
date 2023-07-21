@@ -3,17 +3,17 @@
 # 2023-07-12 22:04:42
 
 import begin
+import math
 
 def func1(x):
-    return x**3 - 3*x**2 + 1
+    return 6 / x
 
 def func2(x):
-    return (4*x**2)/4 - 4
+    return 7 - x
 
 def find_intersection(fn1, fn2, startx, endx):
     step = 0.0000001
     tol =  0.000001
-
 
     print(f'startx = {startx}')
 
@@ -22,6 +22,8 @@ def find_intersection(fn1, fn2, startx, endx):
         y1 = fn1(x)
         y2 = fn2(x)
         diff = y2 - y1
+
+        # print(y1,y2,diff)
 
         if abs(diff) < tol:
             break
@@ -32,5 +34,5 @@ def find_intersection(fn1, fn2, startx, endx):
 
 @begin.start
 def main(arg1 = None):
-    x = find_intersection(func1, func2, 1.3, 1.4)
+    x = find_intersection(func1, func2, 5.9, 6.1)
     print(x)
