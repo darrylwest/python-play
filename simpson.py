@@ -13,10 +13,6 @@ Create a SimplsonsRule class
 
 create a funcion to process the equation
 
-def fn(x): y
-
-sr = SimpsonsRule(fn, *start, *stop, *intervals, *error_budget, *show_error)
-
 """
 
 @dataclass
@@ -27,38 +23,53 @@ class SimpsonsData:
     dx: float = 1.0
 
 
+class SimpsonsCalculator():
+    def __init__(self, ctx: SimpsonsData):
+        self.ctx = ctx
+        print(ctx)
+
 def my_func(x):
     return np.sin(x)
 
-def calc_intervals(sr: SimpsonsData):
+def calc_intervals(ctx: SimpsonsData):
     stack = []
-    x = sr.a
-    while x <= sr.b:
-        v = sr.func(x)
+    x = ctx.a
+    while x <= ctx.b:
+        v = my_func(x)
         print(f'{x} {v}')
+
         stack.append(v)
 
-        x += sr.dx
+        x += ctx.dx
 
     return stack
 
 def process_list(lst):
     acc = lst[0] + lst[-1]
-    for idx, n in enumerate(lst[1:-1]):
-        print(idx, n)
+    for idx, v in enumerate(lst[1:-1]):
+        if idx % 2 == 0:
+            acc += 4 * v
+        else:
+            acc += 2 * v
+
+        print(idx, v, acc)
 
     result = acc * (np.pi / 10 / 3)
-    print(result)
+
+    print(f"sum: {result}")
+
     return result
 
 @begin.start
 def main(arg1 = None):
 
     count = 10
-    data = SimpsonsData(0, np.pi, count, np.pi/count)
-    print(data)
+    ctx = SimpsonsData(0, np.pi, count, np.pi/count)
+    calc = SimpsonsCalculator(ctx)
+    print(calc)
 
-    stack = calc_intervals(data)
+
+    stack = calc_intervals(ctx)
     print(f"list size: {len(stack)}")
     process_list(stack)
 
