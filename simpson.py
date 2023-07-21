@@ -9,9 +9,14 @@ import numpy as np
 # from scipy import integrate
 
 """
-Create a SimplsonsRule class 
+SimplsonsData class 
 
-create a funcion to process the equation
+pass in a function or lambda  when creating the calculator
+
+TODO: 
+    * calc the number of sub-intervals are required for a set error budget
+    * calc the error bounds for the given context
+    * add flags to pass in parameters, equations, settings
 
 """
 
@@ -23,14 +28,12 @@ class SimpsonsData:
     dx: float = 1.0
 
 class SimpsonsCalculator():
-    def __init__(self, ctx: SimpsonsData):
+    def __init__(self, ctx: SimpsonsData, func: Callable):
         self.ctx = ctx
+        self.fn = func
 
     def __repr__(self):
         return ('f{self.__class__.name}:{self.ctx}')
-
-    def func(self, x):
-        return np.sin(x)
 
     def process_list(self, lst):
         acc = lst[0] + lst[-1]
@@ -40,7 +43,7 @@ class SimpsonsCalculator():
             else:
                 acc += 2 * v
 
-            print(idx, v, acc)
+            # print(idx, v, acc)
 
         result = acc * (self.ctx.dx / 3)
 
@@ -53,7 +56,7 @@ class SimpsonsCalculator():
         stack = []
         x = ctx.a
         while x <= ctx.b:
-            v = self.func(x)
+            v = self.fn(x)
 
             # print(f'{x} {v}')
 
@@ -64,13 +67,26 @@ class SimpsonsCalculator():
         return self.process_list(stack)
 
 
-@begin.start
-def main(arg1 = None):
-
-    count = 64
+def calc_sin():
+    count = 22
     ctx = SimpsonsData(0, np.pi, count, np.pi/count)
-    src = SimpsonsCalculator(ctx)
+    src = SimpsonsCalculator(ctx, np.sin)
     result = src.calc()
 
-    print(f'Data: {ctx}, result: {result}')
+    print(f'{ctx}, result: {result}')
+
+def calc_ee():
+    # see graph https://www.geogebra.org/calculator/c89s3kb6
+    count = 64
+    ctx = SimpsonsData(0, 4, count, 4/count)
+    src = SimpsonsCalculator(ctx, lambda x: 1/2 * (np.e**x + np.e**(-x)))
+    result = src.calc()
+
+    print(f'{ctx}, result: {result}')
+
+@begin.start
+def main(arg1 = None):
+    # calc_sin()
+    calc_ee()
+
 
