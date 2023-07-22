@@ -84,9 +84,18 @@ def calc_ee():
 
     print(f'{ctx}, result: {result}')
 
+def calc_t():
+    # see graph https://www.geogebra.org/calculator/mfcwj5j6
+    count = 1000
+    ctx = SimpsonsData(-2, 2, count, 4/count)
+    src = SimpsonsCalculator(ctx, lambda t: t**2 - 4)
+    result = src.calc()
+
+    print(f'{ctx}, result: {result}')
+
 @begin.start
 def main(arg1 = None):
     # calc_sin()
-    calc_ee()
-
+    # calc_ee()
+    calc_t()
 
