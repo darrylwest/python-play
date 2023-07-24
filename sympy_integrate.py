@@ -9,7 +9,7 @@ import sympy as sym
 def rational_test():
     x = sym.Symbol('x')
 
-    y=(x**2 + x + 1)/((2*x+1)*(x**2 + 1))
+    y=1/(x**3 + x)
     v = sym.integrate(y, x)
 
     print(v)
