@@ -16,5 +16,5 @@ def main(arg1 = None):
     fgen = fib_generator()
     while True:
         print(next(fgen))
-        time.sleep(0.3)
+        time.sleep(0.2)
 

@@ -38,10 +38,7 @@ class SimpsonsCalculator():
     def process_list(self, lst):
         acc = lst[0] + lst[-1]
         for idx, v in enumerate(lst[1:-1]):
-            if idx % 2 == 0:
-                acc += 4 * v
-            else:
-                acc += 2 * v
+            acc = acc + 4 * v if idx % 2 == 0 else acc + 2 * v
 
             # print(idx, v, acc)
 
@@ -95,7 +92,7 @@ def calc_t():
 
 @begin.start
 def main(arg1 = None):
-    # calc_sin()
-    # calc_ee()
+    calc_sin()
+    calc_ee()
     calc_t()
 

@@ -30,10 +30,7 @@ def test_fib1(n):
 
 
 def fib2(n):
-    if n < 2:
-        return n
-
-    return fib2(n - 1) + fib2(n - 2)
+    return n if n < 2 else fib2(n - 1) + fib2(n - 2)
 
 def test_fib2(n):
     start_time = time.perf_counter()
@@ -44,10 +41,7 @@ def test_fib2(n):
 
 @lru_cache(maxsize=None)
 def fib3(n):
-    if n < 2:
-        return n
-
-    return fib3(n - 1) + fib3(n - 2)
+    return n if n < 2 else fib3(n - 1) + fib3(n - 2)
 
 def test_fib3(n):
     start_time = time.perf_counter()
@@ -56,7 +50,7 @@ def test_fib3(n):
 
     print(f"{v}, fib3 exec time: {end_time - start_time}")
 
-test_n = 40
+test_n = 50
 
 test_fib1(test_n)
 # test_fib2(test_n)
