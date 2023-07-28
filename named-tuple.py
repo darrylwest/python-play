@@ -10,11 +10,11 @@ print('namedtuple creates an immutable instance with named attributes including 
 def talk():
     return 'vroooooom!'
 
-
 Car = namedtuple('Car', 'color mileage sound')
 
 fast_car = Car('red', 342, talk)
 print(f"My fast car: {fast_car}\nIt goes {fast_car.sound()}")
+
 
 # this throws
 # fast_car.color = 'blue'
