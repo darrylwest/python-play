@@ -4,25 +4,34 @@
 
 import begin
 from typing import TypedDict
+from collections import namedtuple
 
 class Config(TypedDict):
-    port: int
+    env: str
     name: str
+    port: int
     weight: float
     version: str
 
+AppConfig = namedtuple('AppConfig', 'env name port weight version')
+
 def create_config():
-    conf: Config = {
-        'port': 4040,
+    c: Config = {
+        'env': 'develop',
         'name': 'AppConfig',
+        'port': 4040,
         'weight': 4.32,
         'version': '1.0.4',
     }
 
-    return conf
+    return AppConfig(c['env'], c['name'], c['port'], c['weight'], c['version'])
 
 @begin.start
 def main(arg1 = None):
     cfg = create_config()
 
     print(f'config {cfg}')
+    print(cfg.name)
+
+    # cfg.env = "prod"
+    # print(cfg, cfg.env)
