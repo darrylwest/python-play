@@ -9,25 +9,20 @@
 import logging
 
 log = logging.getLogger('app')
-log.setLevel(logging.NOTSET)
+log.setLevel(logging.DEBUG)
 
-fname='test.log'
-
-def get_logger():
-    return log
-
-def init_stream_logger(logger):
+def init_stream_logger():
     handler = logging.StreamHandler()
     handler.setLevel(logging.DEBUG)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
 
-    logger.addHandler(handler)
+    log.addHandler(handler)
 
-def init_file_logger(logger):
+def init_file_logger(fname):
     handler = logging.FileHandler(fname)
-    handler.setLevel(logging.DEBUG)
+    handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
@@ -36,15 +31,15 @@ def init_file_logger(logger):
 
 def test():
     log.debug("a debug test")
-    log.info('this is an into test...')
+    log.info('this is an info test...')
     log.warning('warning you')
     log.error('this is an error')
     log.critical('this is CRITICAL')
 
-    print(f'look at the logfile {fname}')
+    print(f'look at the logfile test-?')
 
 
 if __name__ == '__main__':
-    init_stream_logger(log)
-    init_file_logger(log)
+    init_stream_logger()
+    init_file_logger('test-1.log')
     test()
