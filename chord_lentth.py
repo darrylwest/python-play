@@ -4,8 +4,7 @@
 
 import numpy as np
 
-def fn(x):
-    return (x**4 + 2*x ** -2) / 8
+#def fn(x): return 1/3 * (x ** 2 + 2) ** (3/2)
 
 def calc(x1, x0):
     y1, y0 = (fn(x1), fn(x0))
@@ -14,16 +13,16 @@ def calc(x1, x0):
 
     return np.sqrt(xy)
 
-def calc_length():
-    x = 1.0
+def calc_length(xstart, xend, fn):
+    x = xstart
     length = 0.0
     dx = 0.001
     x1 = x + dx
 
-    while (x1 <= 2):
+    while (x1 <= xend):
         length += calc(x1, x)
 
-        # print(f'{x}, {length}')
+        print(f'{x}, {length}')
 
         x = x1
         x1 = x + dx
@@ -31,5 +30,8 @@ def calc_length():
     return length
 
 if __name__ == '__main__':
-    chord = calc_length()
+    # fn = lambda x:  1/3 * (x ** 2 + 2) ** (3/2)
+    # fn = lambda x:  (x**4 + 3) / (6 * x)
+    fn = lambda x:  np.log(1 + x**3)
+    chord = calc_length(0.0, 5.0, fn)
     print(f'length: {chord}')
