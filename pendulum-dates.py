@@ -9,8 +9,9 @@ def show():
     dt = pendulum.datetime(2023, 1, 31)
     print(f' dt: {dt}')
 
-    utc = pendulum.now('UTC')
-    print(f'utc: {utc}')
+    for n in range(0,20):
+        utc = pendulum.now('UTC')
+        print(f'utc: {utc}')
 
 @begin.start
 def main(arg1 = None):
