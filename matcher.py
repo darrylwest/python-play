@@ -2,6 +2,7 @@
 # dpw@tiburon.local
 # 2023-02-27 18:54:54
 #
+# @see https://medium.com/python-in-plain-english/yes-you-can-write-switch-statements-in-python-815da93996a
 
 def matchit(n):
     match n:
