@@ -13,6 +13,13 @@ def show():
         utc = pendulum.now('UTC')
         print(f'utc: {utc}')
 
+def parse():
+    now = pendulum.now('UTC').to_rfc3339_string()
+    utc = pendulum.parse(now)
+    print(now, '->', utc)
+
+
 @begin.start
 def main(arg1 = None):
     show()
+    parse()
