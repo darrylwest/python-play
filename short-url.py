@@ -5,10 +5,11 @@
 # ref: https://pyshorteners.readthedocs.io/en/latest/
 # TODO: must have a valid set of API keys...
 
-import begin
+import typer
 import pyshorteners
 
+def main(url: str) -> None:
+    print(f'url = {url}')
 
-@begin.start
-def main(arg1=None):
-    print(f"hello {arg1}")
+if __name__ == "__main__":
+    typer.run(main)
