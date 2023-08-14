@@ -3,8 +3,8 @@
 # 2023-02-03 20:45:54
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def plot_vect(x, b, xlim, ylim):

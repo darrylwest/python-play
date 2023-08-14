@@ -2,9 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-04-05 13:05:59
 #
+import math
+
 import numpy as np
 import sympy as sym
-import math
 
 
 def foo(x, *args, **kwargs):

@@ -4,10 +4,11 @@
 #
 
 import argparse
+from collections import namedtuple
+
+import matplotlib.pyplot as plt
 import numpy as np
 from numpy.lib.scimath import sqrt
-import matplotlib.pyplot as plt
-from collections import namedtuple
 
 parser = argparse.ArgumentParser(
     description="Enter the circle center and radius as x y r"

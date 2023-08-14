@@ -3,8 +3,8 @@
 # 2023-02-03 21:16:32
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def divided_diff(x, y):

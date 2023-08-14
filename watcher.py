@@ -2,11 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-08-05 19:42:37
 
+import logging
 import sys
 import time
-import logging
-from watchdog.observers import Observer
+
 from watchdog.events import LoggingEventHandler
+from watchdog.observers import Observer
 
 if __name__ == "__main__":
     logging.basicConfig(

@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-07-07 17:09:08
 
-import begin
 import math
 import random
+
+import begin
 
 
 def calc_phi():

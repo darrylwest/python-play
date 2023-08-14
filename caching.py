@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-08-05 23:55:30
 
-import begin
-from functools import lru_cache
 import time
+from functools import lru_cache
+
+import begin
 
 
 @lru_cache

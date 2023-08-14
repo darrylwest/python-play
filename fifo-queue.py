@@ -2,8 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-27 14:20:27
 
-import begin
 from collections import deque
+
+import begin
 
 
 # creates a FIFO queue

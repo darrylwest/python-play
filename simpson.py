@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-07-20 21:20:47
 
-import begin
-from dataclasses import dataclass
 from collections.abc import Callable
+from dataclasses import dataclass
+
+import begin
 import numpy as np
 
 # from scipy import integrate

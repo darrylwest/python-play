@@ -3,8 +3,8 @@
 # 2023-02-03 22:02:01
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 # step size
 h = 0.1

@@ -3,10 +3,9 @@
 # 2023-02-03 22:11:17
 #
 
-from scipy.integrate import cumtrapz
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.integrate import trapz
+from scipy.integrate import cumtrapz, trapz
 
 a = 0
 b = np.pi

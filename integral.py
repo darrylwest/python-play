@@ -5,7 +5,7 @@
 
 import numpy as np
 import sympy as sym
-from IPython.display import display, Math
+from IPython.display import Math, display
 
 x, y = sym.symbols("x y")
 

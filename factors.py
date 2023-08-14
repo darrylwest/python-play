@@ -3,9 +3,10 @@
 # 2023-02-15 15:51:30
 #
 
+import math
+
 import numpy as np
 import sympy as sym
-import math
 
 n = 48
 

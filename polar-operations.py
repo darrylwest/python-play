@@ -2,10 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-04-06 20:15:58
 #
-import math
 import cmath as cm
-from math import degrees, radians, pi
+import math
 from cmath import sqrt
+from math import degrees, pi, radians
 
 
 def mult_radians(a, b, c, d):

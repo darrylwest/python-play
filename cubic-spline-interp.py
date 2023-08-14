@@ -3,10 +3,9 @@
 # 2023-02-03 21:08:32
 #
 
-from scipy.interpolate import CubicSpline
-import numpy as np
 import matplotlib.pyplot as plt
-
+import numpy as np
+from scipy.interpolate import CubicSpline
 
 x = [0, 1, 2]
 y = [1, 3, 2]

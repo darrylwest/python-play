@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-07-28 13:36:56
 
-import begin
-from typing import TypedDict
 from collections import namedtuple
+from typing import TypedDict
+
+import begin
 
 
 def notes():

@@ -2,9 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-02-17 14:32:20
 
+import math
+
 import numpy as np
 import sympy as sym
-import math
 
 x = sym.symbols("x")
 

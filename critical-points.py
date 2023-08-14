@@ -4,9 +4,9 @@
 #
 from collections import namedtuple
 
+import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
 Points = namedtuple("Points", ["x", "fx"])

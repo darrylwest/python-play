@@ -2,9 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-06-20 16:34:17
 
-import begin
-
 from enum import Enum
+
+import begin
 
 
 class Color(Enum):

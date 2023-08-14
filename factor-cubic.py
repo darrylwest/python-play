@@ -3,8 +3,9 @@
 # 2023-02-18 15:58:41
 #
 
-import sympy as sym
 import math
+
+import sympy as sym
 
 sym.var("x y")
 

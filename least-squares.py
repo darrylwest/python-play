@@ -3,10 +3,9 @@
 # 2023-02-03 20:51:40
 #
 
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy import optimize
-import matplotlib.pyplot as plt
-
 
 x = np.linspace(0, 1, 101)
 y = 1 + x + x * np.random.random(len(x))

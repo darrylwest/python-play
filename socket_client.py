@@ -2,8 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-08-04 20:27:26
 
-import begin
 import socket
+
+import begin
 
 
 def client():

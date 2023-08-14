@@ -2,11 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-07-23 16:52:45
 
-import begin
+from math import acos, asin, atan, cos, degrees, radians, sin, tan
 
-from scipy.integrate import quad, quadrature, romberg, fixed_quad
-from scipy.constants import pi, e
-from math import sin, cos, tan, asin, acos, atan, radians, degrees
+import begin
+from scipy.constants import e, pi
+from scipy.integrate import fixed_quad, quad, quadrature, romberg
 
 
 def run(fn, a, b):

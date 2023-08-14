@@ -2,8 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-12 22:04:42
 
-import begin
 import math
+
+import begin
 
 
 def func1(x):

@@ -2,10 +2,11 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-02-16 00:39:57
 #
+import math
+
+import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-import math
-import matplotlib.pyplot as plt
 
 xvals = [3, -3]
 yvals = [5, 4]

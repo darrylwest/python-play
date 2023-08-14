@@ -7,8 +7,9 @@
 #
 
 import asyncio
-import tornado
+
 import pyvibe as pv
+import tornado
 
 
 def home_page():

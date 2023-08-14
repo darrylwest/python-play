@@ -4,8 +4,9 @@
 
 # see https://medium.com/@mkuhikar/python-decorators-advanced-67420a5b7278 for notes on Decorators
 
-import begin
 import time
+
+import begin
 
 
 def timer(func):

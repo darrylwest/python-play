@@ -3,10 +3,9 @@
 # 2023-02-03 20:57:05
 #
 
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy import optimize
-import matplotlib.pyplot as plt
-
 
 # let's generate x and y, and add some noise into y
 x = np.linspace(0, 10, 101)

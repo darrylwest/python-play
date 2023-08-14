@@ -2,8 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-27 14:05:02
 
-import begin
 from collections import deque
+
+import begin
 
 
 def create_stack():

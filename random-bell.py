@@ -2,9 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-04-23 13:50:13
 #
+import math
+
 import numpy as np
 import sympy as sym
-import math
 
 rng = np.random.default_rng()
 

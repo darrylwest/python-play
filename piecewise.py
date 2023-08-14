@@ -2,10 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-04-29 14:13:23
 #
+import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-import matplotlib.pyplot as plt
-from IPython.display import display, Math
+from IPython.display import Math, display
 from sympy.abc import x
 
 piece1 = x**2

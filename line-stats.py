@@ -4,9 +4,10 @@
 #
 
 import argparse
-import numpy as np
-import subprocess
 import math
+import subprocess
+
+import numpy as np
 
 parser = argparse.ArgumentParser(description="Enter the line start/end as x1 y1 x2 y2")
 parser.add_argument(

@@ -3,8 +3,8 @@
 # 2023-02-03 22:16:20
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Define parameters
 f = lambda t, s: np.exp(-t)  # ODE

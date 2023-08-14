@@ -4,9 +4,10 @@
 #
 
 import argparse
-import gmpy2 as gym
-from math import sqrt
 import random
+from math import sqrt
+
+import gmpy2 as gym
 
 
 def isprime(number):  # prime function to check given number prime or not

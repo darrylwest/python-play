@@ -3,8 +3,8 @@
 # 2023-02-21 22:13:00
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 plt.ylabel("y-axis")
 plt.xlabel("roots [-12,3,12], [-6,8]")

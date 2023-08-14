@@ -2,9 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-02-21 23:44:42
 #
-import sympy as sym
 import datetime
 from datetime import timedelta
+
+import sympy as sym
 
 start_year = 2023
 start_date = datetime.date(start_year, 1, 1)

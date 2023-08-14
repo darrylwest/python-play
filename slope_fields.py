@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-07-05 18:55:20
 
-import begin
-import math.sin
 import math.cos
+import math.sin
+
+import begin
 
 
 def afn(x, y):

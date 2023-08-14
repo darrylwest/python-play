@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-08-02 16:13:15
 
-import begin
 import secrets
 import string
+
+import begin
 
 # secrets is preferrable to random (see PEP506)
 # a better approach would be to implement rules, like at least 2 upper, 2 lower, 2 numbers, 2 chars, no repeats, etc

@@ -1,5 +1,6 @@
-import streamlit as st
 import datetime
+
+import streamlit as st
 
 st.title("Counter Example")
 if "count" not in st.session_state:

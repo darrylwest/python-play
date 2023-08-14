@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-07-28 16:18:41
 
-import begin
-from collections import namedtuple
 import time
+from collections import namedtuple
+
+import begin
 
 
 def notes():

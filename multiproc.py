@@ -2,9 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-06-18 19:04:03
 
+import datetime
 import multiprocessing
 import time
-import datetime
 
 
 def func(x):

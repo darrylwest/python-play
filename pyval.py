@@ -4,9 +4,8 @@
 
 from datetime import datetime
 from typing import List, Optional
-from pydantic import BaseModel
 
-from pydantic import validate_call
+from pydantic import BaseModel, validate_call
 from pydantic.types import conint
 
 

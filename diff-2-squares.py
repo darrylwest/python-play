@@ -5,9 +5,10 @@
 
 # product of conjegates
 
+import math
+
 import numpy as np
 import sympy as sym
-import math
 
 a = 8
 b = 50

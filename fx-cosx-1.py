@@ -3,8 +3,8 @@
 # 2023-02-03 22:03:52
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 x = np.arange(0, 2 * np.pi, 0.01)
 

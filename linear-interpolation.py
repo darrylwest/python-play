@@ -3,9 +3,8 @@
 # 2023-02-03 21:03:03
 #
 
-from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
-
+from scipy.interpolate import interp1d
 
 x = [0, 1, 2]
 y = [1, 3, 2]

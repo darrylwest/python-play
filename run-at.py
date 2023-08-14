@@ -2,9 +2,10 @@
 # dpw@Darryls-iMac.localdomain
 # 2023-03-10 21:45:37
 #
-import schedule
-import time
 import threading
+import time
+
+import schedule
 
 
 def job():

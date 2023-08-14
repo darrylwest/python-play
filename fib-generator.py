@@ -2,8 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-24 18:36:19
 
-import begin
 import time
+
+import begin
 
 
 def fib_generator():

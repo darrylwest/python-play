@@ -3,8 +3,8 @@
 # 2023-02-11 18:45:07
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 # leave these parameters as-is
 n = 1000000

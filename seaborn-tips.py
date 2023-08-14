@@ -3,8 +3,8 @@
 # 2023-02-03 21:39:21
 #
 
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 tips = sns.load_dataset("tips")
 

@@ -3,8 +3,8 @@
 # 2023-02-11 16:17:04
 #
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 start = -10
 stop = 10

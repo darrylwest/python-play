@@ -3,10 +3,11 @@
 # 2023-02-18 16:22:49
 #
 
+import math
+
 import numpy as np
 import sympy as sym
 import sympy.plotting as spl
-import math
 
 sym.var("x")
 

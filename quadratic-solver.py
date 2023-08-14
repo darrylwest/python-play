@@ -6,11 +6,12 @@
 # use Quadratic Equation to solve ax2 + bx + c; print and save a graph of the equation
 
 import argparse
+
+import matplotlib.pyplot as plt
+import numpy as np
 import scipy as sp
 import sympy as sym
-import numpy as np
 from numpy.lib.scimath import sqrt
-import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(
     description="Enter three coefficient values to calculate the quadratic roots"
