@@ -13,6 +13,7 @@ def fib_generator():
 
 @begin.start
 def main(arg1 = None):
+    print('Generates an infinite fib sequence...')
     fgen = fib_generator()
     while True:
         print(next(fgen))

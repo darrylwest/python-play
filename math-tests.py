@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 
+# from sympy import symbols, factor, expand
 import math
 
-num1 = math.sqrt(7)
-
-print("sqrt(7) = ", num1)
-
-num2 = math.gcd(12, 20)
-
-print("gcd 12, 20: ", num2)
+print(f'{math.sqrt(7)=}')
+print(f'{math.gcd(12, 20)=}')
 
