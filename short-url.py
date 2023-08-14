@@ -8,8 +8,7 @@
 import begin
 import pyshorteners
 
-s = 
 
 @begin.start
-def main(arg1 = None):
-    print(f'hello {arg1}')
+def main(arg1=None):
+    print(f"hello {arg1}")
