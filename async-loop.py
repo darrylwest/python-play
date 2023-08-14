@@ -5,15 +5,15 @@
 import asyncio
 import datetime
 
+
 async def loop():
     while True:
         nxt = asyncio.sleep(2)
 
-        print(f'this is my job: {datetime.datetime.now()}')
+        print(f"this is my job: {datetime.datetime.now()}")
 
         await nxt
 
 
 if __name__ == "__main__":
     asyncio.run(loop())
-

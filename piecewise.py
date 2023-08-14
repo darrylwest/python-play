@@ -5,14 +5,14 @@
 import numpy as np
 import sympy as sym
 import matplotlib.pyplot as plt
-from IPython.display import display,Math
+from IPython.display import display, Math
 from sympy.abc import x
 
 piece1 = x**2
-piece2 = -2*x
-piece3 = x**3/10
+piece2 = -2 * x
+piece3 = x**3 / 10
 
-fx = sym.Piecewise((piece1,x<0),(piece2, (x>=0) & (x<3)), (piece3,x>=3))
+fx = sym.Piecewise((piece1, x < 0), (piece2, (x >= 0) & (x < 3)), (piece3, x >= 3))
 
 fxx = sym.lambdify(x, fx)
 xx = np.linspace(-3, 5, 1000)

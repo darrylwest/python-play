@@ -5,17 +5,20 @@
 import begin
 import math
 
+
 def func1(x):
     return 6 / x
+
 
 def func2(x):
     return 7 - x
 
+
 def find_intersection(fn1, fn2, startx, endx):
     step = 0.0000001
-    tol =  0.000001
+    tol = 0.000001
 
-    print(f'startx = {startx}')
+    print(f"startx = {startx}")
 
     x = startx
     while x < endx:
@@ -32,7 +35,8 @@ def find_intersection(fn1, fn2, startx, endx):
 
     return x
 
+
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     x = find_intersection(func1, func2, 5.9, 6.1)
     print(x)

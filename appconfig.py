@@ -6,6 +6,7 @@ import begin
 from collections import namedtuple
 import time
 
+
 def notes():
     s = """
     _____________________________________________________________________________________________________
@@ -34,20 +35,25 @@ def notes():
 
     print(s)
 
-AppConfig = namedtuple('AppConfig', 'env created name port weight version apikey dbpw')
+
+AppConfig = namedtuple("AppConfig", "env created name port weight version apikey dbpw")
+
 
 # this should probably be wrapped in a 'secrets' class to enable more logic
 # pull from secrets based on env
 def apikey(env):
-    return f'{env}-*******'
+    return f"{env}-*******"
+
 
 # pull from secrets based on env
 def dbpw(env):
-    return f'{env}-*******'
+    return f"{env}-*******"
+
 
 def create_app_config(env):
     # use env var to point to the correct env...
     now = time.time_ns()
+
     def apikey_fn():
         return apikey(env)
 
@@ -55,23 +61,25 @@ def create_app_config(env):
         return dbpw(env)
 
     return AppConfig(
-            env, 
-            now,
-            'AppConfig', 
-            4040, 34.22, 
-            '1.0.5', 
-            apikey_fn,
-            dbpw_fn,
-        )
+        env,
+        now,
+        "AppConfig",
+        4040,
+        34.22,
+        "1.0.5",
+        apikey_fn,
+        dbpw_fn,
+    )
+
 
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     notes()
 
-    cfg = create_app_config('develop')
-    print(f'config:  {cfg}')
+    cfg = create_app_config("develop")
+    print(f"config:  {cfg}")
 
-    print(f'name: {cfg.name}, apikey: {cfg.apikey()}, dbpw: {cfg.dbpw()}')
+    print(f"name: {cfg.name}, apikey: {cfg.apikey()}, dbpw: {cfg.dbpw()}")
 
     # this will throw
     # cfg.env = "prod"

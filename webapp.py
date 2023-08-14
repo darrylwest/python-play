@@ -7,6 +7,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.get("/")
 def index():
     return "<p>hello world</p>"
@@ -16,5 +17,6 @@ def index():
 def what():
     return "<p>hello what?</p>"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print("USE: FLASK_APP=webapp flask run")

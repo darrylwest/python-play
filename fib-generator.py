@@ -5,17 +5,18 @@
 import begin
 import time
 
+
 def fib_generator():
     a, b = 0, 1
     while True:
         yield a
         a, b = b, a + b
 
+
 @begin.start
-def main(arg1 = None):
-    print('Generates an infinite fib sequence...')
+def main(arg1=None):
+    print("Generates an infinite fib sequence...")
     fgen = fib_generator()
     while True:
         print(next(fgen))
         time.sleep(0.2)
-

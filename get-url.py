@@ -5,9 +5,8 @@
 
 import requests as rq
 
-url = 'https://raincitysoftware.com'
+url = "https://raincitysoftware.com"
 r = rq.get(url)
 
 print(r.text)
-print(f'response status: {r.status_code}')
-
+print(f"response status: {r.status_code}")

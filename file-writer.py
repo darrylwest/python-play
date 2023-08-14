@@ -4,12 +4,11 @@
 #
 import datetime
 
-filename='/tmp/junk.txt'
+filename = "/tmp/junk.txt"
 
 # using 'with' ensures the file closes correctly...
-with open(filename, 'w') as f:
+with open(filename, "w") as f:
     f.write(f"this is a test from me sent {datetime.datetime.now()}\n")
-    f.write('bye now...')
+    f.write("bye now...")
 
 print(f"file updated : {filename}")
-

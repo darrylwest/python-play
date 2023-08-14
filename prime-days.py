@@ -10,10 +10,12 @@ start_year = 2023
 start_date = datetime.date(start_year, 1, 1)
 count = 365
 
+
 def is_prime(n):
     p = sym.factorint(n)
 
     return len(p) == 1
+
 
 for idx in range(0, count):
     delta = timedelta(days=idx)
@@ -21,4 +23,3 @@ for idx in range(0, count):
     n = int("{}{:02d}{:02d}".format(dt.year, dt.month, dt.day))
 
     print(n, is_prime(n))
-

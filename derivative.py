@@ -7,9 +7,9 @@ import sympy as sym
 
 sym.init_printing()
 
-x = sym.symbols('x')
+x = sym.symbols("x")
 
-fx = 7**(x**2 - x)
+fx = 7 ** (x**2 - x)
 fp = sym.diff(fx)
 
 print(fx, " = ", fp)

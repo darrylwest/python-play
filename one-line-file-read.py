@@ -4,12 +4,14 @@
 
 import numpy as np
 import sympy as sym
+
 # import argparse
 
 
 def main():
-    data = [line.strip() for line in open("xy.data","r")]
+    data = [line.strip() for line in open("xy.data", "r")]
     print(data)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

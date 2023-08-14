@@ -4,6 +4,7 @@
 
 import atexit
 
+
 @atexit.register
 def bye():
     print("exiting this process...")
@@ -13,5 +14,3 @@ print("hello...")
 
 for i in range(10):
     print(i)
-
-

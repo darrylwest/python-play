@@ -6,18 +6,19 @@
 
 import configparser
 
+
 def read_config():
     config = configparser.ConfigParser()
-    config.read('settings.cfg')
+    config.read("settings.cfg")
 
     print(config.sections())
-    print('compression', config['DEFAULT']['Compression'])
-    print('origins', config['app']['origins'])
-    print('origins', config['app']['port'])
+    print("compression", config["DEFAULT"]["Compression"])
+    print("origins", config["app"]["origins"])
+    print("origins", config["app"]["port"])
 
-    for key in config['DEFAULT']:
+    for key in config["DEFAULT"]:
         print(key)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     read_config()

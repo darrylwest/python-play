@@ -5,6 +5,7 @@
 import begin
 import socket
 
+
 def server():
     # get the hostname
     host = socket.gethostname()
@@ -25,11 +26,12 @@ def server():
             # if data is not received break
             break
         print("from connected user: " + str(data))
-        data = input(' -> ')
+        data = input(" -> ")
         conn.send(data.encode())  # send data to the client
 
     conn.close()  # close the connection
 
+
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     server()

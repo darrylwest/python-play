@@ -4,17 +4,18 @@
 #
 # @see https://medium.com/python-in-plain-english/yes-you-can-write-switch-statements-in-python-815da93996a
 
+
 def matchit(n):
     match n:
         case 0:
-            print('zero')
+            print("zero")
         case 1:
-            print('one')
+            print("one")
         case _ if n % 2 == 0:
             print(f"the number {n} is even")
         case _:
             print(f"number {n} is odd")
 
+
 for n in range(10):
     matchit(n)
-

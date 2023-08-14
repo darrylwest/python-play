@@ -6,6 +6,7 @@ import begin
 from dataclasses import dataclass
 from collections.abc import Callable
 import numpy as np
+
 # from scipy import integrate
 
 """
@@ -20,6 +21,7 @@ TODO:
 
 """
 
+
 @dataclass
 class SimpsonsData:
     a: float = 0.0
@@ -27,13 +29,14 @@ class SimpsonsData:
     n: int = 10
     dx: float = 1.0
 
-class SimpsonsCalculator():
+
+class SimpsonsCalculator:
     def __init__(self, ctx: SimpsonsData, func: Callable):
         self.ctx = ctx
         self.fn = func
 
     def __repr__(self):
-        return ('f{self.__class__.name}:{self.ctx}')
+        return "f{self.__class__.name}:{self.ctx}"
 
     def process_list(self, lst):
         acc = lst[0] + lst[-1]
@@ -66,33 +69,35 @@ class SimpsonsCalculator():
 
 def calc_sin():
     count = 22
-    ctx = SimpsonsData(0, np.pi, count, np.pi/count)
+    ctx = SimpsonsData(0, np.pi, count, np.pi / count)
     src = SimpsonsCalculator(ctx, np.sin)
     result = src.calc()
 
-    print(f'{ctx}, result: {result}')
+    print(f"{ctx}, result: {result}")
+
 
 def calc_ee():
     # see graph https://www.geogebra.org/calculator/c89s3kb6
     count = 64
-    ctx = SimpsonsData(0, 4, count, 4/count)
-    src = SimpsonsCalculator(ctx, lambda x: 1/2 * (np.e**x + np.e**(-x)))
+    ctx = SimpsonsData(0, 4, count, 4 / count)
+    src = SimpsonsCalculator(ctx, lambda x: 1 / 2 * (np.e**x + np.e ** (-x)))
     result = src.calc()
 
-    print(f'{ctx}, result: {result}')
+    print(f"{ctx}, result: {result}")
+
 
 def calc_t():
     # see graph https://www.geogebra.org/calculator/mfcwj5j6
     count = 1000
-    ctx = SimpsonsData(-2, 2, count, 4/count)
+    ctx = SimpsonsData(-2, 2, count, 4 / count)
     src = SimpsonsCalculator(ctx, lambda t: t**2 - 4)
     result = src.calc()
 
-    print(f'{ctx}, result: {result}')
+    print(f"{ctx}, result: {result}")
+
 
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     calc_sin()
     calc_ee()
     calc_t()
-

@@ -5,17 +5,20 @@
 
 from collections import namedtuple
 
-print('namedtuple creates an immutable instance with named attributes including function pointers...')
+print(
+    "namedtuple creates an immutable instance with named attributes including function pointers..."
+)
+
 
 def talk():
-    return 'vroooooom!'
+    return "vroooooom!"
 
-Car = namedtuple('Car', 'color mileage sound')
 
-fast_car = Car('red', 342, talk)
+Car = namedtuple("Car", "color mileage sound")
+
+fast_car = Car("red", 342, talk)
 print(f"My fast car: {fast_car}\nIt goes {fast_car.sound()}")
 
 
 # this throws
 # fast_car.color = 'blue'
-

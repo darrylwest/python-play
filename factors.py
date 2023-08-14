@@ -10,4 +10,3 @@ import math
 n = 48
 
 print(sym.factorint(n))
-

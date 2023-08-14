@@ -6,14 +6,16 @@ import multiprocessing
 import time
 import datetime
 
+
 def func(x):
     start = datetime.datetime.now()
     time.sleep(1)
     end = datetime.datetime.now()
 
-    return f'x={x} start at {start}, end at {end}'
+    return f"x={x} start at {start}, end at {end}"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     n = 3
     print(f"running with a pool of {n} processes and requestion 7 ops...")
     with multiprocessing.Pool(processes=n) as pool:
@@ -21,4 +23,3 @@ if __name__ == '__main__':
 
     for row in data:
         print(row)
-

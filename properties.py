@@ -4,6 +4,7 @@
 
 import begin
 
+
 class Movie:
     def __init__(self, r):
         self._rating = r
@@ -19,13 +20,14 @@ class Movie:
         else:
             raise ValueError("rating must be between 1 and 5")
 
+
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     batman = Movie(2.5)
 
-    print(f'rating: {batman.rating}')
+    print(f"rating: {batman.rating}")
 
     batman.rating = 4.0
-    print(f'rating: {batman.rating}')
+    print(f"rating: {batman.rating}")
 
     batman.rating = 6.0

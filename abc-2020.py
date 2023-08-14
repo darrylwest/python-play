@@ -10,6 +10,5 @@ b = 2
 c = 674
 
 
-print('a * b + c = ', a * b + c)
-print('a + b * c = ', a + b * c)
-
+print("a * b + c = ", a * b + c)
+print("a + b * c = ", a + b * c)

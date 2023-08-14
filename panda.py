@@ -7,9 +7,8 @@ import sympy as sym
 import pandas as pd
 import math
 
-ss = pd.Series(['nik','kate','jane','jim'])
+ss = pd.Series(["nik", "kate", "jane", "jim"])
 
 # read a csv with pd.read_csv, excel with pd.read_excel()
 
 print(ss)
-

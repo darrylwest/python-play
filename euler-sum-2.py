@@ -5,10 +5,11 @@
 import begin
 import math
 
+
 def func(x):
-    return sum([x**n / math.factorial(n) for n in range(0,100)])
+    return sum([x**n / math.factorial(n) for n in range(0, 100)])
+
 
 @begin.start
 def main():
     print(func(3 + 5), func(3) * func(5))
-

@@ -6,11 +6,10 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-tips = sns.load_dataset('tips')
+tips = sns.load_dataset("tips")
 
-graph = sns.FacetGrid(tips, col ="sex", hue ="day")
+graph = sns.FacetGrid(tips, col="sex", hue="day")
 
-graph.map(plt.scatter, "total_bill", "tip", edgecolor ="w").add_legend()
+graph.map(plt.scatter, "total_bill", "tip", edgecolor="w").add_legend()
 
 plt.show()
-

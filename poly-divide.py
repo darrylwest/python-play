@@ -6,17 +6,16 @@ import numpy as np
 import sympy as sym
 import math
 
-x,y = sym.symbols('x y')
+x, y = sym.symbols("x y")
 
 
-p1 = 4*x**5 - x
-p2 = 2*x**3 - x
+p1 = 4 * x**5 - x
+p2 = 2 * x**3 - x
 
-print(p1, '/', p2)
-print('')
+print(p1, "/", p2)
+print("")
 
 print(sym.expand(p1 / p2))
-print('')
+print("")
 
 print(sym.simplify(p1 / p2))
-

@@ -6,10 +6,9 @@
 import sympy
 from sympy import *
 
-var('x y')
+var("x y")
 
-eq = x**3 - 2 * x**2 - 5*x + 6
+eq = x**3 - 2 * x**2 - 5 * x + 6
 
 f = sympy.factor(eq)
 print(eq, " = ", f)
-

@@ -6,6 +6,7 @@
 import time
 from functools import lru_cache
 
+
 def fib1(n):
     """
     Return the fibonacci sequence for the specified value of n without recursion
@@ -32,6 +33,7 @@ def test_fib1(n):
 def fib2(n):
     return n if n < 2 else fib2(n - 1) + fib2(n - 2)
 
+
 def test_fib2(n):
     start_time = time.perf_counter()
     v = fib2(n)
@@ -39,9 +41,11 @@ def test_fib2(n):
 
     print(f"{v}, fib2 exec time: {end_time - start_time}")
 
+
 @lru_cache(maxsize=None)
 def fib3(n):
     return n if n < 2 else fib3(n - 1) + fib3(n - 2)
+
 
 def test_fib3(n):
     start_time = time.perf_counter()
@@ -49,6 +53,7 @@ def test_fib3(n):
     end_time = time.perf_counter()
 
     print(f"{v}, fib3 exec time: {end_time - start_time}")
+
 
 test_n = 50
 

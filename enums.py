@@ -6,17 +6,20 @@ import begin
 
 from enum import Enum
 
+
 class Color(Enum):
-    RED = '#FF0000'
-    GREEN = '#00FF00'
-    BLUE = '#0000FF'
+    RED = "#FF0000"
+    GREEN = "#00FF00"
+    BLUE = "#0000FF"
+
 
 def decode_color(colr: str) -> str:
     return Color[colr.upper()].value
 
+
 @begin.start
-def main(arg1 = None):
-    colors = ['red', 'green', 'blue']
+def main(arg1=None):
+    colors = ["red", "green", "blue"]
     values = list(map(decode_color, colors))
 
-    print(f'{colors} = {values}')
+    print(f"{colors} = {values}")

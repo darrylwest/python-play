@@ -5,7 +5,7 @@
 
 import begin
 
-@begin.start
-def main(name='Arther', quest='Holy Grail', color='blue', *knights):
-    print(f'hello {name} {quest} {color} {knights}')
 
+@begin.start
+def main(name="Arther", quest="Holy Grail", color="blue", *knights):
+    print(f"hello {name} {quest} {color} {knights}")

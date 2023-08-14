@@ -14,15 +14,14 @@ for idx in range(0, len(xvals)):
     x = xvals[idx]
     y = yvals[idx]
 
-    ch = 'go'
+    ch = "go"
     if x < 0:
-        ch = 'ro'
+        ch = "ro"
 
     plt.plot(x, y, ch)
 
-plt.axis([-10,10, -6,6])
+plt.axis([-10, 10, -6, 6])
 plt.grid()
-plt.title("My Title",fontsize='large',fontweight='bold')
+plt.title("My Title", fontsize="large", fontweight="bold")
 
 plt.show()
-

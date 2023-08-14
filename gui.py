@@ -5,26 +5,28 @@
 import begin
 import PySimpleGUI as sg
 
-def run():
-    sg.theme('DarkAmber')
-    sg.set_options(font='Default 18', keep_on_top=True)
-    layout = [ 
-        [sg.Text('Sime text on row 1')],
-        [sg.Text('Some text on Row 2'), sg.InputText()],
-        [sg.Button('Ok'), sg.Button('Cancel')]
-      ]
 
-    window = sg.Window('Window Ttitle', layout)
+def run():
+    sg.theme("DarkAmber")
+    sg.set_options(font="Default 18", keep_on_top=True)
+    layout = [
+        [sg.Text("Sime text on row 1")],
+        [sg.Text("Some text on Row 2"), sg.InputText()],
+        [sg.Button("Ok"), sg.Button("Cancel")],
+    ]
+
+    window = sg.Window("Window Ttitle", layout)
 
     while True:
         event, values = window.read()
-        if event == sg.WIN_CLOSED or event == 'Cancel':
+        if event == sg.WIN_CLOSED or event == "Cancel":
             break
 
-        print('you entered ', values[0])
+        print("you entered ", values[0])
 
     window.close()
 
+
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     run()

@@ -6,6 +6,7 @@ import begin
 from typing import TypedDict
 from collections import namedtuple
 
+
 def notes():
     s = """
     _____________________________________________________________________________________________________
@@ -37,6 +38,7 @@ def notes():
 
     print(s)
 
+
 class Config(TypedDict):
     env: str
     name: str
@@ -44,44 +46,58 @@ class Config(TypedDict):
     weight: float
     version: str
 
-AppConfig = namedtuple('AppConfig', 'env name port weight version apikey dbpw')
+
+AppConfig = namedtuple("AppConfig", "env name port weight version apikey dbpw")
+
 
 def apikey(env):
-    return f'{env}-*******'
+    return f"{env}-*******"
+
 
 def dbpw(env):
-    return f'{env}-*******'
+    return f"{env}-*******"
+
 
 def create_config():
     cfg: Config = {
-        'env': 'develop',
-        'name': 'AppConfig',
-        'port': 4040,
-        'weight': 4.32,
-        'version': '1.0.4',
+        "env": "develop",
+        "name": "AppConfig",
+        "port": 4040,
+        "weight": 4.32,
+        "version": "1.0.4",
     }
 
     return cfg
 
+
 def create_app_config(cfg):
-    return AppConfig(cfg['env'], cfg['name'], cfg['port'], cfg['weight'], cfg['version'],apikey,dbpw)
+    return AppConfig(
+        cfg["env"],
+        cfg["name"],
+        cfg["port"],
+        cfg["weight"],
+        cfg["version"],
+        apikey,
+        dbpw,
+    )
+
 
 @begin.start
-def main(arg1 = None):
+def main(arg1=None):
     notes()
 
     cfg_dict = create_config()
 
-    print(f'config {cfg_dict}')
+    print(f"config {cfg_dict}")
 
     # this is mutable while just a typed dict
-    cfg_dict['env'] = 'staging'
+    cfg_dict["env"] = "staging"
 
     cfg = create_app_config(cfg_dict)
-    print(f'config:  {cfg}')
+    print(f"config:  {cfg}")
     print(cfg.name)
 
-    print(f'apikey: {cfg.apikey(cfg.env)}, dbpw: {cfg.dbpw(cfg.env)}')
+    print(f"apikey: {cfg.apikey(cfg.env)}, dbpw: {cfg.dbpw(cfg.env)}")
 
     # this will throw
     # cfg.env = "prod"

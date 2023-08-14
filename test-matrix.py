@@ -18,16 +18,16 @@ z = np.linspace(start + 2, stop + 2, count)
 matrix = np.array([x, y])
 matrix = matrix.T
 
+
 def iterate_matrix(matrix):
     for i in range(matrix.shape[0]):
         row = matrix[i, :]
-        print("row ", i+1, ":", row[0], row[1]**2)
+        print("row ", i + 1, ":", row[0], row[1] ** 2)
 
 
 iterate_matrix(matrix)
 
-plt.title("A simple line from Matrix",fontsize='large',fontweight='bold',loc='right')
+plt.title("A simple line from Matrix", fontsize="large", fontweight="bold", loc="right")
 
 plt.plot(x, y)
 plt.show()
-
