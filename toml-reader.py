@@ -5,8 +5,6 @@
 import tomllib
 from pprint import pprint as pp
 
-import begin
-
 
 def process():
     with open("data.toml", "rb") as f:
@@ -15,6 +13,5 @@ def process():
     pp(data)
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     process()
