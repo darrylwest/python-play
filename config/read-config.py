@@ -9,7 +9,7 @@ import configparser
 
 def read_config():
     config = configparser.ConfigParser()
-    config.read("config/settings.cfg")
+    config.read("settings.cfg")
 
     print(config.sections())
     print("compression", config["DEFAULT"]["Compression"])

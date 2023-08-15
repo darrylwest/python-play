@@ -30,4 +30,5 @@ def main(arg1=None):
     batman.rating = 4.0
     print(f"rating: {batman.rating}")
 
-    batman.rating = 6.0
+    # this will throw
+    # batman.rating = 6.0
