@@ -5,7 +5,7 @@
 from datetime import date, timedelta
 
 import typer
-from rich import print
+from rich.console import Console
 
 
 class DateRangeContainerIterable:
@@ -21,14 +21,15 @@ class DateRangeContainerIterable:
 
 
 def main() -> None:
+    console = Console()
+
     sdt = date(2023, 1, 1)
     edt = date(2023, 1, 10)
-    print(f"Create a date range container for dates {sdt} and {edt}")
+    console.log(f"Create a date range container for dates {sdt} and {edt}")
 
     seq = DateRangeContainerIterable(sdt, edt)
-
-    for dt in seq:
-        print(dt)
+    dates = [dt.strftime("%Y-%m-%d") for dt in seq]
+    console.log(dates)
 
 
 def test_sequence():
