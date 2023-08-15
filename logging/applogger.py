@@ -36,7 +36,7 @@ def init_file_logger(fname):
     log.addHandler(handler)
 
 
-def test():
+def test_logging():
     log.debug("a debug test")
     log.info("this is an info test...")
     log.warning("warning you")

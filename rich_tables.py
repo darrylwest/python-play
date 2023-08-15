@@ -8,6 +8,7 @@ from rich.table import Table
 
 console = Console()
 
+
 def main():
     table = Table("Name", "Item")
     table.add_row("dpw", "pop whistle")
@@ -15,5 +16,6 @@ def main():
 
     console.print(table)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     typer.run(main)
