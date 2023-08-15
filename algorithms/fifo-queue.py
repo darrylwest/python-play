@@ -11,9 +11,9 @@ import begin
 def create_queue():
     q = deque()
 
-    q.append("eat")
-    q.append("code")
-    q.append("sleep")
+    q.append("1 eat")
+    q.append("2 code")
+    q.append("3 sleep")
 
     return q
 
