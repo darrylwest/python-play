@@ -1,3 +1,4 @@
+# run with: streamlit run web/web_counter.py
 import datetime
 
 import streamlit as st
