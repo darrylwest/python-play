@@ -2,7 +2,7 @@
 # dpw@plaza.localdomain
 # 2023-08-10 14:51:10
 
-import begin
+import typer
 
 
 class Movie:
@@ -21,14 +21,17 @@ class Movie:
             raise ValueError("rating must be between 1 and 5")
 
 
-@begin.start
-def main(arg1=None):
-    batman = Movie(2.5)
+def main(rating: int) -> None:
+    batman = Movie(1)
 
     print(f"rating: {batman.rating}")
 
-    batman.rating = 4.0
+    batman.rating = rating
     print(f"rating: {batman.rating}")
 
     # this will throw
     # batman.rating = 6.0
+
+
+if __name__ == "__main__":
+    typer.run(main)
