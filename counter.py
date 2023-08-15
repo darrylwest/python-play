@@ -2,10 +2,7 @@
 # dpw@plaza.localdomain
 # 2023-06-18 20:34:22
 
-import begin
-
 # this is like a closure, but better.
-
 
 class Counter:
     def __init__(self, initial_count=0):
@@ -16,8 +13,7 @@ class Counter:
         return self.count
 
 
-@begin.start
-def main():
+if __name__ == "__main__":
     count = Counter(100)
     for n in range(10):
         print(count())
