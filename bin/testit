@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# dpw@plaza.localdomain
+# 2023-08-15 19:03:48
+#
+
+set -eu
+
+pyfile=$1
+
+pytest $pyfile && isort $pyfile && mypy $pyfile && black $pyfile && pylint $pyfile
+
+

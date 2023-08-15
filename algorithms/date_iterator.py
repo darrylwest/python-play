@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-08-15 18:21:59
 
+from datetime import date, timedelta
+
 import typer
 from rich import print
-from datetime import date, timedelta
 
 
 class DateRangeContainerIterable:
