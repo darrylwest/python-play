@@ -4,6 +4,9 @@
 
 import typer
 from rich import print
+from rich.console import Console
+
+console = Console()
 
 data = {
     "name": "Rick",
@@ -15,7 +18,7 @@ data = {
 
 
 def main():
-    print("Here's the data")
+    console.log("Here's the data")
     print(data)
 
 
