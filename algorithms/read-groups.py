@@ -9,7 +9,7 @@
 
 # @see https://www.geeksforgeeks.org/python-map-function/ for python map details
 
-with open("ngroups.txt") as f:
+with open("./data/ngroups.txt") as f:
     # split input into groups of strings based on empty lines
     groups = f.read().rstrip().split("\n\n")
 
