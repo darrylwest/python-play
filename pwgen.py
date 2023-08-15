@@ -5,7 +5,7 @@
 import secrets
 import string
 
-import begin
+import typer
 
 # secrets is preferrable to random (see PEP506)
 # a better approach would be to implement rules, like at least 2 upper, 2 lower, 2 numbers, 2 chars, no repeats, etc
@@ -24,9 +24,12 @@ def generate_password(chars, length):
     return password
 
 
-@begin.start
-def main(arg1=None):
+def main():
     chars = define_chars()
     pw = generate_password(chars, 20)
 
     print(f"{pw}")
+
+
+if __name__ == "__main__":
+    typer.run(main)
