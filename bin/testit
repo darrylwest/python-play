@@ -7,6 +7,6 @@ set -eu
 
 pyfile=$1
 
-pytest $pyfile && isort $pyfile && mypy $pyfile && black $pyfile && pylint $pyfile
+pytest $pyfile && isort $pyfile && black $pyfile && pylint $pyfile && mypy $pyfile 
 
 
