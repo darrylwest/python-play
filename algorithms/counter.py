@@ -4,6 +4,7 @@
 
 # this is like a closure, but better.
 
+
 class Counter:
     def __init__(self, initial_count=0):
         self.count = initial_count

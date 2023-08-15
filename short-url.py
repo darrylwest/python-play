@@ -8,8 +8,10 @@
 import typer
 import pyshorteners
 
+
 def main(url: str) -> None:
-    print(f'url = {url}')
+    print(f"url = {url}")
+
 
 if __name__ == "__main__":
     typer.run(main)

@@ -4,9 +4,11 @@
 
 ~"echo 'hello all'"
 
-def print_file_count():
-    count = ~'ls -1 | wc -l'
 
-    print(f'file count = {count}')
+def print_file_count():
+    count = ~"ls -1 | wc -l"
+
+    print(f"file count = {count}")
+
 
 print_file_count()
