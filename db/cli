@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# dpw@Darryls-iMac.localdomain
+# 2023-01-31 22:52:45
+#
+
+set -eu
+
+printf "start the redis client\n"
+
+. ./.env
+
+redis-cli -p $REDIS_PORT
+

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# dpw@Darryls-iMac.localdomain
+# 2023-01-31 22:47:03
+#
+
+set -eu
+
+printf "start the redis server..."
+
+. ./.env
+
+redis-server ./redis-tcp.conf
+
