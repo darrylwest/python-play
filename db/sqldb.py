@@ -2,6 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-08-16 13:42:45
 
+# TODO ; create a class wrapper/decorator to connect, create, query, update based on
+# 1) routing keys
+# 2) version attributes, created at, last updated, version, hash
+# 4) status str
+# 5) value blob or text
+
 import typer
 from rich import print
 
