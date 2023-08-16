@@ -11,6 +11,14 @@
 
 [colab](https://colab.research.google.com/)
 
+## Messaging Libs
+
+* [task tiger](https://pypi.org/project/tasktiger/) intra-process task queue, redis backed
+* [cellery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html) multi-protocol machine-to-machine message queu
+* [redis](https://blinker.readthedocs.io/en/stable/#blinker.base.Signal.connect_via) pub/sub
+* [paho-mqtt](https://pypi.org/project/paho-mqtt/) machine to machine pub/sub
+* [blinker](https://blinker.readthedocs.io/en/stable/#blinker.base.Signal.connect_via) intra-process signals
+
 ## References
 
 * [PEP8](https://peps.python.org/pep-0008/)
