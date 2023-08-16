@@ -6,8 +6,6 @@ from dataclasses import dataclass
 from datetime import datetime
 
 import typer
-from rich.console import Console
-
 
 def hide_field(field) -> str:
     """redact the password"""
@@ -62,8 +60,11 @@ class LoginEvent:
 
 
 def main(username: str, password: str) -> None:
+    from rich.console import Console
+    console = Console()
+
     now = datetime.now()
-    print(f"create login for {username} at {now}")
+    console.log(f"create login for {username} at {now}")
     event = LoginEvent(
         username=username,
         password=password,
@@ -71,7 +72,7 @@ def main(username: str, password: str) -> None:
         timestamp=now,
     )
 
-    print(event.serialize())
+    console.log(event.serialize())
 
 
 def test_event():
