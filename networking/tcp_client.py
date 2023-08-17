@@ -10,8 +10,7 @@ import threading
 
 console = Console()
 
-
-def connect(port: int = 14000):
+def connect(port: int = 16000):
     host = socket.gethostbyname(socket.gethostname())
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -25,7 +24,8 @@ def connect(port: int = 14000):
 
 def main() -> None:
     client = connect()
-    data = client.recv(32).decode()
+    client.send("hello".encode())
+    data = client.recv(1024).decode()
     console.log(f"server-> {data}")
     client.close()
 

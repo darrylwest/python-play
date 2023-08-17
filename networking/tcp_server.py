@@ -11,7 +11,7 @@ import threading
 console = Console()
 
 
-def create_socket(port: int = 14000):
+def create_socket(port: int = 16000):
     host = socket.gethostbyname(socket.gethostname())
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
