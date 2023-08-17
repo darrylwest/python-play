@@ -22,6 +22,22 @@ def create_socket(port: int = 16000):
     return server
 
 
+def handle_client(client):
+    client.send("Ready\n".encode("utf-8"))
+    while True:
+        data = client.recv(1024)
+        if not data:
+            break
+
+        message = data.decode('utf-8')
+        console.log(f'client ->: {message}')
+        if message.startswith('bye'):
+            client.send("out\n".encode("utf-8"))
+            client.close()
+            break
+
+        client.send("Ok\n".encode("utf-8"))
+
 def main() -> None:
     console.log("create the server tcp socket...")
     server = create_socket()
@@ -31,8 +47,8 @@ def main() -> None:
     while True:
         client, address = server.accept()
         console.log(f"connected to {address}...")
-        client.send("Ready".encode("utf-8"))
-        break
+
+        handle_client(client)
 
     server.close()
 
