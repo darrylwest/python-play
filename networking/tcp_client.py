@@ -25,9 +25,14 @@ def connect(port: int = 16000):
 
 def main() -> None:
     client = connect()
-    client.send("hello".encode())
+
+    for n in range(10):
+        client.send("rtkey".encode())
+        data = client.recv(1024).decode()
+        console.log(f"server-> {data.rstrip()}")
+
+    client.send("bye".encode())
     data = client.recv(1024).decode()
-    console.log(f"server-> {data}")
     client.close()
 
 

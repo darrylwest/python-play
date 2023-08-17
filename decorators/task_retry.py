@@ -5,9 +5,11 @@
 import typer
 
 from rich.console import Console
+
 console = Console()
 
 DEFAULT_LIMIT = 3
+
 
 def retry_task(func, limit: int = DEFAULT_LIMIT):
     def wrapper(*args, **kwargs):
@@ -18,6 +20,7 @@ def retry_task(func, limit: int = DEFAULT_LIMIT):
                 console.log(f"exception: {e}")
 
     return wrapper
+
 
 @retry_task
 def task_runner():

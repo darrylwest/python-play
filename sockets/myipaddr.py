@@ -4,9 +4,10 @@
 
 import socket
 
+
 def myip() -> str:
     return socket.gethostbyname(socket.gethostname())
 
-if __name__ == '__main__':
-    print(myip())
 
+if __name__ == "__main__":
+    print(myip())

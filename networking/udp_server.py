@@ -13,7 +13,7 @@ console = Console()
 def create_server(port: int = 16000):
     host = socket.gethostbyname(socket.gethostname())
 
-    console.log(f'server {host} listening on port {port}...')
+    console.log(f"server {host} listening on port {port}...")
 
     server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 

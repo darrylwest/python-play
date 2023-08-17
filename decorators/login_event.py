@@ -7,6 +7,7 @@ from datetime import datetime
 
 import typer
 
+
 def hide_field(field) -> str:
     """redact the password"""
     return "**redacted**"
@@ -61,6 +62,7 @@ class LoginEvent:
 
 def main(username: str, password: str) -> None:
     from rich.console import Console
+
     console = Console()
 
     now = datetime.now()

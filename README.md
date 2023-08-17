@@ -11,6 +11,12 @@
 
 [colab](https://colab.research.google.com/)
 
+## Async tools
+
+* [python async]
+* [uvloop](https://github.com/MagicStack/uvloop)
+* [trio](https://trio.readthedocs.io/en/stable/index.html)
+
 ## Messaging Libs
 
 * [task tiger](https://pypi.org/project/tasktiger/) intra-process task queue, redis backed
@@ -31,5 +37,5 @@
 * [decorators/functools](https://towardsdatascience.com/python-decorators-for-data-science-6913f717669a)
 * [one-liners](https://medium.com/@chenyumei8866/20-extremely-useful-single-line-python-codes-bc553ea4832a)
 
-###### darryl.west | 2023-07-11
+###### darryl.west | 2023-08-17
 

@@ -22,7 +22,7 @@ def main(ipaddr: str, start_port: int, end_port: int) -> None:
     print(f"scan ports on {ipaddr} from {start_port} to {end_port}")
 
     for port in range(start_port, end_port + 1):
-        print(f'port {port}', end=':', flush=True)
+        print(f"port {port}", end=":", flush=True)
         open = scan(ipaddr, port)
         print(f"open") if open else print(f"closed")
 
