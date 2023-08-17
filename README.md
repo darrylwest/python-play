@@ -11,11 +11,18 @@
 
 [colab](https://colab.research.google.com/)
 
+## Machine Learning
+
+* [river](https://pypi.org/project/river/) on-line
+* pytorch
+* tensor flow
+
 ## Async tools
 
-* [python async]
 * [uvloop](https://github.com/MagicStack/uvloop)
 * [trio](https://trio.readthedocs.io/en/stable/index.html)
+* [trio-websockets](https://github.com/python-trio/trio-websocket)
+* [httpx](https://www.python-httpx.org/) (replaces request for client testing)
 
 ## Messaging Libs
 
