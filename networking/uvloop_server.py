@@ -9,6 +9,8 @@ import signal
 import uvloop
 import subprocess
 import socket
+import argparse
+from collections import namedtuple
 
 
 async def shutdown(loop, server):
@@ -73,9 +75,12 @@ async def handle_client(reader, writer):
         writer.close()
 
 
-async def main(port: int = 15000):
+async def main(context):
     # the host machine's ip address; the service is open to the local network without a proxy
-    host = socket.gethostbyname(socket.gethostname())
+    host = context.host
+    port = context.port
+
+    print(f'starting the service, Version: {ctx.version}')
 
     try:
         loop = uvloop.new_event_loop()
@@ -95,13 +100,40 @@ async def main(port: int = 15000):
         await shutdown(loop, server)
         print("out...")
 
+def create_context():
+    """Create the default context and return as a named tuple"""
 
-if __name__ == "__main__":
+    Context = namedtuple("Context", "host port verbose version")
+    return Context(
+            socket.gethostbyname(socket.gethostname()), 
+            15000, 
+            False,
+            "0.1.0",
+        )
+
+def write_pid_file():
     pid = os.getpid()
-    print(f"{pid=}")
-
     with open("uvloop-server.pid", "w") as f:
         f.write(str(pid))
 
+    print(f"{pid=}")
+
+if __name__ == "__main__":
+    ctx = create_context()
+
+    parser = argparse.ArgumentParser(
+            prog="uvloop_server",
+            description="uvloop socket server",
+            epilog=f"Version {ctx.version}",
+        )
+
+
+    parser.add_argument('-H', '--host', default=ctx.host, help="the server host name or ip addr")
+    parser.add_argument('-p', '--port', default=ctx.port, type=int, help="the server port number to listen on")
+
+    args = parser.parse_args()
+
+    write_pid_file()
+
     uvloop.install()
-    asyncio.run(main())
+    asyncio.run(main(args))
