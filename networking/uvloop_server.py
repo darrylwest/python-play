@@ -8,6 +8,7 @@ import asyncio
 import signal
 import uvloop
 
+
 async def shutdown(loop, server):
     server.close()
     await server.wait_closed()
@@ -20,6 +21,7 @@ async def shutdown(loop, server):
     await asyncio.gather(*tasks, return_exceptions=True)
 
     loop.stop()
+
 
 async def handle_client(reader, writer):
     try:
@@ -37,16 +39,16 @@ async def handle_client(reader, writer):
             writer.write(response)
             await writer.drain()
 
-
     except ValueError as err:
         print(err)
 
     except Exception as ex:
-        print(f'An exception was detected: {ex}')
+        print(f"An exception was detected: {ex}")
 
     finally:
         print("closing the connection")
         writer.close()
+
 
 async def main(port: int = 15000):
     try:
@@ -65,16 +67,15 @@ async def main(port: int = 15000):
 
     finally:
         await shutdown(loop, server)
-        print('out...')
+        print("out...")
 
 
 if __name__ == "__main__":
     pid = os.getpid()
-    print(f'{pid=}')
+    print(f"{pid=}")
 
-    with open('uvloop-server.pid', 'w') as f:
+    with open("uvloop-server.pid", "w") as f:
         f.write(str(pid))
 
     uvloop.install()
     asyncio.run(main())
-
