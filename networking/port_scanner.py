@@ -2,10 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-08-17 15:43:38
 
+import socket
+
 import typer
 from rich import print
-
-import socket
 
 
 def scan(ipaddr: str, port: int) -> bool:

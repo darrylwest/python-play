@@ -3,14 +3,14 @@
 # 2023-08-17 19:27:23
 
 
-import os
-import asyncio
-import signal
-import uvloop
-import subprocess
-import socket
 import argparse
-from collections import namedtuple
+import asyncio
+import os
+import signal
+import socket
+import subprocess
+
+import uvloop
 
 
 async def shutdown(loop, server):
@@ -33,6 +33,7 @@ def create_key() -> str:
     key = result.stdout
     return key[0:16]
 
+
 async def handle_client(reader, writer):
     try:
         addr = writer.get_extra_info("peername")
@@ -48,7 +49,7 @@ async def handle_client(reader, writer):
             response = "ok\r\n".encode("utf-8")
             match cmd:
                 case "bye":
-                    print('goodbye...')
+                    print("goodbye...")
                     break
                 case "rtk":
                     key = create_key()
@@ -80,7 +81,7 @@ async def main(context):
     host = context.host
     port = context.port
 
-    print(f'starting the service, Version: {ctx.version}')
+    print(f"starting the service, Version: {ctx.version}")
 
     try:
         loop = uvloop.new_event_loop()
@@ -100,16 +101,21 @@ async def main(context):
         await shutdown(loop, server)
         print("out...")
 
-def create_context():
-    """Create the default context and return as a named tuple"""
 
-    Context = namedtuple("Context", "host port verbose version")
-    return Context(
-            socket.gethostbyname(socket.gethostname()), 
-            15000, 
-            False,
-            "0.1.0",
-        )
+def create_context():
+    """Create the default context and return as a mutable object"""
+
+    class Ctx:
+        pass
+
+    ctx = Ctx()  # namedtuple("Context", "host port verbose version")
+    ctx.host = socket.gethostbyname(socket.gethostname())
+    ctx.port = 15000
+    ctx.verbose = False
+    ctx.version = "0.1.0"
+
+    return ctx
+
 
 def write_pid_file():
     pid = os.getpid()
@@ -118,20 +124,28 @@ def write_pid_file():
 
     print(f"{pid=}")
 
+
 if __name__ == "__main__":
     ctx = create_context()
 
     parser = argparse.ArgumentParser(
-            prog="uvloop_server",
-            description="uvloop socket server",
-            epilog=f"Version {ctx.version}",
-        )
+        prog="uvloop_server",
+        description="uvloop socket server",
+        epilog=f"Version {ctx.version}",
+    )
 
+    parser.add_argument(
+        "-H", "--host", default=ctx.host, help="the server host name or ip addr"
+    )
+    parser.add_argument(
+        "-p",
+        "--port",
+        default=ctx.port,
+        type=int,
+        help="the server port number to listen on",
+    )
 
-    parser.add_argument('-H', '--host', default=ctx.host, help="the server host name or ip addr")
-    parser.add_argument('-p', '--port', default=ctx.port, type=int, help="the server port number to listen on")
-
-    args = parser.parse_args()
+    args = parser.parse_args(namespace=ctx)
 
     write_pid_file()
 

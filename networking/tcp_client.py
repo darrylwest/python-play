@@ -2,10 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-08-16 21:29:58
 
+import socket
+
 import typer
 from rich import print
-
-import socket
 
 
 def connect(port: int = 15000):
