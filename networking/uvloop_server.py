@@ -3,9 +3,13 @@
 # 2023-08-17 19:27:23
 
 
-import os
+import argparse
 import asyncio
+import os
 import signal
+import socket
+import subprocess
+
 import uvloop
 
 
@@ -23,6 +27,13 @@ async def shutdown(loop, server):
     loop.stop()
 
 
+def create_key() -> str:
+    """return a 16 character routing key"""
+    result = subprocess.run("rtkey", capture_output=True, text=True)
+    key = result.stdout
+    return key[0:16]
+
+
 async def handle_client(reader, writer):
     try:
         addr = writer.get_extra_info("peername")
@@ -31,11 +42,26 @@ async def handle_client(reader, writer):
             if not data:
                 break
 
-            message = data.decode().rstrip()
+            message = data.decode("utf-8").rstrip()
 
-            response = "ok".encode()
+            cmd = message[0:3].lower()
+
+            response = "ok\r\n".encode("utf-8")
+            match cmd:
+                case "bye":
+                    print("goodbye...")
+                    break
+                case "rtk":
+                    key = create_key()
+                    response = f"{key}\r\n".encode("utf-8")
+                case "pin":
+                    response = "pong\r\n".encode("utf-8")
+                case "ver":
+                    response = "0.1.0\r\n".encode("utf-8")
+                case _:
+                    response = "what?\r\n".encode("utf-8")
+
             print(f"client-> {message} from {addr!r}, response: {response}")
-
             writer.write(response)
             await writer.drain()
 
@@ -50,12 +76,18 @@ async def handle_client(reader, writer):
         writer.close()
 
 
-async def main(port: int = 15000):
+async def main(context):
+    # the host machine's ip address; the service is open to the local network without a proxy
+    host = context.host
+    port = context.port
+
+    print(f"starting the service, Version: {ctx.version}")
+
     try:
         loop = uvloop.new_event_loop()
         asyncio.set_event_loop(loop)
 
-        server = await asyncio.start_server(handle_client, "::1", port)
+        server = await asyncio.start_server(handle_client, host, port)
 
         addr = server.sockets[0].getsockname()
         print(f"Serving on {addr}")
@@ -70,12 +102,52 @@ async def main(port: int = 15000):
         print("out...")
 
 
-if __name__ == "__main__":
-    pid = os.getpid()
-    print(f"{pid=}")
+def create_context():
+    """Create the default context and return as a mutable object"""
 
+    class Ctx:
+        pass
+
+    ctx = Ctx()  # namedtuple("Context", "host port verbose version")
+    ctx.host = socket.gethostbyname(socket.gethostname())
+    ctx.port = 15000
+    ctx.verbose = False
+    ctx.version = "0.1.0"
+
+    return ctx
+
+
+def write_pid_file():
+    pid = os.getpid()
     with open("uvloop-server.pid", "w") as f:
         f.write(str(pid))
 
+    print(f"{pid=}")
+
+
+if __name__ == "__main__":
+    ctx = create_context()
+
+    parser = argparse.ArgumentParser(
+        prog="uvloop_server",
+        description="uvloop socket server",
+        epilog=f"Version {ctx.version}",
+    )
+
+    parser.add_argument(
+        "-H", "--host", default=ctx.host, help="the server host name or ip addr"
+    )
+    parser.add_argument(
+        "-p",
+        "--port",
+        default=ctx.port,
+        type=int,
+        help="the server port number to listen on",
+    )
+
+    args = parser.parse_args(namespace=ctx)
+
+    write_pid_file()
+
     uvloop.install()
-    asyncio.run(main())
+    asyncio.run(main(args))

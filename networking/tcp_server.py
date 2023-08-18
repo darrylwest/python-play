@@ -2,16 +2,17 @@
 # dpw@plaza.localdomain
 # 2023-08-16 21:19:09
 
+import socket
+import subprocess
+import threading
+
 import typer
 from rich.console import Console
-import subprocess
 
 # TODO list
 # * switch to file logging, one for the server and one each client (delay until formal project is created)
 # * graceful shutdown of clients (will delay until threading is replaced by async)
 
-import socket
-import threading
 
 console = Console()
 

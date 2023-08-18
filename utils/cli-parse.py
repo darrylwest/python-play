@@ -6,9 +6,15 @@
 # positional_arg1 positional_arg2 -i --int-val 4 -f 3.3 -F --file file_that_exists -a -b -c
 
 import argparse
+from collections import namedtuple
 
 
 def main():
+    class Ctx:
+        pass
+
+    ctx = Ctx()
+
     parser = argparse.ArgumentParser(
         description="", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
@@ -27,7 +33,11 @@ def main():
     parser.add_argument("-a", action="store_true", help="a flag")
     parser.add_argument("-b", action="store_true", help="b flag")
     parser.add_argument("-c", action="store_true", help="c flag")
-    args = parser.parse_args()
+    args = parser.parse_args(namespace=ctx)
+
+    print(ctx)
+
+    assert ctx.int_val == args.int_val
 
     print(args.positional_arg1)
     print(args.positional_arg2)

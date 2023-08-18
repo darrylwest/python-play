@@ -2,10 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-08-16 22:04:11
 
+import socket
+
 import typer
 from rich.console import Console
-
-import socket
 
 console = Console()
 
