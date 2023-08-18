@@ -3,7 +3,9 @@ __pycache__
 poly.p??
 plot.p??
 *.log
-db
+db/*.db
+db/.env
 circle.pdf
 untitled*
 *.mp3
+*-server.pid
