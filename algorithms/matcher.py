@@ -8,14 +8,15 @@
 def matchit(n):
     match n:
         case 0:
-            print("zero")
+            return "zero"
         case 1:
-            print("one")
+            return "one"
         case _ if n % 2 == 0:
-            print(f"the number {n} is even")
+            return f"the number {n} is even"
         case _:
-            print(f"number {n} is odd")
+            return f"number {n} is odd"
 
 
 for n in range(10):
-    matchit(n)
+    msg = matchit(n)
+    print(msg)

@@ -7,6 +7,8 @@ import os
 import asyncio
 import signal
 import uvloop
+import subprocess
+import socket
 
 
 async def shutdown(loop, server):
@@ -23,6 +25,12 @@ async def shutdown(loop, server):
     loop.stop()
 
 
+def create_key() -> str:
+    """return a 16 character routing key"""
+    result = subprocess.run("rtkey", capture_output=True, text=True)
+    key = result.stdout
+    return key[0:16]
+
 async def handle_client(reader, writer):
     try:
         addr = writer.get_extra_info("peername")
@@ -31,11 +39,26 @@ async def handle_client(reader, writer):
             if not data:
                 break
 
-            message = data.decode().rstrip()
+            message = data.decode("utf-8").rstrip()
 
-            response = "ok".encode()
+            cmd = message[0:3].lower()
+
+            response = "ok\r\n".encode("utf-8")
+            match cmd:
+                case "bye":
+                    print('goodbye...')
+                    break
+                case "rtk":
+                    key = create_key()
+                    response = f"{key}\r\n".encode("utf-8")
+                case "pin":
+                    response = "pong\r\n".encode("utf-8")
+                case "ver":
+                    response = "0.1.0\r\n".encode("utf-8")
+                case _:
+                    response = "what?\r\n".encode("utf-8")
+
             print(f"client-> {message} from {addr!r}, response: {response}")
-
             writer.write(response)
             await writer.drain()
 
@@ -51,11 +74,14 @@ async def handle_client(reader, writer):
 
 
 async def main(port: int = 15000):
+    # the host machine's ip address; the service is open to the local network without a proxy
+    host = socket.gethostbyname(socket.gethostname())
+
     try:
         loop = uvloop.new_event_loop()
         asyncio.set_event_loop(loop)
 
-        server = await asyncio.start_server(handle_client, "::1", port)
+        server = await asyncio.start_server(handle_client, host, port)
 
         addr = server.sockets[0].getsockname()
         print(f"Serving on {addr}")

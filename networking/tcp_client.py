@@ -3,20 +3,17 @@
 # 2023-08-16 21:29:58
 
 import typer
-from rich.console import Console
+from rich import print
 
 import socket
-import threading
-
-console = Console()
 
 
-def connect(port: int = 16000):
+def connect(port: int = 15000):
     host = socket.gethostbyname(socket.gethostname())
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    console.log(f"server connecting to {host}:{port}")
+    print(f"server connecting to {host}:{port}")
 
     client.connect((host, port))
 
@@ -28,8 +25,9 @@ def main() -> None:
 
     for n in range(10):
         client.send("rtkey".encode())
-        data = client.recv(1024).decode()
-        console.log(f"server-> {data.rstrip()}")
+        data = client.recv(1024).decode("utf-8")
+        msg = data.rstrip()
+        print(f"server-> {msg}")
 
     client.send("bye".encode())
     data = client.recv(1024).decode()
