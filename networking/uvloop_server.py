@@ -3,10 +3,23 @@
 # 2023-08-17 19:27:23
 
 
+import os
 import asyncio
 import signal
 import uvloop
 
+async def shutdown(loop, server):
+    server.close()
+    await server.wait_closed()
+
+    tasks = [t for t in asyncio.all_tasks(loop) if t is not asyncio.current_task(loop)]
+
+    for task in tasks:
+        task.cancel()
+
+    await asyncio.gather(*tasks, return_exceptions=True)
+
+    loop.stop()
 
 async def handle_client(reader, writer):
     try:
@@ -37,34 +50,31 @@ async def handle_client(reader, writer):
 
 async def main(port: int = 15000):
     try:
+        loop = uvloop.new_event_loop()
+        asyncio.set_event_loop(loop)
+
         server = await asyncio.start_server(handle_client, "::1", port)
 
         addr = server.sockets[0].getsockname()
         print(f"Serving on {addr}")
 
-        async with server:
-            await server.serve_forever()
+        await server.serve_forever()
 
-    except Exception as ex:
-        print(f'exception: {ex}')
+    except asyncio.CancelledError:
+        pass
 
     finally:
+        await shutdown(loop, server)
         print('out...')
 
+
 if __name__ == "__main__":
-    loop = uvloop.new_event_loop()
-    asyncio.set_event_loop(loop)
+    pid = os.getpid()
+    print(f'{pid=}')
 
-    def shutdown():
-        loop.stop()
+    with open('uvloop-server.pid', 'w') as f:
+        f.write(str(pid))
 
-    loop.add_signal_handler(signal.SIGINT, shutdown)
-    loop.add_signal_handler(signal.SIGTERM, shutdown)
-
-    try:
-        print(f'run the loop with shutdown handler...')
-        loop.run_until_complete(main())
-    finally:
-        print(f'close the loop');
-        loop.close()
+    uvloop.install()
+    asyncio.run(main())
 
