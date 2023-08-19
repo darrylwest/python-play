@@ -10,21 +10,16 @@ from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
 import time
+from dataclasses import dataclass
 
-# NOTE: this is easier than data class because it configures itself
+@dataclass
 class Config:
-    def __init__(self):
-        self.name = "app"
-        self.level = logging.INFO
-        self.filename = None
-        self.stream = True
-        self.max_bytes = 100_000
-        self.version = "0.1.0"
-
-    def __repr__(self):
-        return ', '.join([f"{k}={v}" for k,v in self.__dict__.items()])
-
-
+    name: str = "app"
+    level: int = logging.INFO
+    filename: str = None
+    stream: bool = True
+    max_bytes: int = 100_000
+    version: str = "0.1.0"
 
 class LogLib:
     @staticmethod

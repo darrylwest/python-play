@@ -4,8 +4,6 @@
 
 from collections.abc import Callable
 from dataclasses import dataclass
-
-import begin
 import numpy as np
 
 # from scipy import integrate
@@ -97,8 +95,7 @@ def calc_t():
     print(f"{ctx}, result: {result}")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     calc_sin()
     calc_ee()
     calc_t()
