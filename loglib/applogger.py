@@ -10,6 +10,7 @@ from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
 import time
+import json
 
 class Config:
     def __init__(self):
@@ -18,9 +19,17 @@ class Config:
         self.filename = None
         self.stream = True
         self.max_bytes = 100_000
+        self.version = "0.1.0"
+
+    def __repr__(self):
+        return json.dumps(self.__dict__)
+        
+            
 
 class LogLib:
+    @classmethod
     def create_logger(config: Config = None) -> logging.Logger:
+        """create a new logger with or without configuration"""
         cfg = config if config != None else Config()
 
         lib = LogLib(cfg.name, cfg.level)
