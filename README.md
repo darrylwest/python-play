@@ -32,10 +32,10 @@
 
 ## Components
 
+* async unix socket client/server
 * app config 
 * loglib: factory methods for app logger; 
 * socket server for SocketHandler to read pickle format
-* async unix socket client/server
 * uvloop socket server
 * async socket client
 
