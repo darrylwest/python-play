@@ -11,11 +11,10 @@ class Commands:
         self.timestamp = timestamp
 
     def __repr__(self):
-        kv = [f'{k}={v}' for k,v in self.__dict__.items()]
-        return ', '.join(kv)
+        return f'{self.__class__.__name__}({self.__dict__.copy()})'
 
     def __str__(self):
-        return f'{self.__class__.__name__}({self.__dict__.copy()})'
+        return f'{self.__class__.__name__}({vars(self)})'
 
     def show(self):
         print(f'{self.name=}, {self.timestamp=}')
