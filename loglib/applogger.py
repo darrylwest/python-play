@@ -9,6 +9,7 @@
 from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
+import time
 
 class Config:
     def __init__(self):
@@ -43,13 +44,19 @@ class LogLib:
     def get_logger(self):
         return self.log
 
+    def get_formatter(self):
+        """return the standard log formmater including UTC and nanoseconds"""
+        logging.Formatter.converter = time.gmtime
+        return logging.Formatter(
+            fmt="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S.%s",
+        )
+
     def init_stream_logger(self):
         handler = logging.StreamHandler()
         handler.setLevel(logging.DEBUG)
 
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
+        formatter = self.get_formatter()
         handler.setFormatter(formatter)
 
         self.log.addHandler(handler)
@@ -64,9 +71,7 @@ class LogLib:
         handler = RotatingFileHandler(path, backupCount=5, maxBytes=mbytes)
         handler.setLevel(logging.INFO)
 
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
+        formatter = self.get_formatter()
         handler.setFormatter(formatter)
 
         self.log.addHandler(handler)

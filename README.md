@@ -21,14 +21,20 @@
 
 * async RPC service
 * domain key service
-* async socket logger
 * keylist service
 * auth service
+
+### Async Socket Logger
+
+* uvloop TCP or unix log service
+* adhere to logging.handlers.SocketLogger
+* read and decode pickle format to text or json
 
 ## Components
 
 * app config 
-* loglib: factory methods for app logger; rotating file and socket handlers
+* loglib: factory methods for app logger; 
+* socket server for SocketHandler to read pickle format
 * async unix socket client/server
 * uvloop socket server
 * async socket client
