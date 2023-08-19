@@ -2,7 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-28 16:18:41
 
+import sys
 import time
+from dataclasses import dataclass
 from collections import namedtuple
 
 
@@ -10,13 +12,13 @@ def notes():
     s = """
     _____________________________________________________________________________________________________
 
-    This prototype creates an immutable namedtuple with the fields and methods. Is supports multiple
+    This prototype creates an mutable dataclass with the fields and methods. It also supports multiple
     environments.
 
     Application Config Requirements:
 
         1) support multiple environments (devop, test, staging, prod)
-        2) immutable
+        2) mutable and immutable instances
         3) versioned
         4) dot-friendly
         5) support methods that pull config settings from secret locations (apikeys, db passwords, etc)
@@ -28,58 +30,64 @@ def notes():
         3) custom classes - ok, but namedtuple is an easier way 
         4) dataclass - mutable
 
-    dpw | 28-Jul-2023
+    dpw | 2023.08.19
     _____________________________________________________________________________________________________
     """
 
     print(s)
 
 
-AppConfig = namedtuple("AppConfig", "env created name port weight version apikey dbpw")
+@dataclass
+class AppConfig:
+    env: str
+    created: str
+    name: str
+    port: int
+    weight: float
+    version: str
+    apikey: str
+    dbpw: str
 
-
-
-# this should probably be wrapped in a 'secrets' class to enable more logic
-# pull from secrets based on env
-def apikey(env):
-    return f"{env}-*******"
-
-
-# pull from secrets based on env
-def dbpw(env):
-    return f"{env}-*******"
+    def freeze(self) -> namedtuple:
+        keys = ' '.join(self.__dict__.keys())
+        Frozen = namedtuple('Frozen', keys)
+        return Frozen(**self.__dict__)
 
 
 def create_app_config(env):
     # use env var to point to the correct env...
-    now = time.time_ns()
 
-    def apikey_fn():
-        return apikey(env)
+    apikey = f"{env}-*******"
+    dbpw = f"{env}-*******"
 
-    def dbpw_fn():
-        return dbpw(env)
+    now = time.gmtime()
+    ts = time.strftime("%Y-%m-%dT%H:%M:%S.%s", now)
 
     return AppConfig(
-        env,
-        now,
-        "AppConfig",
-        4040,
-        34.22,
-        "1.0.5",
-        apikey_fn,
-        dbpw_fn,
+        env=env,
+        created=ts,
+        name="cfg",
+        port=5050,
+        weight=3.44,
+        version="0.1.0",
+        apikey=apikey,
+        dbpw=dbpw
     )
 
 
-@begin.start
-def main(arg1=None):
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
     notes()
 
-    cfg = create_app_config("develop")
+    cfg = create_app_config("dev")
     print(f"config:  {cfg}")
 
-    print(f"name: {cfg.name}, apikey: {cfg.apikey()}, dbpw: {cfg.dbpw()}")
+    print(f"name: {cfg.name}")
+
+    conf = cfg.freeze()
+
+    print(conf)
 
     # this will throw
     # cfg.env = "prod"
