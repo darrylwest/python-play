@@ -17,6 +17,22 @@
 * pytorch
 * tensor flow
 
+## Projects
+
+* async RPC service
+* domain key service
+* async socket logger
+* keylist service
+* auth service
+
+## Components
+
+* app config 
+* loglib: factory methods for app logger; rotating file and socket handlers
+* async unix socket client/server
+* uvloop socket server
+* async socket client
+
 ## Async tools
 
 * [uvloop](https://github.com/MagicStack/uvloop)
@@ -44,5 +60,5 @@
 * [decorators/functools](https://towardsdatascience.com/python-decorators-for-data-science-6913f717669a)
 * [one-liners](https://medium.com/@chenyumei8866/20-extremely-useful-single-line-python-codes-bc553ea4832a)
 
-###### darryl.west | 2023-08-17
+###### darryl.west | 2023-08-19
 

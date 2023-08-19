@@ -7,36 +7,73 @@
 # @see https://docs.python.org/3/howto/logging-cookbook.html for improved formatting, file rotation, etc.
 
 import logging
+from logging.handlers import RotatingFileHandler
 
-log = logging.getLogger("app")
-log.setLevel(logging.DEBUG)
+class Config:
+    def __init__(self):
+        self.name = "app"
+        self.level = logging.INFO
+        self.filename = None
+        self.stream = True
+
+class LogLib:
+    def create_logger(config: Config = None) -> logging.Logger:
+        cfg = config if config != None else Config()
+
+        lib = LogLib(cfg.name, cfg.level)
+        if cfg.stream:
+            lib.init_stream_logger()
+
+        if cfg.filename:
+            lib.init_file_logger(cfg.filename)
+
+        return lib.get_logger()
+
+    def __init__(self, name: str = "app", level: int = logging.INFO):
+        self.log = logging.getLogger(name)
+        self.log.setLevel(level)
+
+    def get_logger(self):
+        return self.log
+
+    def init_stream_logger(self):
+        handler = logging.StreamHandler()
+        handler.setLevel(logging.DEBUG)
+
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        handler.setFormatter(formatter)
+
+        self.log.addHandler(handler)
 
 
-def init_stream_logger():
-    handler = logging.StreamHandler()
-    handler.setLevel(logging.DEBUG)
+    def init_file_logger(self, filename: str):
+        handler = RotatingFileHandler(filename, backupCount=5, maxBytes=100_000)
+        handler.setLevel(logging.INFO)
 
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-    handler.setFormatter(formatter)
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        handler.setFormatter(formatter)
 
-    log.addHandler(handler)
-
-
-def init_file_logger(fname):
-    handler = logging.FileHandler(fname)
-    handler.setLevel(logging.INFO)
-
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-    handler.setFormatter(formatter)
-
-    log.addHandler(handler)
+        self.log.addHandler(handler)
 
 
-def test_logging():
+
+
+if __name__ == "__main__":
+    # confingure log lib
+    # loglib = LogLib()
+    # loglib.init_stream_logger()
+    # loglib.init_file_logger("test-1.log")
+
+    # get the log
+    cfg = Config()
+    cfg.filename = "test.log"
+    log = LogLib.create_logger(cfg)
+
+    # test it
     log.debug("a debug test")
     log.info("this is an info test...")
     log.warning("warning you")
@@ -46,7 +83,3 @@ def test_logging():
     print(f"look at the logfile test-?")
 
 
-if __name__ == "__main__":
-    init_stream_logger()
-    init_file_logger("test-1.log")
-    test()
