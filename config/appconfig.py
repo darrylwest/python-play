@@ -5,8 +5,6 @@
 import time
 from collections import namedtuple
 
-import begin
-
 
 def notes():
     s = """
@@ -38,6 +36,7 @@ def notes():
 
 
 AppConfig = namedtuple("AppConfig", "env created name port weight version apikey dbpw")
+
 
 
 # this should probably be wrapped in a 'secrets' class to enable more logic
