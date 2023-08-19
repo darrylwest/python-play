@@ -10,8 +10,8 @@ from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
 import time
-import json
 
+# NOTE: this is easier than data class because it configures itself
 class Config:
     def __init__(self):
         self.name = "app"
@@ -22,12 +22,12 @@ class Config:
         self.version = "0.1.0"
 
     def __repr__(self):
-        return json.dumps(self.__dict__)
-        
-            
+        return ', '.join([f"{k}={v}" for k,v in self.__dict__.items()])
+
+
 
 class LogLib:
-    @classmethod
+    @staticmethod
     def create_logger(config: Config = None) -> logging.Logger:
         """create a new logger with or without configuration"""
         cfg = config if config != None else Config()
