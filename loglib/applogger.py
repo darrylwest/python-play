@@ -6,6 +6,7 @@
 # @see https://docs.python.org/3/library/logging.html for the python docs
 # @see https://docs.python.org/3/howto/logging-cookbook.html for improved formatting, file rotation, etc.
 
+from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -15,6 +16,7 @@ class Config:
         self.level = logging.INFO
         self.filename = None
         self.stream = True
+        self.max_bytes = 100_000
 
 class LogLib:
     def create_logger(config: Config = None) -> logging.Logger:
@@ -30,6 +32,11 @@ class LogLib:
         return lib.get_logger()
 
     def __init__(self, name: str = "app", level: int = logging.INFO):
+        cfg = Config()
+        cfg.name = name
+        cfg.level = level
+
+        self.cfg = cfg
         self.log = logging.getLogger(name)
         self.log.setLevel(level)
 
@@ -49,7 +56,12 @@ class LogLib:
 
 
     def init_file_logger(self, filename: str):
-        handler = RotatingFileHandler(filename, backupCount=5, maxBytes=100_000)
+        # try to find a logs folder
+        path = Path(filename)
+
+        mbytes = self.cfg.max_bytes
+
+        handler = RotatingFileHandler(path, backupCount=5, maxBytes=mbytes)
         handler.setLevel(logging.INFO)
 
         formatter = logging.Formatter(
