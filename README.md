@@ -17,6 +17,28 @@
 * pytorch
 * tensor flow
 
+## Projects
+
+* async RPC service
+* domain key service
+* keylist service
+* auth service
+
+### Async Socket Logger
+
+* uvloop TCP or unix log service
+* adhere to logging.handlers.SocketLogger
+* read and decode pickle format to text or json
+
+## Components
+
+* async unix socket client/server
+* app config 
+* loglib: factory methods for app logger; 
+* socket server for SocketHandler to read pickle format
+* uvloop socket server
+* async socket client
+
 ## Async tools
 
 * [uvloop](https://github.com/MagicStack/uvloop)
@@ -44,5 +66,5 @@
 * [decorators/functools](https://towardsdatascience.com/python-decorators-for-data-science-6913f717669a)
 * [one-liners](https://medium.com/@chenyumei8866/20-extremely-useful-single-line-python-codes-bc553ea4832a)
 
-###### darryl.west | 2023-08-17
+###### darryl.west | 2023-08-19
 

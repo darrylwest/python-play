@@ -2,10 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-20 21:20:47
 
+import sys
 from collections.abc import Callable
 from dataclasses import dataclass
-
-import begin
 import numpy as np
 
 # from scipy import integrate
@@ -68,7 +67,7 @@ class SimpsonsCalculator:
         return self.process_list(stack)
 
 
-def calc_sin():
+def calc_sin(count: int = 22):
     count = 22
     ctx = SimpsonsData(0, np.pi, count, np.pi / count)
     src = SimpsonsCalculator(ctx, np.sin)
@@ -77,9 +76,8 @@ def calc_sin():
     print(f"{ctx}, result: {result}")
 
 
-def calc_ee():
+def calc_ee(count: int = 64):
     # see graph https://www.geogebra.org/calculator/c89s3kb6
-    count = 64
     ctx = SimpsonsData(0, 4, count, 4 / count)
     src = SimpsonsCalculator(ctx, lambda x: 1 / 2 * (np.e**x + np.e ** (-x)))
     result = src.calc()
@@ -87,9 +85,8 @@ def calc_ee():
     print(f"{ctx}, result: {result}")
 
 
-def calc_t():
+def calc_t(count: int = 1000):
     # see graph https://www.geogebra.org/calculator/mfcwj5j6
-    count = 1000
     ctx = SimpsonsData(-2, 2, count, 4 / count)
     src = SimpsonsCalculator(ctx, lambda t: t**2 - 4)
     result = src.calc()
@@ -97,8 +94,9 @@ def calc_t():
     print(f"{ctx}, result: {result}")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
+    args = sys.argv[1:0]
+
     calc_sin()
     calc_ee()
     calc_t()
