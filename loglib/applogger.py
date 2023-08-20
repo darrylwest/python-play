@@ -8,9 +8,10 @@
 
 from pathlib import Path
 import logging
-from logging.handlers import RotatingFileHandler
+from logging.handlers import RotatingFileHandler, HTTPHandler
 import time
 from dataclasses import dataclass
+
 
 @dataclass
 class Config:
@@ -18,8 +19,11 @@ class Config:
     level: int = logging.INFO
     filename: str = None
     stream: bool = True
+    host: str = None
+    uri: str = None
     max_bytes: int = 100_000
     version: str = "0.1.0"
+
 
 class LogLib:
     @staticmethod
@@ -33,6 +37,9 @@ class LogLib:
 
         if cfg.filename:
             lib.init_file_logger(cfg.filename)
+
+        if cfg.host != None and cfg.uri != None:
+            lib.init_html_logger(cfg.host, cfg.uri)
 
         return lib.get_logger()
 
@@ -65,7 +72,6 @@ class LogLib:
 
         self.log.addHandler(handler)
 
-
     def init_file_logger(self, filename: str):
         # try to find a logs folder
         path = Path(filename)
@@ -80,7 +86,11 @@ class LogLib:
 
         self.log.addHandler(handler)
 
+    def init_html_logger(self, host, uri):
+        handler = HTTPHandler(host, uri)
 
+        handler.setLevel(logging.INFO)
+        self.log.addHandler(handler)
 
 
 if __name__ == "__main__":
@@ -92,6 +102,11 @@ if __name__ == "__main__":
     # get the log
     cfg = Config()
     cfg.filename = "test.log"
+
+    # should ping the host before enabling; see web/webapp.py for an example server
+    # cfg.host = 'http:127.0.0.1:9999'
+    # cfg.uri = '/log'
+
     log = LogLib.create_logger(cfg)
 
     # test it
@@ -102,5 +117,3 @@ if __name__ == "__main__":
     log.critical("this is CRITICAL")
 
     print(f"look at the logfile test-?")
-
-

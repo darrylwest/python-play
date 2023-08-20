@@ -9,6 +9,7 @@ from rich import print
 from pathlib import Path
 import pickle
 
+
 class RPCBase:
     def save(obj):
         """Added this to help pickle save the obj"""
@@ -22,15 +23,16 @@ class RPCBase:
 
     def encode(obj, filename: Path) -> None:
         """encode with pickle to the file"""
-        with open(filename, 'wb') as writer:
+        with open(filename, "wb") as writer:
             pickle.dump(obj, writer)
 
     def decode(filename: Path):
         """decode the file with pickle and return the obj"""
-        with open(filename, 'rb') as reader:
+        with open(filename, "rb") as reader:
             obj = pickle.load(reader)
 
         return obj
+
 
 class Command(RPCBase):
     def __init__(self, name: str, timestamp: int):
@@ -50,15 +52,16 @@ def main(args: list) -> None:
     print(cmd)
     cmd.show()
 
-    path = Path('/tmp/cmd.pkl')
+    path = Path("/tmp/cmd.pkl")
 
-    print(f'save cmd to {path}')
+    print(f"save cmd to {path}")
     RPCBase.encode(cmd, path)
 
-    print(f'read and decode from {path}')
+    print(f"read and decode from {path}")
     c1 = RPCBase.decode(path)
 
     print(c1)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

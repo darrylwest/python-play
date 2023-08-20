@@ -13,13 +13,15 @@ app = Flask(__name__)
 def index():
     return "<p>hello world</p>"
 
-@app.route('/log', methods=['POST'])
-def handle_post():
-    data = request.get_json()
+
+@app.get("/log")
+def logger():
+    data = request.args
 
     print(data)
 
-    return 'ok'
+    return "ok"
+
 
 @app.get("/what")
 def what():
@@ -27,4 +29,4 @@ def what():
 
 
 if __name__ == "__main__":
-    print("USE: FLASK_APP=webapp flask run")
+    print("USE: FLASK_APP=web/webapp flask run -h 10.0.1.105 -p 6402")

@@ -19,10 +19,11 @@
 
 ## Projects
 
+* http logging service
 * async RPC service
 * domain key service
-* keylist service
 * auth service
+* keylist service
 
 ### Async Socket Logger
 
