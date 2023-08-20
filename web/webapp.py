@@ -3,7 +3,8 @@
 # 2023-03-07 21:25:22
 #
 
-from flask import Flask
+from rich import print
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -12,6 +13,13 @@ app = Flask(__name__)
 def index():
     return "<p>hello world</p>"
 
+@app.route('/log', methods=['POST'])
+def handle_post():
+    data = request.get_json()
+
+    print(data)
+
+    return 'ok'
 
 @app.get("/what")
 def what():
