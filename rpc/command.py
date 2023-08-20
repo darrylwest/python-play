@@ -50,7 +50,7 @@ def main(args: list) -> None:
     print(cmd)
     cmd.show()
 
-    path = Path('cmd.pkl')
+    path = Path('/tmp/cmd.pkl')
 
     print(f'save cmd to {path}')
     RPCBase.encode(cmd, path)
