@@ -4,18 +4,34 @@
 
 One of the best parts of erlang's OTP is the ability to execute commands on remote servers based on RPC.  Python RPC is an attempt to mimic that through sockets and pickle encode/decode.
 
-## Commands
+## Command
 
-From the python repl (where commands is importable), do this:
+From the python repl (where command is importable), do this:
 
 ```
 import pickle
 
-with open('rpc/commands.pkl', 'rb') as reader:
+with open('rpc/command.pkl', 'rb') as reader:
     cmd = pickle.load(reader)
 
 cmd.show()
 ```
+
+To write out a new version of command, do this:
+
+```
+from rpc.command import Comman
+
+cmd = Command("newtest", time.time_ns)
+
+with open('rpc.pkl', 'wb') as writer:
+    pickle.dump(cmd, writer)
+
+```
+
+## Base RPC class
+
+
 
 What this does is read the pickled Commands object, deserialize and instantiate.  So at that point, it's ready to use.  This provides a mechanism to create an instance on server-A complete with methods and data then send it to server-B to be invoked.
 
@@ -25,4 +41,4 @@ What this does is read the pickled Commands object, deserialize and instantiate.
 * data requests from a centralized data source
 * multi-processing across multiple machines, docker containers, etc
 
-###### darryl.west | 2023.08.19
+###### darryl.west | 2023.08.20
