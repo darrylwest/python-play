@@ -29,10 +29,6 @@ with open('rpc.pkl', 'wb') as writer:
 
 ```
 
-## Base RPC class
-
-
-
 What this does is read the pickled Commands object, deserialize and instantiate.  So at that point, it's ready to use.  This provides a mechanism to create an instance on server-A complete with methods and data then send it to server-B to be invoked.
 
 ## Use Cases

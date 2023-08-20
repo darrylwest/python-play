@@ -4,18 +4,12 @@
 
 import sys
 import time
+from rich import print
 
-class Commands:
-    def __init__(self, name: str, timestamp: int):
-        self.name = name
-        self.timestamp = timestamp
+from pathlib import Path
+import pickle
 
-    def __repr__(self):
-        return f'{self.__class__.__name__}({vars(self)})'
-
-    def show(self):
-        print(f'{self.name=}, {self.timestamp=}')
-
+class RPCBase:
     def save(obj):
         """Added this to help pickle save the obj"""
         return (obj.__class__, obj.__dict__)
@@ -26,12 +20,45 @@ class Commands:
         obj.__dict__.update(attrs)
         return obj
 
+    def encode(obj, filename: Path) -> None:
+        """encode with pickle to the file"""
+        with open(filename, 'wb') as writer:
+            pickle.dump(obj, writer)
+
+    def decode(filename: Path):
+        """decode the file with pickle and return the obj"""
+        with open(filename, 'rb') as reader:
+            obj = pickle.load(reader)
+
+        return obj
+
+class Command(RPCBase):
+    def __init__(self, name: str, timestamp: int):
+        self.name = name
+        self.timestamp = timestamp
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({vars(self)})"
+
+    def show(self):
+        print(f"{self.name=}, ts: {self.timestamp()}")
+
+
 def main(args: list) -> None:
-    cmds = Commands("rpc", time.time_ns())
+    cmd = Command("rpc", time.time_ns)
 
-    print(cmds)
-    cmds.show()
+    print(cmd)
+    cmd.show()
 
-if __name__ == '__main__':
+    path = Path('cmd.pkl')
+
+    print(f'save cmd to {path}')
+    RPCBase.encode(cmd, path)
+
+    print(f'read and decode from {path}')
+    c1 = RPCBase.decode(path)
+
+    print(c1)
+
+if __name__ == "__main__":
     main(sys.argv[1:])
-
