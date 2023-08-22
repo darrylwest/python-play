@@ -1,15 +1,29 @@
 # Python Playground
 
 
-## PtPython REPL
+## Projects
 
-'ptpython --vi'
+* http logging service
+* file-backup services
+* async RPC service
+* domain key service
+* auth service
+* keylist service
 
-[help](https://towardsdatascience.com/ptpython-a-better-python-repl-6e21df1eb648)
+## Components
 
-## Google Colaboratory
+* [ ] twillio sms for OTP/auth
+* [ ] kivy gui
+* [ ] loglib: factory methods for app logger; 
+* [ ] socket server for SocketHandler to read pickle format
+* [x] uvloop socket server
+* [x] async unix socket client/server
+* [x] app config 
 
-[colab](https://colab.research.google.com/)
+## utilities
+
+[ptpython REPLhelp](https://towardsdatascience.com/ptpython-a-better-python-repl-6e21df1eb648) 'ptpython --vi'
+[google colab](https://colab.research.google.com/)
 
 ## Machine Learning
 
@@ -17,27 +31,11 @@
 * pytorch
 * tensor flow
 
-## Projects
-
-* async RPC service
-* domain key service
-* keylist service
-* auth service
-
 ### Async Socket Logger
 
 * uvloop TCP or unix log service
 * adhere to logging.handlers.SocketLogger
 * read and decode pickle format to text or json
-
-## Components
-
-* async unix socket client/server
-* app config 
-* loglib: factory methods for app logger; 
-* socket server for SocketHandler to read pickle format
-* uvloop socket server
-* async socket client
 
 ## Async tools
 
@@ -56,6 +54,7 @@
 
 ## References
 
+* [library API design guidelines](family-friendly street fair)
 * [PEP8](https://peps.python.org/pep-0008/)
 * [Python Maps](https://www.geeksforgeeks.org/python-map-function/)
 * [Tricks Article](https://towardsdatascience.com/5-python-tricks-that-distinguish-senior-developers-from-juniors-826d57ab3940)
@@ -66,5 +65,5 @@
 * [decorators/functools](https://towardsdatascience.com/python-decorators-for-data-science-6913f717669a)
 * [one-liners](https://medium.com/@chenyumei8866/20-extremely-useful-single-line-python-codes-bc553ea4832a)
 
-###### darryl.west | 2023-08-19
+###### darryl.west | 2023-08-21
 

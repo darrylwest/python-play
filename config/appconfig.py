@@ -49,8 +49,8 @@ class AppConfig:
     dbpw: str
 
     def freeze(self) -> namedtuple:
-        keys = ' '.join(self.__dict__.keys())
-        Frozen = namedtuple('Frozen', keys)
+        keys = " ".join(self.__dict__.keys())
+        Frozen = namedtuple("Frozen", keys)
         return Frozen(**self.__dict__)
 
 
@@ -71,9 +71,8 @@ def create_app_config(env):
         weight=3.44,
         version="0.1.0",
         apikey=apikey,
-        dbpw=dbpw
+        dbpw=dbpw,
     )
-
 
 
 if __name__ == "__main__":

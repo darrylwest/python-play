@@ -16,7 +16,7 @@ packages="numpy sympy scipy matplotlib seaborn plotly pandas begins bokeh dask p
 
 for p in $packages
 do
-    python3 -m pip install $p
+    python3 -m pip install -U $p
 done
 
 exit $?
