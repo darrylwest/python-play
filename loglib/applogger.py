@@ -6,10 +6,15 @@
 # @see https://docs.python.org/3/library/logging.html for the python docs
 # @see https://docs.python.org/3/howto/logging-cookbook.html for improved formatting, file rotation, etc.
 
+import time
 from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler, HTTPHandler
 import time
+from dataclasses import dataclass
+from rich import print, inspect
+import json
+import http.client
 from dataclasses import dataclass
 
 
@@ -23,6 +28,61 @@ class Config:
     uri: str = None
     max_bytes: int = 100_000
     version: str = "0.1.0"
+
+@dataclass
+class LogModel:
+    name: str
+    msg: str
+    levelname: str
+    filename: str
+    lineno: int
+    created: float
+    asctime: str
+    other: list
+
+class JSONHTTPHandler(HTTPHandler):
+    def mapLogRecord(self, record):
+        """
+        Override this method to map the log record into a dict that can be converted to JSON.
+        """
+        model = LogModel(
+            record.name, 
+            record.message,
+            record.levelname,
+            record.filename,
+            record.lineno,
+            record.created,
+            record.asctime,
+            [],
+        )
+
+        return model.__dict__
+
+    def emit(self, record):
+        """
+        Override this method to send data in JSON format.
+        """
+        try:
+            host = self.host
+            url = self.url
+            print(record)
+
+            data = json.dumps(self.mapLogRecord(record))
+
+            print(data)
+
+            headers = {
+                'Content-type': 'application/json',
+                'Content-length': str(len(data))
+            }
+            if self.secure:
+                h = http.client.HTTPSConnection(host)
+            else:
+                h = http.client.HTTPConnection(host)
+            h.request('POST', url, data, headers)
+            h.getresponse()
+        except Exception:
+            self.handleError(record)
 
 
 class LogLib:
@@ -87,10 +147,11 @@ class LogLib:
         self.log.addHandler(handler)
 
     def init_html_logger(self, host, uri):
-        handler = HTTPHandler(host, uri)
+        handler = JSONHTTPHandler(host, uri, method="POST")
 
         handler.setLevel(logging.INFO)
         self.log.addHandler(handler)
+
 
 
 if __name__ == "__main__":
@@ -101,19 +162,21 @@ if __name__ == "__main__":
 
     # get the log
     cfg = Config()
-    cfg.filename = "test.log"
+    # cfg.filename = "test.log"
 
     # should ping the host before enabling; see web/webapp.py for an example server
-    # cfg.host = 'http:127.0.0.1:9999'
-    # cfg.uri = '/log'
+    cfg.host = '10.0.1.105:15010'
+    # cfg.host = '127.0.0.1:15010'
+    cfg.uri = '/v1/logit/app'
 
     log = LogLib.create_logger(cfg)
 
     # test it
-    log.debug("a debug test")
-    log.info("this is an info test...")
+    #log.debug("a debug test")
+    log.info(f"this is an info test {time.time_ns()}...")
+    log.info(f"2nd this is an info test {time.time_ns()}...")
     log.warning("warning you")
     log.error("this is an error")
-    log.critical("this is CRITICAL")
+    #log.critical("this is CRITICAL")
 
     print(f"look at the logfile test-?")

@@ -2,10 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-07-28 13:36:56
 
+import sys
 from collections import namedtuple
 from typing import TypedDict
-
-import begin
 
 
 def notes():
@@ -83,8 +82,7 @@ def create_app_config(cfg):
     )
 
 
-@begin.start
-def main(arg1=None):
+def main(args):
     notes()
 
     cfg_dict = create_config()
@@ -103,3 +101,7 @@ def main(arg1=None):
     # this will throw
     # cfg.env = "prod"
     # print(cfg, cfg.env)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
+
