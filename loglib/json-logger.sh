@@ -6,7 +6,7 @@
 set -eu
 
 curl -X 'POST' \
-  'http://10.0.1.105:15010/v1/logit/test' \
+  "http://$LOCAL_IP:15010/v1/logit/test" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

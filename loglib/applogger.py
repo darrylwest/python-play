@@ -6,6 +6,7 @@
 # @see https://docs.python.org/3/library/logging.html for the python docs
 # @see https://docs.python.org/3/howto/logging-cookbook.html for improved formatting, file rotation, etc.
 
+import os
 import time
 from pathlib import Path
 import logging
@@ -65,11 +66,7 @@ class JSONHTTPHandler(HTTPHandler):
         try:
             host = self.host
             url = self.url
-            print(record)
-
             data = json.dumps(self.mapLogRecord(record))
-
-            print(data)
 
             headers = {
                 'Content-type': 'application/json',
@@ -165,7 +162,8 @@ if __name__ == "__main__":
     # cfg.filename = "test.log"
 
     # should ping the host before enabling; see web/webapp.py for an example server
-    cfg.host = '10.0.1.105:15010'
+    host = os.getenv("LOCAL_IP")
+    cfg.host = f'{host}:15010'
     # cfg.host = '127.0.0.1:15010'
     cfg.uri = '/v1/logit/app'
 
