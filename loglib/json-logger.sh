@@ -12,7 +12,7 @@ curl -X 'POST' \
   -d '{
   "name": "test",
   "msg": "my test message",
-  "levelname": "INFO",
+  "level": "INFO",
   "filename": "applogger.py",
   "lineno": 10,
   "created": 2330.433,

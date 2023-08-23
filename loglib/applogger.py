@@ -34,7 +34,7 @@ class Config:
 class LogModel:
     name: str
     msg: str
-    levelname: str
+    level: str
     filename: str
     lineno: int
     created: float

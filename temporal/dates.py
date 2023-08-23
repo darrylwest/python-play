@@ -2,9 +2,8 @@
 # dpw@plaza.localdomain
 # 2023-07-04 16:00:45
 
+import sys
 import datetime
-
-import begin
 
 date_strings = [
     "2023/12/02T05:09:00",
@@ -29,8 +28,7 @@ def run():
         print(ts, "->", dt, dt.toordinal(), dt.isoformat(timespec="microseconds"))
 
 
-@begin.start
-def main(arg1=None):
+def main(args: list):
     print(
         "Python : https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime"
     )
@@ -39,3 +37,6 @@ def main(arg1=None):
     )
 
     run()
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
