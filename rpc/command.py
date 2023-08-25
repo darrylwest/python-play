@@ -21,6 +21,10 @@ class RPCBase:
         obj.__dict__.update(attrs)
         return obj
 
+    def to_string(obj):
+        """pickle the object then base64 encode and return the string"""
+        pass
+
     def encode(obj, filename: Path) -> None:
         """encode with pickle to the file"""
         with open(filename, "wb") as writer:
@@ -62,6 +66,10 @@ def main(args: list) -> None:
 
     print(c1)
 
+    data = {mything:'this is a test'}
+    b64 = 
+
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(sys.argv[1:]):w
+
