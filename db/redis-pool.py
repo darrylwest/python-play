@@ -37,11 +37,23 @@ def connect():
     print("connecting")
     r.connection_pool.get_connection('PING', None).send_command('HELLO', 3)
 
-    resp = r.connection_pool.get_connection('PING', None).send_command('KEYS', '*')
-    print(f'keys the hard way: {resp}')
-
     return r
 
+def write_pipeline(db):
+    values = {str(x*3) : f'v-{x*x}' for x in range(1,10)}
+
+    pipe = db.pipeline()
+    for k,v in values.items():
+        print(f'{k}={v}')
+        resp = pipe.set(k, v)
+
+    resp = pipe.execute()
+    print(f'pipe response: {resp}')
+    assert all(resp)
+
+def scan_test(db):
+    for key in db.scan_iter('*', 100, _type='STRING'):
+        print(key)
 
 def main(args: list) -> None:
     db = connect()
@@ -51,8 +63,8 @@ def main(args: list) -> None:
     # conn = db.connection_pool.get_connection('PING', None)
     # inspect(conn)
 
-    keys = db.keys(pattern='*')
-    print(f'keys: {keys}')
+    size = db.dbsize()
+    print(f'size: {size}')
 
     value = db.get('mykey')
     print(f'value {value}')
@@ -63,6 +75,13 @@ def main(args: list) -> None:
 
     value = db.get('my_new_key')
     print(f'value {value}')
+
+    write_pipeline(db)
+
+    scan_test(db)
+
+    resp = db.save()
+    print(f'save: {resp}')
 
 
 if __name__ == '__main__':
