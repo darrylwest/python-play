@@ -10,10 +10,10 @@ import redis
 def connect():
     # this has to be set in the current env
     redis_auth = os.getenv("REDISCLI_AUTH")
-    print(redis_auth)
-
     redis_port = os.getenv("REDIS_PORT", 6452)
-    print(redis_port)
+
+    # print(redis_auth)
+    # print(redis_port)
 
     r = redis.Redis(host='localhost', port=redis_port, db=0) # protocol=3)
     r.auth(redis_auth)

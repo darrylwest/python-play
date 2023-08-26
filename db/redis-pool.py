@@ -5,14 +5,13 @@
 import sys
 import os
 from rich import print, inspect
-import redis
 
 import redis
 
 def connect():
     # this has to be set in the current env
     redis_auth = os.getenv("REDISCLI_AUTH")
-    print(redis_auth)
+    # print(redis_auth)
 
     redis_port = os.getenv("REDIS_PORT", 6452)
     print(redis_port)
@@ -21,6 +20,7 @@ def connect():
 
     # Create a Redis connection object
     r = redis.Redis(
+        db=0,
         host='localhost',
         port=redis_port,
         password=redis_auth,
@@ -31,11 +31,11 @@ def connect():
     )
 
     # Set the Redis protocol version to RESP3
-    r.connection_pool.connection_kwargs['client_name'] = 'my-service'
-    r.connection_pool.connection_kwargs['health_check_interval'] = 30
 
     print("connecting")
     r.connection_pool.get_connection('PING', None).send_command('HELLO', 3)
+
+    print(f'db size: {r.dbsize()}')
 
     return r
 
