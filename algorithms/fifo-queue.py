@@ -2,6 +2,8 @@
 # dpw@plaza.localdomain
 # 2023-07-27 14:20:27
 
+# NOTE: see concurrency/async-queue.py to get 
+
 from collections import deque
 
 import begin
