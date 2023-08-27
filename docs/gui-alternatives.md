@@ -10,6 +10,10 @@
 * Gradio (for data science)
 * PySide6
 
+#### Tui
+
+* [textual](https://textual.textualize.io/)
+
 ### HTML GUI
 
 * [reflex](https://reflex.dev/) (aka, pynecone) = 11.4K stars ; tailwind, props, routing, events, state, lots of components, scripts
@@ -49,4 +53,5 @@ A quick login page prototype.  It could work but scanning the with each change t
 * [digital ocean](https://www.digitalocean.com/)
 * [code sphere](https://codesphere.com/) (free level)
 
-###### darryl.west | 2023-08-19
+
+###### darryl.west | 2023-08-27
