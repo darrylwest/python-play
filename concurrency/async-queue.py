@@ -8,6 +8,7 @@ import asyncio
 
 from collections import deque
 
+
 class AsyncQueue:
     def __init__(self):
         self.q = deque()
@@ -29,18 +30,16 @@ class AsyncQueue:
             return len(self.q)
 
 
-
 async def main():
     q = AsyncQueue()
 
-    await q.push('message 1')
-    await q.push('message 2')
+    await q.push("message 1")
+    await q.push("message 2")
 
     print(await q.pull(), await q.length())
     print(await q.pull(), await q.length())
     print(await q.pull(), await q.length())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())
-

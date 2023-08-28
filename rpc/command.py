@@ -66,10 +66,9 @@ def main(args: list) -> None:
 
     print(c1)
 
-    data = {mything:'this is a test'}
-    b64 = 
+    # data = {mything:'this is a test'}
+    # b64 =
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:]):w
-
+    main(sys.argv[1:])

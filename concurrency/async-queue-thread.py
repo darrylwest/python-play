@@ -2,6 +2,7 @@ import asyncio
 import threading
 from collections import deque
 
+
 class AsyncDeque:
     def __init__(self):
         self.q = deque()
@@ -18,11 +19,13 @@ class AsyncDeque:
             item = self.q.popleft()
             return item
 
+
 def worker(q):
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     for i in range(1000):
         loop.run_until_complete(q.push(i))
+
 
 q = AsyncDeque()
 threads = [threading.Thread(target=worker, args=(q,)) for _ in range(4)]
@@ -32,4 +35,3 @@ for t in threads:
     t.join()
 
 print(len(q.q))
-
