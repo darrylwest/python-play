@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# dpw@plaza.localdomain
+# 2023-08-28 01:06:28
+#
+
+set -eu
+
+mkdocs serve
+
+exit $?
+
