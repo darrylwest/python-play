@@ -30,6 +30,7 @@ class Config:
     max_bytes: int = 100_000
     version: str = "0.1.0"
 
+
 @dataclass
 class LogModel:
     name: str
@@ -41,13 +42,14 @@ class LogModel:
     asctime: str
     other: list
 
+
 class JSONHTTPHandler(HTTPHandler):
     def mapLogRecord(self, record):
         """
         Override this method to map the log record into a dict that can be converted to JSON.
         """
         model = LogModel(
-            record.name, 
+            record.name,
             record.message,
             record.levelname,
             record.filename,
@@ -69,14 +71,14 @@ class JSONHTTPHandler(HTTPHandler):
             data = json.dumps(self.mapLogRecord(record))
 
             headers = {
-                'Content-type': 'application/json',
-                'Content-length': str(len(data))
+                "Content-type": "application/json",
+                "Content-length": str(len(data)),
             }
             if self.secure:
                 h = http.client.HTTPSConnection(host)
             else:
                 h = http.client.HTTPConnection(host)
-            h.request('POST', url, data, headers)
+            h.request("POST", url, data, headers)
             h.getresponse()
         except Exception:
             self.handleError(record)
@@ -150,7 +152,6 @@ class LogLib:
         self.log.addHandler(handler)
 
 
-
 if __name__ == "__main__":
     # confingure log lib
     # loglib = LogLib()
@@ -163,18 +164,18 @@ if __name__ == "__main__":
 
     # should ping the host before enabling; see web/webapp.py for an example server
     host = os.getenv("LOCAL_IP")
-    cfg.host = f'{host}:15010'
+    cfg.host = f"{host}:15010"
     # cfg.host = '127.0.0.1:15010'
-    cfg.uri = '/v1/logit/app'
+    cfg.uri = "/v1/logit/app"
 
     log = LogLib.create_logger(cfg)
 
     # test it
-    #log.debug("a debug test")
+    # log.debug("a debug test")
     log.info(f"this is an info test {time.time_ns()}...")
     log.info(f"2nd this is an info test {time.time_ns()}...")
     log.warning("warning you")
     log.error("this is an error")
-    #log.critical("this is CRITICAL")
+    # log.critical("this is CRITICAL")
 
     print(f"look at the logfile test-?")

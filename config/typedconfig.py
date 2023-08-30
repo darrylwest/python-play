@@ -102,6 +102,6 @@ def main(args):
     # cfg.env = "prod"
     # print(cfg, cfg.env)
 
+
 if __name__ == "__main__":
     main(sys.argv[1:])
-

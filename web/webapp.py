@@ -29,8 +29,10 @@ def logger(app):
 def what():
     return "<p>hello what?</p>"
 
+
 def main():
-    print('starting')
+    print("starting")
+
 
 if __name__ == "__main__":
     print("USE: FLASK_APP=web/webapp flask run -h 10.0.1.105 -p 6402")
