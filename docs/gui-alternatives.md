@@ -4,8 +4,9 @@
 
 ### Native GUI
 
-* Toga [github](https://github.com/beeware/toga) [tutorials](https://toga.readthedocs.io/en/stable/) (all in one) 3.6k stars
 * [Kivy](https://kivy.org/doc/stable/gettingstarted/intro.html) with tutorial on real python
+* [CustomTkinter](https://customtkinter.tomschimansky.com/) a modern tkinter
+* [Toga github](https://github.com/beeware/toga) [tutorials](https://toga.readthedocs.io/en/stable/) (all in one) 3.6k stars
 * DearPyGui
 * Gradio (for data science)
 * PySide6
@@ -16,6 +17,7 @@
 
 ### HTML GUI
 
+* [pywebview](https://pywebview.flowrl.com/)
 * [reflex](https://reflex.dev/) (aka, pynecone) = 11.4K stars ; tailwind, props, routing, events, state, lots of components, scripts
 * [streamlit](https://streamlit.io) - 26.4k stars - a bit difficult to work with
 * [solara](https://solara.dev/) 968 stars
@@ -54,4 +56,4 @@ A quick login page prototype.  It could work but scanning the with each change t
 * [code sphere](https://codesphere.com/) (free level)
 
 
-###### darryl.west | 2023-08-27
+###### darryl.west | 2023-08-28
