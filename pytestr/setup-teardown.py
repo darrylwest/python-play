@@ -4,7 +4,7 @@
 
 #
 # @see: https://docs.pytest.org/en/latest/how-to/fixtures.html
-# The safest and simplest fixture structure requires limiting fixtures to only making one state-changing 
+# The safest and simplest fixture structure requires limiting fixtures to only making one state-changing
 # action each, and then bundling them together with their teardown code, as the email examples above showed.
 #
 
@@ -20,25 +20,25 @@ import pytest
 
 @pytest.fixture
 def mail_admin():
-    print('FIXTURE: create the admin client')
+    print("FIXTURE: create the admin client")
     return MailAdminClient()
 
 
 @pytest.fixture
 def sending_user(mail_admin):
-    print('FIXTURE: setup create user')
+    print("FIXTURE: setup create user")
     user = mail_admin.create_user()
     yield user
-    print('FIXTURE: teardown delete user')
+    print("FIXTURE: teardown delete user")
     mail_admin.delete_user(user)
 
 
 @pytest.fixture
 def receiving_user(mail_admin):
-    print('FIXTURE: setup receiving user')
+    print("FIXTURE: setup receiving user")
     user = mail_admin.create_user()
     yield user
-    print('FIXTURE: teardown clear mailbox')
+    print("FIXTURE: teardown clear mailbox")
     user.clear_mailbox()
     mail_admin.delete_user(user)
 
@@ -49,6 +49,5 @@ def test_email_received(sending_user, receiving_user):
     assert email in receiving_user.inbox
 
 
-if __name__ == '__main__':
-    print(f'run this: pytest -s {argv[0]}')
-
+if __name__ == "__main__":
+    print(f"run this: pytest -s {argv[0]}")

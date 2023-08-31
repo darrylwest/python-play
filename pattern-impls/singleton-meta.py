@@ -5,6 +5,7 @@
 import sys
 from rich import inspect
 
+
 class Singleton(type):
     _instances = {}
 
@@ -13,8 +14,10 @@ class Singleton(type):
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
+
 class MyClass(metaclass=Singleton):
     pass
+
 
 def main(args: list) -> None:
     x = MyClass()
@@ -25,6 +28,6 @@ def main(args: list) -> None:
     inspect(x)
     inspect(y)
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

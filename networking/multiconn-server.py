@@ -9,6 +9,7 @@ import types
 
 sel = selectors.DefaultSelector()
 
+
 # last part of Phase 1
 def accept_wrapper(sock):
     conn, addr = sock.accept()  # Should be ready to read
@@ -20,6 +21,7 @@ def accept_wrapper(sock):
 
 
 # 3 - Data is exchanged
+
 
 def service_connection(key, mask):
     sock = key.fileobj
@@ -60,9 +62,9 @@ try:
         events = sel.select(timeout=None)
         for key, mask in events:
             if key.data is None:
-                accept_wrapper(key.fileobj) # to end Phase 1
+                accept_wrapper(key.fileobj)  # to end Phase 1
             else:
-                service_connection(key, mask) # to start Phase 3
+                service_connection(key, mask)  # to start Phase 3
 except KeyboardInterrupt:
     print("Caught keyboard interrupt, exiting")
 finally:

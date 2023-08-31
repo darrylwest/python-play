@@ -5,25 +5,27 @@
 import sys
 from rich import inspect
 
+
 class Singleton:
     __instance = None
 
     @staticmethod
     def get_instance():
-        """ Static access method. """
+        """Static access method."""
         if Singleton.__instance == None:
             Singleton()
         return Singleton.__instance
 
     def __init__(self):
-        """ Virtually private constructor. """
+        """Virtually private constructor."""
         if Singleton.__instance != None:
             raise Exception("This class is a singleton!")
         else:
             Singleton.__instance = self
 
+
 def main(args: list) -> None:
-    print(f'{args}')
+    print(f"{args}")
     x = Singleton.get_instance()
     y = Singleton.get_instance()
 
@@ -32,6 +34,6 @@ def main(args: list) -> None:
     inspect(x)
     inspect(y)
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

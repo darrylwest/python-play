@@ -42,6 +42,5 @@ def test_fruit_salad(fruit_bowl):
     assert all(fruit.cubed for fruit in fruit_salad.fruit)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(f"run this with pytest -s {sys.argv[0]}")
-

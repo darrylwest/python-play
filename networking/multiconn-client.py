@@ -12,6 +12,7 @@ messages = [b"Message 1 from client.", b"Message 2 from client."]
 
 # 2 - Client initiates a connection(s)
 
+
 def start_connections(host, port, num_conns):
     server_addr = (host, port)
     for i in range(0, num_conns):
@@ -32,6 +33,7 @@ def start_connections(host, port, num_conns):
 
 
 # 3 - Data is exchanged
+
 
 def service_connection(key, mask):
     sock = key.fileobj
@@ -59,14 +61,14 @@ if len(sys.argv) != 4:
     sys.exit(1)
 
 host, port, num_conns = sys.argv[1:4]
-start_connections(host, int(port), int(num_conns)) # to start Phase 2
+start_connections(host, int(port), int(num_conns))  # to start Phase 2
 
 try:
     while True:
         events = sel.select(timeout=1)
         if events:
             for key, mask in events:
-                service_connection(key, mask) # to start Phase 3
+                service_connection(key, mask)  # to start Phase 3
         # Check for a socket being monitored to continue.
         if not sel.get_map():
             break

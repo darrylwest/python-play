@@ -13,12 +13,12 @@ def process():
 
     inspect(data)
 
+
 def units():
-    units = tomllib.loads(
-        Path("data/units.toml").read_text(encoding='utf-8')
-    )
+    units = tomllib.loads(Path("data/units.toml").read_text(encoding="utf-8"))
 
     inspect(units)
+
 
 if __name__ == "__main__":
     process()
