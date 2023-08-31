@@ -15,10 +15,10 @@ import aiohttp
 
 async def worker(name, n, session):
     # change this to a custom endpoint to get around the rate-limit of 1 per minute
-    url = f'https://qrng.anu.edu.au/API/jsonI.php?length={n}&type=uint16'
+    url = 'https://catfact.ninja/fact'
     print(f'worker-{name}, url: {url}')
     response = await session.request(method='GET', url=url)
-    inspect(response)
+    # inspect(response)
     value = await response.text()
 
     print(value)
@@ -30,7 +30,7 @@ async def worker(name, n, session):
 
 async def main() -> None:
     async with aiohttp.ClientSession() as session:
-        responses = await asyncio.gather(*( worker(f'w-{i}', n, session) for i, n in enumerate(range(2,5))))
+        responses = await asyncio.gather(*( worker(f'w-{i}', n, session) for i, n in enumerate(range(5,15))))
         for response in responses:
             print(response)
 
