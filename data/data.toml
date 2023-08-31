@@ -1,7 +1,7 @@
 [eCh47kK5QzOSJGME]
 version = 1
-create_date = "2023/12/02T05:09:00"
-last_update = "2023/12/02T05:09:00"
+create_date = 2023-12-02T05:09:00
+last_update = 2023-12-02T05:09:00
 status = "active"
 label = ""
 value = "flarb"
@@ -12,8 +12,8 @@ user_id = "tUtk7kK615H1Axum"
 
 [baNX7kK5UJkzx72o]
 version = 1
-create_date = "2023/12/02T05:19:00"
-last_update = "2023/12/02T05:19:00"
+create_date = 2023-12-02T05:19:00
+last_update = 2023-12-02T05:19:00
 status = "active"
 label = "label-thing"
 value = "value-thing"

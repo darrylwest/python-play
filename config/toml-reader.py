@@ -3,14 +3,15 @@
 # 2023-08-08 17:43:25
 
 import tomllib
-from pprint import pprint as pp
+from rich import inspect
+from pathlib import Path
 
 
 def process():
-    with open("data.toml", "rb") as f:
-        data = tomllib.load(f)
+    path = Path("data/data.toml")
+    data = tomllib.loads(path.read_text())
 
-    pp(data)
+    inspect(data)
 
 
 if __name__ == "__main__":
