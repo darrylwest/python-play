@@ -49,6 +49,22 @@ def test_hash(hasher, bytes):
     return hashed
 
 
+def test_decode(payload, hash_size: int = 64):
+    hash_value = payload[0:hash_size]
+    pickled_users = payload[hash_size:]
+
+    print(f"hash length: {len(hash_value)}, user size: {len(pickled_users)}")
+
+    users_hash = test_hash(hashlib.sha3_512(), pickled_users)
+
+    assert hash_value == users_hash
+
+    users = pickle.loads(pickled_users)
+    print(users)
+
+    print("decode valid...")
+
+
 def test_object():
     users = [create_user() for _ in range(10)]
     pickled = pickle.dumps(users)
@@ -63,6 +79,7 @@ def test_object():
     inspect(value)
 
     # now pull the hash and check against payload
+    test_decode(value, 64)
 
 
 def test_message():
