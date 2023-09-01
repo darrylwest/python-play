@@ -4,6 +4,7 @@ import pickle
 from datetime import datetime
 from rich import inspect
 
+
 class example_class:
     a_number = 35
     a_string = "hey"
@@ -11,6 +12,7 @@ class example_class:
     a_dict = {"first": "a", "second": 2, "third": [1, 2, 3]}
     a_tuple = (22, 23)
     dt = datetime.utcnow()
+
 
 my_object = example_class()
 
