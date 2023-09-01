@@ -46,9 +46,23 @@ def test_hash(hasher, bytes):
     print(f"bin length: {len(hashed)}", hashed)
     print(f"hex length: {len(hex)}", hex)
 
+    return hashed
+
 
 def test_object():
-    user = create_user()
+    users = [create_user() for _ in range(10)]
+    pickled = pickle.dumps(users)
+
+    inspect(pickled)
+
+    # hash_value = test_hash(hashlib.sha3_256(), pickled)
+    hash_value = test_hash(hashlib.sha3_512(), pickled)
+    inspect(hash_value)
+
+    value = hash_value + pickled
+    inspect(value)
+
+    # now pull the hash and check against payload
 
 
 def test_message():
