@@ -13,8 +13,8 @@
 
 ## Podcasts
 
-* [the python show : mike dristal](https://podcasts.apple.com/us/podcast/the-python-show/id1691189730)
 * [real python](https://podcasts.apple.com/us/podcast/the-real-python-podcast/id1501905538)
+* [the python show : mike dristal](https://podcasts.apple.com/us/podcast/the-python-show/id1691189730)
 
 ## Components
 
@@ -30,6 +30,8 @@
 
 ## utilities
 
+[free APIs](https://apipheny.io/free-api/#apis-without-key)
+[randomapi APIs](https://randomapi.com/)
 [ptpython REPLhelp](https://towardsdatascience.com/ptpython-a-better-python-repl-6e21df1eb648) 'ptpython --vi'
 [google colab](https://colab.research.google.com/)
 
@@ -76,5 +78,5 @@
 
 see [gui alternatives](docs/gui-alternatives)
 
-###### darryl.west | 2023-08-27
+###### darryl.west | 2023-09-01
 

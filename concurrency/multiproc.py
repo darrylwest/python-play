@@ -5,21 +5,22 @@
 import datetime
 import multiprocessing
 import time
+import os
 
 
 def func(x):
     start = datetime.datetime.now()
-    time.sleep(1)
+    time.sleep(0.01)
     end = datetime.datetime.now()
 
-    return f"x={x} start at {start}, end at {end}"
+    return f"pid: {os.getpid()} x={x} start at {start}, end at {end}"
 
 
 if __name__ == "__main__":
-    n = 3
-    print(f"running with a pool of {n} processes and requestion 7 ops...")
-    with multiprocessing.Pool(processes=n) as pool:
-        data = pool.map(func, [1, 2, 3, 4, 5, 6, 7])
+    print(f"running with a pool ops...")
+    data = list(range(1, 100))
+    with multiprocessing.Pool() as pool:
+        data = pool.map(func, data)
 
     for row in data:
         print(row)
