@@ -2,9 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-08-31 16:27:12
 
-import sys
 from rich import inspect
 
+"""
+This example always creates a singleton.
+"""
 
 class Singleton(type):
     _instances = {}
@@ -19,7 +21,7 @@ class MyClass(metaclass=Singleton):
     pass
 
 
-def main(args: list) -> None:
+def main() -> None:
     x = MyClass()
     y = MyClass()
 
@@ -30,4 +32,4 @@ def main(args: list) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()

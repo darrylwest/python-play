@@ -5,6 +5,10 @@
 import sys
 from rich import inspect
 
+"""
+Creates a singleton through a factory method.  Can be useful to enable testing, but,
+it's possible to create multiple instances. (user beware).
+"""
 
 class Singleton:
     __instance = None
