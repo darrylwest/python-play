@@ -6,7 +6,7 @@
 
 
 def print_file_count():
-    count = ~"ls -1 | wc -l"
+    count = ~"lsd -l"
 
     print(f"file count = {count}")
 

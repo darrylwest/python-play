@@ -3,15 +3,23 @@
 # 2023-08-08 17:43:25
 
 import tomllib
-from pprint import pprint as pp
+from rich import inspect
+from pathlib import Path
 
 
 def process():
-    with open("data.toml", "rb") as f:
-        data = tomllib.load(f)
+    path = Path("data/data.toml")
+    data = tomllib.loads(path.read_text())
 
-    pp(data)
+    inspect(data)
+
+
+def units():
+    units = tomllib.loads(Path("data/units.toml").read_text(encoding="utf-8"))
+
+    inspect(units)
 
 
 if __name__ == "__main__":
     process()
+    units()

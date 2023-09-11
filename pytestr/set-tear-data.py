@@ -1,5 +1,5 @@
 # content of test_module.py
-# run with pytest -v -s 
+# run with pytest -v -s
 import pytest
 
 
@@ -29,5 +29,3 @@ def test_1(modarg):
 
 def test_2(otherarg, modarg):
     print(f"  RUN test2 with otherarg {otherarg} and modarg {modarg}")
-
-
