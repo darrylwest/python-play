@@ -8,6 +8,9 @@ from pathlib import Path
 
 from rich import print
 
+VERSION = "0.1.0"
+
+
 def find_runner():
     # read this directory for all regular files
     files = (f.lower() for f in os.listdir() if Path(f).is_file())
@@ -25,7 +28,7 @@ def find_runner():
                 return "invoke"
 
             case "taskfile.yaml" | "taskfile.yml":
-                return 'task'
+                return "task"
 
             case "package.json":
                 return "npm run"
@@ -35,9 +38,12 @@ def find_runner():
 
 
 def main(args: list) -> None:
+    # parse command line args: help --help
+
     runner = find_runner()
     if runner is None:
-        print('ERROR! unable to locate target from files')
+        print("[red]ERROR! unable to locate target from files...")
+        # now print the help...
     else:
         cmd = f"{runner} {''.join(args)}"
         os.system(cmd)
