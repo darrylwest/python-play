@@ -10,6 +10,7 @@ Creates a singleton through a factory method.  Can be useful to enable testing, 
 it's possible to create multiple instances. (user beware).
 """
 
+
 class Singleton:
     __instance = None
 

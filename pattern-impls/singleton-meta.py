@@ -8,6 +8,7 @@ from rich import inspect
 This example always creates a singleton.
 """
 
+
 class Singleton(type):
     _instances = {}
 

@@ -9,20 +9,23 @@ import functools
 This example always creates a singleton.
 """
 
+
 def singleton(cls):
     instances = dict()
+
     @functools.wraps(cls)
     def _singleton(*args, **kwargs):
         if cls not in instances:
             instances[cls] = cls(*args, **kwargs)
         return instances[cls]
+
     return _singleton
 
-@singleton
-class SomeSingleton():
-    def __init__(self):
-        print('init')
 
+@singleton
+class SomeSingleton:
+    def __init__(self):
+        print("init")
 
 
 def main() -> None:
@@ -32,8 +35,7 @@ def main() -> None:
     assert x is y
     inspect(x)
     inspect(y)
-    
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
-
