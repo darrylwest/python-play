@@ -6,10 +6,15 @@ import sys
 from rich import print
 import pickledb
 
+db = pickledb.load("data/pickledb.json", False)
+
+
+def getdb():
+    return db
+
 
 def main(args: list) -> None:
     print(f"{args}")
-    db = pickledb.load("data/pickledb.json", False)
     db.set("my-key", "my-value")
 
     print(db.get("my-key"))

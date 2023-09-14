@@ -8,6 +8,7 @@ import time
 
 from mpire import WorkerPool
 
+
 def time_consuming_fn(x):
     time.sleep(1)
     return ...
@@ -15,7 +16,6 @@ def time_consuming_fn(x):
 
 def main(args: list) -> None:
     # print(f'{args}')
-
 
     t0 = time.time_ns()
 
@@ -30,6 +30,6 @@ def main(args: list) -> None:
 
     print(f"elapsed: {(t1 - t0)/1_000_000_000} seconds")
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])
