@@ -2,11 +2,14 @@
 # dpw@plaza.localdomain
 # 2023-09-18 16:48:48
 
+
 import sys
 from rich import print, inspect
 from json_mixin import JsonMixin
 
+
 class PositiveInteger:
+    """A descriptor instance for positive integers."""
     def __set_name__(self, owner, name):
         self._name = name
 
