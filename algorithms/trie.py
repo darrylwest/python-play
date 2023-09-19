@@ -19,6 +19,7 @@ class TrieNode:
 @dataclass
 class TrieContainer:
     root = TrieNode()
+    word_count = 0
 
     def normalize(self, key: str) -> str:
         word = []
@@ -30,6 +31,9 @@ class TrieContainer:
         return word
 
     def insert(self, key: str) -> None:
+        if self.exists(key):
+            return
+
         key = self.normalize(key)
         current = self.root
 
@@ -42,6 +46,7 @@ class TrieContainer:
             current = current.children[idx]
 
         current.word_count += 1
+        self.word_count += 1
 
     def exists(self, key: str) -> bool:
         key = self.normalize(key)
@@ -56,32 +61,36 @@ class TrieContainer:
 
         return True
 
-    def search(self, key: str) -> int:
-        key = self.normalize(key)
+    def search(self, word: str) -> str | None:
+        key = self.normalize(word)
         current = self.root
 
         for ch in key:
             idx = ord(ch) - ord('a')
             if current.children[idx] is None:
-                return False
+                return None
 
             current = current.children[idx]
 
-        return current.word_count > 0
+        return word
 
     def remove(self, key: str):
         pass
 
 
+trie = TrieContainer()
+words = ('and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball')
+
 def main(args: list) -> None:
     print(f'{args}')
-    trie = TrieContainer()
-    trie.insert('and')
+    for word in words:
+        trie.insert(word)
 
-    inspect(trie.root)
+    # inspect(trie.root)
 
-    print(f"exists: {trie.exists('and')}")
-    print(f"search: {trie.search('and')}")
+    for word in words:
+        print(f"{word} exists: {trie.exists(word)}")
+        print(f"{word} search: {trie.search(word)}")
 
 if __name__ == '__main__':
     main(sys.argv[1:])
