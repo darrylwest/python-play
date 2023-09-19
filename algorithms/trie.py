@@ -1,95 +1,71 @@
 #!/usr/bin/env python3
 # dpw@plaza.localdomain
-# 2023-09-19 17:28:16
+# 2023-09-19 19:17:00
 
 import sys
 from rich import print, inspect
 from dataclasses import dataclass
 
 class TrieNode:
-    def __init__(self):
-        self.children = [None] * 26
-
-        self.word_count = 0
+    def __init__(self, char):
+        self.char = char
+        self.is_end = False
+        self.children = {}
 
     def __repr__(self):
-        clist = [child for child in self.children if child is not None]
-        return f"word_count: {self.word_count}, children: {clist}"
-
+        return f"char:{self.char}, end: {self.is_end}, children: {self.children}"
+ 
 @dataclass
-class TrieContainer:
-    root = TrieNode()
-    word_count = 0
-
-    def normalize(self, key: str) -> str:
-        word = []
-        for ch in key.lower():
-            idx = ord(ch) - ord('a')
-            if idx in range(26):
-                word.append(ch)
-
-        return word
-
-    def insert(self, key: str) -> None:
-        if self.exists(key):
-            return
-
-        key = self.normalize(key)
-        current = self.root
-
-        for ch in key:
-            idx = ord(ch) - ord('a')
-            if current.children[idx] is None:
-                new_node = TrieNode()
-                current.children[idx] = new_node
-
-            current = current.children[idx]
-
-        current.word_count += 1
+class Trie():
+    root: TrieNode = TrieNode("")
+    word_count: int = 0
+     
+    def insert(self, word) -> None:
+        node = self.root
+        for char in word:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                new_node = TrieNode(char)
+                node.children[char] = new_node
+                node = new_node
+         
+        node.is_end = True
         self.word_count += 1
+         
+    def dfs(self, node, prefix: str):
+        if node.is_end:
+            self.output.append((prefix + node.char))
+         
+        for child in node.children.values():
+            self.dfs(child, prefix + node.char)
+         
+    def search(self, word: str) -> list:
+        node = self.root
+         
+        for char in word:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                return []
+         
+        self.output = []
+        self.dfs(node, word[:-1])
+ 
+        return self.output
 
-    def exists(self, key: str) -> bool:
-        key = self.normalize(key)
-        current = self.root
-
-        for ch in key:
-            idx = ord(ch) - ord('a')
-            if current.children[idx] is None:
-                return False
-
-            current = current.children[idx]
-
-        return True
-
-    def search(self, word: str) -> str | None:
-        key = self.normalize(word)
-        current = self.root
-
-        for ch in key:
-            idx = ord(ch) - ord('a')
-            if current.children[idx] is None:
-                return None
-
-            current = current.children[idx]
-
-        return word
-
-    def remove(self, key: str):
-        pass
-
-
-trie = TrieContainer()
-words = ('and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball')
+trie = Trie()
+words = ('and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball', 'here', 'hear', 'he', 'hello', 'how')
 
 def main(args: list) -> None:
     print(f'{args}')
+
     for word in words:
         trie.insert(word)
 
-    # inspect(trie.root)
+    inspect(trie.root)
 
     for word in words:
-        print(f"{word} exists: {trie.exists(word)}")
         print(f"{word} search: {trie.search(word)}")
 
 if __name__ == '__main__':
