@@ -5,6 +5,7 @@
 import sys
 from rich import print, inspect
 from dataclasses import dataclass
+from pathlib import Path
 
 class TrieNode:
     def __init__(self, char):
@@ -17,10 +18,12 @@ class TrieNode:
  
 @dataclass
 class Trie():
+    """A container for holding Trie nodes.  Will store and word, name, email, phone number, etc."""
     root: TrieNode = TrieNode("")
     word_count: int = 0
      
-    def insert(self, word) -> None:
+    def insert(self, word: str) -> None:
+        word = word.lower()
         node = self.root
         for char in word:
             if char in node.children:
@@ -33,14 +36,17 @@ class Trie():
         node.is_end = True
         self.word_count += 1
          
-    def dfs(self, node, prefix: str):
+    def depth_first_search(self, node: TrieNode, prefix: str):
+        """depth first search"""
         if node.is_end:
             self.output.append((prefix + node.char))
          
         for child in node.children.values():
-            self.dfs(child, prefix + node.char)
+            self.depth_first_search(child, prefix + node.char)
          
     def search(self, word: str) -> list:
+        """search for words"""
+        word = word.lower()
         node = self.root
          
         for char in word:
@@ -50,20 +56,31 @@ class Trie():
                 return []
          
         self.output = []
-        self.dfs(node, word[:-1])
+        self.depth_first_search(node, word[:-1])
  
         return self.output
 
+def read_proper_names() -> Trie:
+    trie = Trie()
+    path = Path('/usr/share/dict/propernames')
+    for name in path.read_text().split():
+        trie.insert(name)
+
+    return trie
+
+
 trie = Trie()
-words = ('and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball', 'here', 'hear', 'he', 'hello', 'how')
+words = ['and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball', 'here', 'hear', 'he', 'hello', 'how']
 
 def main(args: list) -> None:
     print(f'{args}')
+    for arg in args:
+        trie.insert(arg)
 
     for word in words:
         trie.insert(word)
 
-    inspect(trie.root)
+    # inspect(trie.root)
 
     for word in words:
         print(f"{word} search: {trie.search(word)}")
