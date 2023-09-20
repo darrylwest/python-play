@@ -6,6 +6,7 @@ import sys
 from rich import print, inspect
 from dataclasses import dataclass
 from pathlib import Path
+import json
 
 class TrieNode:
     def __init__(self, char):
@@ -68,22 +69,23 @@ def read_proper_names() -> Trie:
 
     return trie
 
+def read_data():
+    with open('data/emails.json') as f:
+        data = json.load(f)
 
+    return data
+
+def insert_data(trie: Trie, data):
+    for v in data:
+        trie.insert(v)
+    
 trie = Trie()
-words = ['and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball', 'here', 'hear', 'he', 'hello', 'how']
+data = read_data()
 
 def main(args: list) -> None:
-    print(f'{args}')
-    for arg in args:
-        trie.insert(arg)
+    # print(f'{args}')
 
-    for word in words:
-        trie.insert(word)
-
-    # inspect(trie.root)
-
-    for word in words:
-        print(f"{word} search: {trie.search(word)}")
+    insert_data(trie, data)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
