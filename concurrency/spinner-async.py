@@ -1,42 +1,40 @@
 #!/usr/bin/env python3
 # dpw@plaza.localdomain
-# 2023-09-22 18:31:29
+# 2023-09-22 19:13:20
 
 import sys
 from rich import inspect
 import itertools
-from threading import Thread, Event
-import time
+import asyncio
 
-def spin(msg: str, done: Event) -> None:
-
+async def spin(msg: str) -> None:
     for char in itertools.cycle(r'\|/-'):
         status = f'\r{char} {msg}'
         print(status, end='', flush=True)
-        if done.wait(.1):
+        try:
+            await asyncio.sleep(.1)
+        except asyncio.CancelledError:
             break
 
     blanks = ' ' * len(status)
     print(f'\r{blanks}\r', end='', flush=True)
 
-def slow() -> int:
-    time.sleep(3)
+async def slow() -> int:
+    await asyncio.sleep(3)
     return 42
 
-def supervisor() -> int:
-    done = Event()
+async def supervisor() -> int:
     msg = 'working!'
-    spinner = Thread(target=spin, args=(msg, done))
-    print(f'spinner object: {spinner}')
-    spinner.start()
-    result = slow()
-    done.set()
+    spinner = asyncio.create_task(spin(msg))
+    inspect(f'spinner object: {spinner}')
+    result = await slow()
+    spinner.cancel()
     print(f'\rdone {msg}', flush=True)
 
     return result
 
 def main(args: list) -> None:
-    result = supervisor()
+    result = asyncio.run(supervisor())
     print(f'result: {result}')
 
 if __name__ == '__main__':
