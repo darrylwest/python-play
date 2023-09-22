@@ -8,10 +8,12 @@ from rich import print
 import time
 from threading import Thread
 
+
 def consumer(reader):
-    print('[green3]consumer waiting for data.', flush=True)
+    print("[green3]consumer waiting for data.", flush=True)
     data = os.read(reader, 100)
     print("[green3]consumer received:", data)
+
 
 def producer(writer):
     for n in range(4):
@@ -20,6 +22,7 @@ def producer(writer):
 
     print("[yellow]Producer sending data.", flush=True)
     os.write(writer, b"hello from the producer!")
+
 
 def main(args: list) -> None:
     reader, writer = os.pipe()
@@ -36,6 +39,6 @@ def main(args: list) -> None:
     os.close(reader)
     os.close(writer)
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

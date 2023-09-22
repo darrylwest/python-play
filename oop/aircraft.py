@@ -6,6 +6,7 @@ import sys
 from rich import print, inspect
 from json_mixin import JsonMixin
 
+
 class AirCraft(JsonMixin):
     def __init__(self, make: str, model: str):
         self.make = make
@@ -20,6 +21,7 @@ class AirCraft(JsonMixin):
         print("[red]Landing.")
         self._flying = False
 
+
 class Plane(AirCraft):
     def __init__(self, make: str, model: str, num_engines: int):
         super().__init__(make, model)
@@ -33,11 +35,13 @@ class Plane(AirCraft):
         super().land()
         print("[yellow]Gear Down.")
 
+
 def create_piper():
     return Plane("piper", "cub", 2)
 
+
 def main(args: list) -> None:
-    print(f'{args}')
+    print(f"{args}")
     plane = Plane("Boeing", "727", 2)
 
     inspect(plane)
@@ -45,6 +49,6 @@ def main(args: list) -> None:
     plane.takeoff()
     plane.land()
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

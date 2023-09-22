@@ -16,7 +16,7 @@ from whoosh.qparser import QueryParser
 
 @dataclass
 class SearchEngine:
-    index_dir = 'indexdir'
+    index_dir = "indexdir"
     schema = Schema(title=TEXT(stored=True), path=ID(stored=True), content=TEXT)
     # ix = create_in(index_dir, schema)
     ix = open_dir(index_dir)
@@ -24,8 +24,16 @@ class SearchEngine:
     def index(self):
         ix = self.ix
         writer = ix.writer()
-        writer.add_document(title=u"First document", path=u"/a", content=u"This ithe first document we've added")
-        writer.add_document(title=u"Second document", path=u"/u", content=u"The second document even better!")
+        writer.add_document(
+            title="First document",
+            path="/a",
+            content="This ithe first document we've added",
+        )
+        writer.add_document(
+            title="Second document",
+            path="/u",
+            content="The second document even better!",
+        )
         writer.commit()
 
     def search(self, word):
@@ -36,7 +44,9 @@ class SearchEngine:
 
         return results
 
+
 engine = SearchEngine()
+
 
 def main(args: list) -> None:
     # print(f'{args}')
@@ -47,6 +57,5 @@ def main(args: list) -> None:
     inspect(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1:])
-

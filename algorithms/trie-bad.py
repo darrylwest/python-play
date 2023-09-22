@@ -8,6 +8,7 @@ import sys
 from rich import print, inspect
 from dataclasses import dataclass
 
+
 class TrieNode:
     def __init__(self):
         self.children = [None] * 26
@@ -18,6 +19,7 @@ class TrieNode:
         clist = [child for child in self.children if child is not None]
         return f"word_count: {self.word_count}, children: {clist}"
 
+
 @dataclass
 class TrieContainer:
     root = TrieNode()
@@ -26,7 +28,7 @@ class TrieContainer:
     def normalize(self, key: str) -> str:
         word = []
         for ch in key.lower():
-            idx = ord(ch) - ord('a')
+            idx = ord(ch) - ord("a")
             if idx in range(26):
                 word.append(ch)
 
@@ -40,7 +42,7 @@ class TrieContainer:
         current = self.root
 
         for ch in key:
-            idx = ord(ch) - ord('a')
+            idx = ord(ch) - ord("a")
             if current.children[idx] is None:
                 new_node = TrieNode()
                 current.children[idx] = new_node
@@ -55,7 +57,7 @@ class TrieContainer:
         current = self.root
 
         for ch in key:
-            idx = ord(ch) - ord('a')
+            idx = ord(ch) - ord("a")
             if current.children[idx] is None:
                 return False
 
@@ -68,7 +70,7 @@ class TrieContainer:
         current = self.root
 
         for ch in key:
-            idx = ord(ch) - ord('a')
+            idx = ord(ch) - ord("a")
             if current.children[idx] is None:
                 return None
 
@@ -81,10 +83,11 @@ class TrieContainer:
 
 
 trie = TrieContainer()
-words = ('and', 'ant', 'do', 'geek', 'daddy', 'dad', 'ball')
+words = ("and", "ant", "do", "geek", "daddy", "dad", "ball")
+
 
 def main(args: list) -> None:
-    print(f'{args}')
+    print(f"{args}")
     for word in words:
         trie.insert(word)
 
@@ -94,6 +97,6 @@ def main(args: list) -> None:
         print(f"{word} exists: {trie.exists(word)}")
         print(f"{word} search: {trie.search(word)}")
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

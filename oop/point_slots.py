@@ -6,15 +6,17 @@ import sys
 from rich import print, inspect
 from json_mixin import JsonMixin
 
+
 class Point(JsonMixin):
-    __slots__ = ('x', 'y')
+    __slots__ = ("x", "y")
 
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
+
 def main(args: list) -> None:
-    print(f'{args}')
+    print(f"{args}")
     point = Point(5, 2)
 
     inspect(point)
@@ -22,10 +24,10 @@ def main(args: list) -> None:
     point.x = 6
     inspect(point)
 
-    print(f"[red]The json mixin fails here because there is no dunder-dict: [green3]{point.to_json()}")
+    print(
+        f"[red]The json mixin fails here because there is no dunder-dict: [green3]{point.to_json()}"
+    )
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1:])
-

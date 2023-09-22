@@ -10,6 +10,7 @@ from json_mixin import JsonMixin
 
 class PositiveInteger:
     """A descriptor instance for positive integers."""
+
     def __set_name__(self, owner, name):
         self._name = name
 
@@ -34,15 +35,17 @@ class Ellipse(JsonMixin):
         self.width = width
         self.height = height
 
+
 def create_shape():
     return Ellipse(250, 350)
 
+
 def main(args: list) -> None:
-    print(f'{args}')
+    print(f"{args}")
     ellipse = Ellipse(25, 35)
     inspect(ellipse)
     print(ellipse.to_json())
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

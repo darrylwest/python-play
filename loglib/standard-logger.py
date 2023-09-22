@@ -45,7 +45,7 @@ class LogLib:
 
     def __init__(self, config: Config = None):
         cfg = config if config is not None else Config()
-        
+
         self.cfg = cfg
         self.log = logging.getLogger(cfg.name)
         self.log.setLevel(cfg.level)
@@ -87,12 +87,13 @@ class LogLib:
 
 
 def standard_config():
-    cfg = Config(filename='std-test.log', stream=False, max_bytes=2500)
+    cfg = Config(filename="std-test.log", stream=False, max_bytes=2500)
     inspect(cfg)
 
     log = LogLib.create_logger(cfg)
 
     return log
+
 
 if __name__ == "__main__":
     log = standard_config()
@@ -106,4 +107,3 @@ if __name__ == "__main__":
         log.critical("this is CRITICAL")
 
     print(f"look at the logfile std-test.log")
-

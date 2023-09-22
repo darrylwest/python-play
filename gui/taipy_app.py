@@ -19,10 +19,11 @@ page = """
 
 """
 
+
 def main(args: list) -> None:
     # print(f'{args}')
     Gui(page=page).run()
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

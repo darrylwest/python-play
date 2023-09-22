@@ -5,10 +5,12 @@
 import sys
 from rich import print
 
-def main(args: list) -> None:
-    print(f'{args}')
 
-if __name__ == '__main__':
+def main(args: list) -> None:
+    print(f"{args}")
+
+
+if __name__ == "__main__":
     main(sys.argv[1:])
 
 import httpx
@@ -51,4 +53,3 @@ class WeatherApp(App):
 if __name__ == "__main__":
     app = WeatherApp()
     app.run()
-

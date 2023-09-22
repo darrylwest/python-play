@@ -16,7 +16,7 @@ def main(args: list) -> None:
     if pid:
         os.close(w)
 
-        print('[green3]parent waiting for data.', flush=True)
+        print("[green3]parent waiting for data.", flush=True)
         data = os.read(r, 100)
         print("[green3]parent received:", data)
 
@@ -33,6 +33,6 @@ def main(args: list) -> None:
         os.write(w, b"hello from the child!")
         os.close(w)
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])

@@ -5,13 +5,14 @@
 import sys
 from rich import print, inspect
 
+
 class HexColorContainer:
     def __init__(self, *args):
         self._colors = []
         for arg in args:
             self.add_color(arg[0], arg[1], arg[2])
 
-    def add_color(self,  red, green, blue):
+    def add_color(self, red, green, blue):
         self._colors.append(f"#{red:02x}{green:02x}{blue:02x}")
 
     def __iter__(self):
@@ -23,17 +24,19 @@ class HexColorContainer:
     def __len__(self):
         return len(self._colors)
 
+
 def create_container():
     return HexColorContainer(
-        (255, 255, 240), 
+        (255, 255, 240),
         (206, 39, 59),
         (205, 30, 159),
         (225, 30, 15),
         (240, 240, 0),
     )
 
+
 def main(args: list) -> None:
-    print(f'{args}')
+    print(f"{args}")
 
     container = create_container()
     inspect(container)
@@ -45,6 +48,6 @@ def main(args: list) -> None:
     for color in container:
         print(f"[{color}] = {color}")
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
 
+if __name__ == "__main__":
+    main(sys.argv[1:])
