@@ -1,5 +1,5 @@
 '''
-task runner, @see https://docs.pyinvoke.org/en/stable/index.html
+task runner, @see https://www.pyinvoke.org/
 '''
 
 from invoke import task
