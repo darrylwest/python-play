@@ -26,7 +26,7 @@ def generate_table() -> Table:
     return table
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with Live(generate_table(), refresh_per_second=4) as live:
         for _ in range(40):
             time.sleep(0.4)
