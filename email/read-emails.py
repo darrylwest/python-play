@@ -11,10 +11,11 @@ import email
 def read_all():
     mb = imaplib.IMAP4_SSL(os.getenv('EMAIL_HOST'))
     mb.login(os.getenv('EMAIL_USER'), os.getenv('EMAIL_PW'))
+    # typ, data = mb.search(None, 'UNSEEN')
     mb.select('inbox')
     typ, data = mb.search(None, 'ALL')
-    # typ, data = mb.search(None, 'UNSEEN')
 
+    # typ, data = mb.search(None, 'UNSEEN')
     # print(f'Type: {typ}')
 
     for num in data[0].split():
@@ -33,8 +34,9 @@ def read_all():
 
                 for part in msg.walk():
                     if part.get_content_type() == 'text/plain':
-                        body = part.as_string()
-                        print(f'Body: [white]{body}')
+                        body = part.as_string().split('\n')
+                        text = ''.join([f'{tx}\n' for tx in body[1:] if tx != ''])
+                        print(f'Body: [green3]{text}')
 
 
     mb.close()
