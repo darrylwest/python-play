@@ -7,6 +7,7 @@ import os
 from rich import print, inspect
 import imaplib
 import email
+from email.header import decode_header
 
 def read_all():
     mb = imaplib.IMAP4_SSL(os.getenv('EMAIL_HOST'))
