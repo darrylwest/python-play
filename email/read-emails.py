@@ -4,24 +4,38 @@
 
 import sys
 import os
-from rich import print
+from rich import print, inspect
 import imaplib
+import email
 
 def read_all():
     mb = imaplib.IMAP4_SSL(os.getenv('EMAIL_HOST'))
     mb.login(os.getenv('EMAIL_USER'), os.getenv('EMAIL_PW'))
-    mb.select()
+    mb.select('inbox')
     typ, data = mb.search(None, 'ALL')
+    # typ, data = mb.search(None, 'UNSEEN')
 
-    print(f'Type: {typ}')
-    print(f'Data: {data}')
+    # print(f'Type: {typ}')
 
     for num in data[0].split():
         typ, data = mb.fetch(num, '(RFC822)')
-        print(f'Msg: {num.decode()}')
-        lines = data[0][1].split()
-        for line in lines:
-            print(line)
+        for resp_part in data:
+            if isinstance(resp_part, tuple):
+                msg = email.message_from_bytes(resp_part[1])
+                mfrom = msg['from']
+                subject = msg['subject']
+                dt = msg['date']
+
+                # TODO(dpw): create a rich table...
+                print(f'From: {mfrom}')
+                print(f'Sent: {dt}')
+                print(f'Subj: [green3]{subject}')
+
+                for part in msg.walk():
+                    if part.get_content_type() == 'text/plain':
+                        body = part.as_string()
+                        print(f'Body: [white]{body}')
+
 
     mb.close()
     mb.logout()
