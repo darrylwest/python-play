@@ -26,7 +26,7 @@ class Config:
     @classmethod
     def from_dict(cls, cfg: dict):
         return cls(
-            host=cfg.get("EMAIL_HOST"),
+            host=f'imap{cfg.get("EMAIL_HOST")}',
             user=cfg.get("EMAIL_USER"),
             pw=cfg.get("EMAIL_PW"),
             folder=cfg.get("FOLDER", "INBOX"),
