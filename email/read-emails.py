@@ -22,6 +22,7 @@ class Config:
     pw: str
     folder: str
     search: str
+    verbose: bool = False
 
     @classmethod
     def from_dict(cls, cfg: dict):
@@ -30,17 +31,17 @@ class Config:
             user=cfg.get("EMAIL_USER"),
             pw=cfg.get("EMAIL_PW"),
             folder=cfg.get("FOLDER", "INBOX"),
-            search=cfg.get("SEARCH", "UNSEEN"),
+            search=cfg.get("SEARCH", "ALL"),
         )
 
 
 @dataclass
 class EmailResponse:
-    ts: datetime
-    send_by: str
+    mid: str
+    sent_from: str
     sent_at: str
     subject: str
-    body: str
+    body: str = ""
 
 
 def read_config(filename: str):
@@ -53,35 +54,40 @@ def read_config(filename: str):
 def read_all(ctx: Config) -> list[EmailResponse]:
     mb = imaplib.IMAP4_SSL(ctx.host)
     mb.login(ctx.user, ctx.pw)
-    # typ, data = mb.search(None, 'UNSEEN')
     mb.select(ctx.folder)
     typ, data = mb.search(None, ctx.search)
 
     emails = []
 
     for num in data[0].split():
-        typ, data = mb.fetch(num, "(RFC822)")
+        _, data = mb.fetch(num, "(RFC822)")
+        if ctx.verbose:
+            print(data)
+
         for resp_part in data:
             if isinstance(resp_part, tuple):
                 msg = email.message_from_bytes(resp_part[1])
 
-                # print(msg)
-
-                # resp = EmailResponse()
-                mfrom = msg["from"]
-                subject = msg["subject"]
-                dt = msg["date"]
-
-                # TODO(dpw): create a rich table...
-                print(f"From: {mfrom}")
-                print(f"Sent: {dt}")
-                print(f"Subj: [green3]{subject}")
+                resp = EmailResponse(
+                    mid=msg.get("X-Message-ID"),
+                    sent_from=msg.get("from"),
+                    sent_at=msg.get("date"),
+                    subject=msg.get("subject"),
+                )
 
                 for part in msg.walk():
                     if part.get_content_type() == "text/plain":
                         body = part.as_string().split("\n")
                         text = "".join([f"{tx}\n" for tx in body[1:] if tx != ""])
-                        print(f"Body: [green3]{text}")
+                        resp.body = text
+
+                emails.append(resp)
+                # TODO(dpw): create a rich table...
+                print(f"M-ID: {resp.mid}")
+                print(f"From: {resp.sent_from}")
+                print(f"Sent: {resp.sent_at}")
+                print(f"Subj: [green3]{resp.subject}")
+                print(f"Body: [green3]{resp.body}")
 
     mb.close()
     mb.logout()
@@ -95,16 +101,12 @@ def main(args: list) -> None:
     dpw500 = Config.from_dict(cfg.get("dpw500"))
     dpw = Config.from_dict(cfg.get("dpw"))
 
-    if "--all" in args:
-        dpw500.search = "ALL"
-        dpw.search = "ALL"
-
     if "--verbose" in args:
-        print(dpw500)
-        print(dpw)
+        dpw500.verbose = True
+        dpw.verbose = True
 
-    read_all(dpw500)
-    read_all(dpw)
+    emails = read_all(dpw500)
+    emails = read_all(dpw)
 
 
 if __name__ == "__main__":
