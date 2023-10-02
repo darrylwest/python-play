@@ -30,25 +30,29 @@ def read_config(filename: str):
 
     return data
 
-def send(ctx: Config, email_to: str):
+def send(ctx: Config, email_to: str, message: str):
     port = 465
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL(ctx.host, port, context=context) as server:
-        resp = server.login(ctx.user, ctx.pw)
-        print(resp)
+        server.login(ctx.user, ctx.pw)
+        resp = server.sendmail(ctx.user, email_to, message)
+
 
 def main(args: list) -> None:
     # print(f'{args}')
     username = 'dpw500'
     subject = 'message sender...'
     body = f'message sent at {datetime.utcnow()}'
+    email_to = '1426charlie@gmail.com'
 
     cfg = read_config("email/config.toml")
     config = Config.from_dict(cfg.get(username))
-    print(config)
 
-    send(config, '1426charlie@gmail.com')
+    message = f'From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}'
+    print(message)
+
+    send(config, '1426charlie@gmail.com', message)
 
     
 
