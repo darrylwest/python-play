@@ -64,7 +64,8 @@ def read_all(ctx: Config) -> list[EmailResponse]:
         for resp_part in data:
             if isinstance(resp_part, tuple):
                 msg = email.message_from_bytes(resp_part[1])
-                print(msg)
+                
+                # print(msg)
 
                 # resp = EmailResponse()
                 mfrom = msg["from"]
