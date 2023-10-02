@@ -2,9 +2,10 @@
 # dpw@plaza.localdomain
 # 2023-09-02 15:19:11
 
-import sys
-from rich import print
 import os
+import sys
+
+from rich import print
 
 
 def filter_dirs():

@@ -6,8 +6,9 @@
 # ref
 
 import sys
-from rich import print
+
 import structlog
+from rich import print
 
 logger = structlog.get_logger()
 

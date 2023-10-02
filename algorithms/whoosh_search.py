@@ -3,10 +3,11 @@
 # 2023-09-19 23:21:55
 
 import sys
-from rich import print, inspect
 from dataclasses import dataclass
-from whoosh.index import create_in, open_dir
+
+from rich import inspect, print
 from whoosh.fields import *
+from whoosh.index import create_in, open_dir
 from whoosh.qparser import QueryParser
 
 # class MySchema(SchemaClass):

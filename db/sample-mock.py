@@ -2,11 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-09-04 16:02:25
 
-import sys
-from rich import print, inspect
-from unittest.mock import Mock
 import json
+import sys
 from datetime import datetime
+from unittest.mock import Mock
+
+from rich import inspect, print
 
 friday = datetime(year=2023, month=1, day=1)
 inspect(friday)

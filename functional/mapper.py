@@ -3,6 +3,7 @@
 # 2023-09-01 19:45:39
 
 import sys
+
 from rich import print
 
 sys.path.append("/functional")

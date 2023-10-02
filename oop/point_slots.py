@@ -3,8 +3,9 @@
 # 2023-09-18 17:13:02
 
 import sys
-from rich import print, inspect
+
 from json_mixin import JsonMixin
+from rich import inspect, print
 
 
 class Point(JsonMixin):

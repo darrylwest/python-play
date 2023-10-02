@@ -2,8 +2,8 @@
 # dpw@plaza.localdomain
 # 2023-07-04 16:00:45
 
-import sys
 import datetime
+import sys
 
 date_strings = [
     "2023/12/02T05:09:00",

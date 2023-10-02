@@ -8,11 +8,11 @@
 # 4) status str
 # 5) value blob or text
 
-import typer
-from rich import print
-
 import sqlite3
 from contextlib import closing
+
+import typer
+from rich import print
 
 
 def connect(path):

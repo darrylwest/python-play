@@ -2,11 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-08-24 20:23:32
 
+import asyncio
 import sys
-from rich import print
 import time
 
-import asyncio
+from rich import print
 
 
 async def say_after(delay, what):

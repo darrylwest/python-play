@@ -3,6 +3,7 @@
 # 2023-09-17 16:07:58
 
 import sys
+
 from rich import print
 
 
@@ -15,7 +16,6 @@ if __name__ == "__main__":
 
 import httpx
 from rich.text import Text
-
 from textual.app import App, ComposeResult
 from textual.containers import VerticalScroll
 from textual.widgets import Input, Static

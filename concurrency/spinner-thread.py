@@ -2,11 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-09-22 18:31:29
 
-import sys
-from rich import inspect
 import itertools
-from threading import Thread, Event
+import sys
 import time
+from threading import Event, Thread
+
+from rich import inspect
 
 
 def spin(msg: str, done: Event) -> None:

@@ -2,11 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-09-19 19:17:00
 
+import json
 import sys
-from rich import print, inspect
 from dataclasses import dataclass
 from pathlib import Path
-import json
+
+from rich import inspect, print
 
 
 class TrieNode:

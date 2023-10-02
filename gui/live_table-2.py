@@ -3,8 +3,8 @@
 # 2023-09-30 15:13:28
 
 
-import sys
 import random
+import sys
 import time
 
 from rich.live import Live

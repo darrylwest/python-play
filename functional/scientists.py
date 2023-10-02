@@ -3,9 +3,9 @@
 # 2023-09-01 18:57:23
 
 import sys
-from rich import print
-
 from collections import namedtuple
+
+from rich import print
 
 Scientist = namedtuple(
     "Scientist",

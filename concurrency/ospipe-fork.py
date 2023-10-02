@@ -2,10 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-09-22 17:26:43
 
-import sys
 import os
-from rich import print
+import sys
 import time
+
+from rich import print
 
 
 def main(args: list) -> None:

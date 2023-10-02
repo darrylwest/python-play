@@ -3,8 +3,9 @@
 # 2023-09-02 13:55:25
 
 import sys
-from rich import print
+
 import webview
+from rich import print
 
 
 def main(args: list) -> None:

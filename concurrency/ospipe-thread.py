@@ -2,11 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-09-22 17:43:57
 
-import sys
 import os
-from rich import print
+import sys
 import time
 from threading import Thread
+
+from rich import print
 
 
 def consumer(reader):

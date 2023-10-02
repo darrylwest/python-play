@@ -2,8 +2,9 @@
 # dpw@plaza.localdomain
 # 2023-09-04 14:21:05
 
-from rich import inspect
 import functools
+
+from rich import inspect
 
 """
 This example always creates a singleton.

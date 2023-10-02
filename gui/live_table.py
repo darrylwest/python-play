@@ -4,6 +4,7 @@
 
 import sys
 import time
+
 from rich import print
 from rich.live import Live
 from rich.table import Table

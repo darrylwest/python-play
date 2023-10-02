@@ -5,6 +5,7 @@
 import sys
 from collections.abc import Callable
 from dataclasses import dataclass
+
 import numpy as np
 
 # from scipy import integrate

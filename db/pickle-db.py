@@ -3,8 +3,9 @@
 # 2023-09-05 18:49:39
 
 import sys
-from rich import print
+
 import pickledb
+from rich import print
 
 db = pickledb.load("data/pickledb.json", False)
 

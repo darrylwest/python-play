@@ -4,10 +4,11 @@
 
 # BAD! don't use this!  it's retained as a remindar of what not to do
 
-import sys
-from rich import print, inspect
 import os
+import sys
 import time
+
+from rich import inspect, print
 
 pipe_name = "/tmp/stress-pipe"
 

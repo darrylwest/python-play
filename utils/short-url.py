@@ -5,8 +5,8 @@
 # ref: https://pyshorteners.readthedocs.io/en/latest/
 # TODO: must have a valid set of API keys...
 
-import typer
 import pyshorteners
+import typer
 
 
 def main(url: str) -> None:

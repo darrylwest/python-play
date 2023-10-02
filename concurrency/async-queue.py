@@ -2,11 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-08-23 18:58:59
 
-import sys
-from rich import print
 import asyncio
-
+import sys
 from collections import deque
+
+from rich import print
 
 
 class AsyncQueue:

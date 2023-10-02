@@ -3,10 +3,10 @@
 # 2023-09-12 21:22:23
 
 import sys
-from rich import print
 import time
 
 from mpire import WorkerPool
+from rich import print
 
 
 def time_consuming_fn(x):
