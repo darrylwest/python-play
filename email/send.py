@@ -42,9 +42,11 @@ def send(ctx: Config, email_to: str, message: str):
 def main(args: list) -> None:
     # print(f'{args}')
     username = 'dpw500'
-    subject = 'message sender...'
-    body = f'message sent at {datetime.utcnow()}'
+    subject = 'otp...'
+    key = '15a27ab990dc03ac'
+    body = f'{key} at {datetime.utcnow()}'
     email_to = '1426charlie@gmail.com'
+    # email_to = '7752508168@messaging.sprintpcs.com'
 
     cfg = read_config("email/config.toml")
     config = Config.from_dict(cfg.get(username))
@@ -52,7 +54,7 @@ def main(args: list) -> None:
     message = f'From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}'
     print(message)
 
-    send(config, '1426charlie@gmail.com', message)
+    send(config, email_to, message)
 
     
 
