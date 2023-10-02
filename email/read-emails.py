@@ -8,10 +8,35 @@ from rich import print, inspect
 import imaplib
 import email
 from email.header import decode_header
+import tomllib
+from pathlib import Path
+from dataclasses import dataclass
 
-def read_all():
-    mb = imaplib.IMAP4_SSL(os.getenv('EMAIL_HOST'))
-    mb.login(os.getenv('EMAIL_USER'), os.getenv('EMAIL_PW'))
+@dataclass
+class Config:
+    host: str
+    user: str
+    pw: str
+
+    @classmethod
+    def from_dict(cls, cfg: dict):
+        return cls(
+            host = cfg.get('EMAIL_HOST'),
+            user = cfg.get('EMAIL_USER'),
+            pw = cfg.get('EMAIL_PW'),
+        )
+
+
+def read_config(filename: str):
+    path = Path(filename)
+    data = tomllib.loads(path.read_text())
+
+    return data
+
+
+def read_all(ctx: Config):
+    mb = imaplib.IMAP4_SSL(ctx.host)
+    mb.login(ctx.user, ctx.pw)
     # typ, data = mb.search(None, 'UNSEEN')
     mb.select('inbox')
     typ, data = mb.search(None, 'ALL')
@@ -45,7 +70,15 @@ def read_all():
 
 def main(args: list) -> None:
     # print(f'{args}')
-    read_all()
+    cfg = read_config("email/config.toml")
+    dpw500 = Config.from_dict(cfg.get('dpw500'))
+    dpw = Config.from_dict(cfg.get('dpw'))
+
+    print(dpw500)
+    print(dpw)
+
+    read_all(dpw500)
+    read_all(dpw)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
