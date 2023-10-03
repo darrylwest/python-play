@@ -9,6 +9,7 @@ import tomllib
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+import random
 
 from rich import print
 
@@ -47,9 +48,10 @@ def send(ctx: Config, email_to: str, message: str):
 def main(args: list) -> None:
     # print(f'{args}')
     username = "dpw500"
-    subject = "otp..."
-    key = "15a27ab990dc03ac"
+    key = random.randint(100000, 999999)
+    subject = f"otp:"
     body = f"{key} at {datetime.utcnow()}"
+
     email_to = "1426charlie@gmail.com"
     # email_to = '7752508168@messaging.sprintpcs.com'
 
@@ -57,6 +59,7 @@ def main(args: list) -> None:
     config = Config.from_dict(cfg.get(username))
 
     message = f"From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}"
+
     print(message)
 
     send(config, email_to, message)
