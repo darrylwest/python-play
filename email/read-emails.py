@@ -12,11 +12,11 @@ from datetime import datetime
 from email.header import decode_header
 from pathlib import Path
 
-from rich import inspect, print
+import rich
 from rich.table import Table
 from rich.console import Console
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 console = Console()
 
@@ -50,14 +50,11 @@ class EmailResponse:
     body: str = ""
 
     def show(self):
-        table = Table("To", self.sent_to, box=None)
-        # table.add_row("ID", self.mid)
-        table.add_row("From", f'[yellow]{self.sent_from}')
-        table.add_row("Date", self.sent_at)
-        table.add_row("Subject", f'[green3]{self.subject}')
-        table.add_row("Message", self.body)
+        table = Table("To", self.sent_to, "From", self.sent_from, box=rich.box.SIMPLE_HEAVY)
+        table.add_row("Date", self.sent_at, "Subject", f'[green3]{self.subject}')
 
         console.print(table)
+        console.print(Table(self.body, box=rich.box.SIMPLE))
 
 
 def read_config(filename: str):
