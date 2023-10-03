@@ -2,7 +2,7 @@
 # dpw@plaza.localdomain
 # 2023-07-04 16:00:45
 
-import datetime
+from datetime import datetime, timezone
 import sys
 
 date_strings = [
@@ -24,8 +24,12 @@ date_strings = [
 
 def run():
     for ts in date_strings:
-        dt = datetime.datetime.strptime(ts, "%Y/%m/%dT%H:%M:%S")
+        dt = datetime.strptime(ts, "%Y/%m/%dT%H:%M:%S")
         print(ts, "->", dt, dt.toordinal(), dt.isoformat(timespec="microseconds"))
+
+def show_now():
+    now = datetime.now(tz=timezone.utc)
+    print(f'now: {now} -> {now.isoformat()}')
 
 
 def main(args: list):
@@ -36,8 +40,9 @@ def main(args: list):
         "Convert the iso8601-ish date strings to datetime; report the date/time, ordinal, and iso output...\n"
     )
 
+    show_now()
     run()
-
+    show_now()
 
 if __name__ == "__main__":
     main(sys.argv[1:])

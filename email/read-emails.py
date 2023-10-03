@@ -14,6 +14,7 @@ from pathlib import Path
 
 from rich import inspect, print
 
+VERSION = "0.1.0"
 
 @dataclass
 class Config:
@@ -38,10 +39,20 @@ class Config:
 @dataclass
 class EmailResponse:
     mid: str
+    sent_to: str
     sent_from: str
     sent_at: str
     subject: str
     body: str = ""
+
+    def show(self):
+        # TODO(dpw): create a rich table...
+        print(f"ID  : {self.mid}")
+        print(f"To  : {self.sent_to}")
+        print(f"From: {self.sent_from}")
+        print(f"Sent: {self.sent_at}")
+        print(f"Subj: [green3]{self.subject}")
+        print(f"Body: [green3]{self.body}")
 
 
 def read_config(filename: str):
@@ -70,6 +81,7 @@ def read_all(ctx: Config) -> list[EmailResponse]:
 
                 resp = EmailResponse(
                     mid=msg.get("X-Message-ID"),
+                    sent_to=ctx.user,
                     sent_from=msg.get("from"),
                     sent_at=msg.get("date"),
                     subject=msg.get("subject"),
@@ -82,12 +94,7 @@ def read_all(ctx: Config) -> list[EmailResponse]:
                         resp.body = text
 
                 emails.append(resp)
-                # TODO(dpw): create a rich table...
-                print(f"M-ID: {resp.mid}")
-                print(f"From: {resp.sent_from}")
-                print(f"Sent: {resp.sent_at}")
-                print(f"Subj: [green3]{resp.subject}")
-                print(f"Body: [green3]{resp.body}")
+                resp.show()
 
     mb.close()
     mb.logout()
@@ -100,6 +107,9 @@ def main(args: list) -> None:
     cfg = read_config("email/config.toml")
     dpw500 = Config.from_dict(cfg.get("dpw500"))
     dpw = Config.from_dict(cfg.get("dpw"))
+
+    if "--version" in args:
+        print(f'{sys.argv[0]}, Version: {VERSION}')
 
     if "--verbose" in args:
         dpw500.verbose = True
