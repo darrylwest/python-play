@@ -10,12 +10,12 @@ import random
 
 def send_sms(send_to: str, msg):
 
-    account_sid = 'ACe5a0ace9f7acc9303fbf4b8f9b01fa0f'
-    auth_token = '315305d5265ac8ded26afd06e39392b7'
+    account_sid = ''
+    auth_token = ''
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-      from_='+18555996772',
+      from_='',
       body = msg,
       to=send_to
     )
