@@ -2,8 +2,8 @@
 # dpw@plaza.localdomain
 # 2023-07-04 16:00:45
 
-from datetime import datetime, timezone
 import sys
+from datetime import datetime, timezone
 
 date_strings = [
     "2023/12/02T05:09:00",
@@ -27,9 +27,10 @@ def run():
         dt = datetime.strptime(ts, "%Y/%m/%dT%H:%M:%S")
         print(ts, "->", dt, dt.toordinal(), dt.isoformat(timespec="microseconds"))
 
+
 def show_now():
     now = datetime.now(tz=timezone.utc)
-    print(f'now: {now} -> {now.isoformat()}')
+    print(f"now: {now} -> {now.isoformat()}")
 
 
 def main(args: list):
@@ -43,6 +44,7 @@ def main(args: list):
     show_now()
     run()
     show_now()
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

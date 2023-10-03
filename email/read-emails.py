@@ -13,12 +13,13 @@ from email.header import decode_header
 from pathlib import Path
 
 import rich
-from rich.table import Table
 from rich.console import Console
+from rich.table import Table
 
 VERSION = "0.1.1"
 
 console = Console()
+
 
 @dataclass
 class Config:
@@ -32,9 +33,9 @@ class Config:
     @classmethod
     def from_dict(cls, cfg: dict):
         return cls(
-            host=f'imap{cfg.get("EMAIL_HOST")}',
-            user=cfg.get("EMAIL_USER"),
-            pw=cfg.get("EMAIL_PW"),
+            host=f'imap{cfg.get("email_host")}',
+            user=cfg.get("email_user"),
+            pw=cfg.get("email_pw"),
             folder=cfg.get("FOLDER", "INBOX"),
             search=cfg.get("SEARCH", "ALL"),
         )
@@ -50,8 +51,10 @@ class EmailResponse:
     body: str = ""
 
     def show(self):
-        table = Table("To", self.sent_to, "From", self.sent_from, box=rich.box.SIMPLE_HEAVY)
-        table.add_row("Date", self.sent_at, "Subject", f'[green3]{self.subject}')
+        table = Table(
+            "To", self.sent_to, "From", self.sent_from, box=rich.box.SIMPLE_HEAVY
+        )
+        table.add_row("Date", self.sent_at, "Subject", f"[green3]{self.subject}")
 
         console.print(table)
         console.print(Table(self.body, box=rich.box.SIMPLE))
@@ -111,7 +114,7 @@ def main(args: list) -> None:
     dpw = Config.from_dict(cfg.get("dpw"))
 
     if "--version" in args:
-        print(f'{sys.argv[0]}, Version: {VERSION}')
+        print(f"{sys.argv[0]}, Version: {VERSION}")
 
     if "--verbose" in args:
         dpw500.verbose = True

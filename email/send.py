@@ -22,9 +22,9 @@ class Config:
     @classmethod
     def from_dict(cls, cfg: dict):
         return cls(
-            host=f'smtp{cfg.get("EMAIL_HOST")}',
-            user=cfg.get("EMAIL_USER"),
-            pw=cfg.get("EMAIL_PW"),
+            host=f'smtp{cfg.get("email_host")}',
+            user=cfg.get("email_user"),
+            pw=cfg.get("email_pw"),
         )
 
 
