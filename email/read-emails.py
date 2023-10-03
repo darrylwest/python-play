@@ -13,8 +13,12 @@ from email.header import decode_header
 from pathlib import Path
 
 from rich import inspect, print
+from rich.table import Table
+from rich.console import Console
 
 VERSION = "0.1.0"
+
+console = Console()
 
 @dataclass
 class Config:
@@ -46,13 +50,14 @@ class EmailResponse:
     body: str = ""
 
     def show(self):
-        # TODO(dpw): create a rich table...
-        print(f"ID  : {self.mid}")
-        print(f"To  : {self.sent_to}")
-        print(f"From: {self.sent_from}")
-        print(f"Sent: {self.sent_at}")
-        print(f"Subj: [green3]{self.subject}")
-        print(f"Body: [green3]{self.body}")
+        table = Table("To", self.sent_to, box=None)
+        # table.add_row("ID", self.mid)
+        table.add_row("From", f'[yellow]{self.sent_from}')
+        table.add_row("Date", self.sent_at)
+        table.add_row("Subject", f'[green3]{self.subject}')
+        table.add_row("Message", self.body)
+
+        console.print(table)
 
 
 def read_config(filename: str):
