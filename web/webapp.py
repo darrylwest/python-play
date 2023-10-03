@@ -3,8 +3,8 @@
 # 2023-03-07 21:25:22
 #
 
-from rich import print, inspect
 from flask import Flask, request
+from rich import inspect, print
 
 app = Flask(__name__)
 

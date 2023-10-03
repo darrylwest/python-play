@@ -2,11 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-08-25 16:42:26
 
-import sys
 import os
-from rich import print, inspect
+import sys
 
 import redis
+from rich import inspect, print
 
 
 def connect():

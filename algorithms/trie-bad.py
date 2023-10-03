@@ -5,8 +5,9 @@
 # this is buggy and only summorts a..z
 
 import sys
-from rich import print, inspect
 from dataclasses import dataclass
+
+from rich import inspect, print
 
 
 class TrieNode:

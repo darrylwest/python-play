@@ -4,8 +4,9 @@
 
 # see https://medium.com/stackademic/python-unleashing-the-magic-6-dataclasses-eb9afbccf129 for more details
 
-from rich import print, inspect
 from dataclasses import dataclass
+
+from rich import inspect, print
 
 
 @dataclass

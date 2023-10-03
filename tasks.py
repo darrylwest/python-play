@@ -19,3 +19,4 @@ def format(ctx):
     run black on all python files
     '''
     ctx.run('black */*.py')
+    ctx.run('isort */*.py')

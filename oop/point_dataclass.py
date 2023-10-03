@@ -3,8 +3,9 @@
 # 2023-09-18 17:38:36
 
 import sys
-from rich import print, inspect
-from dataclasses import dataclass, astuple
+from dataclasses import astuple, dataclass
+
+from rich import inspect, print
 
 
 @dataclass

@@ -2,9 +2,9 @@
 
 # multiconn-server.py
 
-import sys
-import socket
 import selectors
+import socket
+import sys
 import types
 
 sel = selectors.DefaultSelector()

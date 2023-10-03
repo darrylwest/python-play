@@ -2,10 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-09-20 20:07:07
 
-import sys
-from rich import print
-import time
 import functools
+import sys
+import time
+
+from rich import print
 
 results = []
 

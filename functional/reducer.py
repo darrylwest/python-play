@@ -3,8 +3,9 @@
 # 2023-09-01 19:58:45
 
 import sys
-from rich import print
 from functools import reduce
+
+from rich import print
 
 sys.path.append("/functional")
 from scientists import create_list

@@ -2,14 +2,14 @@
 # dpw@plaza.localdomain
 # 2023-09-01 14:23:46
 
+import hashlib
+import pickle
 import sys
-from rich import print, inspect
 from dataclasses import dataclass
 from datetime import datetime
-from faker import Faker
-import pickle
 
-import hashlib
+from faker import Faker
+from rich import inspect, print
 
 fake = Faker()
 

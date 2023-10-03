@@ -2,12 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-08-19 21:36:41
 
+import pickle
 import sys
 import time
-from rich import print
-
 from pathlib import Path
-import pickle
+
+from rich import print
 
 
 class RPCBase:

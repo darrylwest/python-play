@@ -9,13 +9,11 @@
 #
 
 import sys
-from rich import print
-
-
-# content of test_emaillib.py
-from emaillib import Email, MailAdminClient
 
 import pytest
+# content of test_emaillib.py
+from emaillib import Email, MailAdminClient
+from rich import print
 
 
 @pytest.fixture

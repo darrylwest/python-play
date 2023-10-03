@@ -5,17 +5,16 @@
 # @see https://docs.python.org/3/library/logging.html for the python docs
 # @see https://docs.python.org/3/howto/logging-cookbook.html for improved formatting, file rotation, etc.
 
+import http.client
+import json
+import logging
 import os
 import time
+from dataclasses import dataclass
+from logging.handlers import HTTPHandler, RotatingFileHandler
 from pathlib import Path
-import logging
-from logging.handlers import RotatingFileHandler, HTTPHandler
-import time
-from dataclasses import dataclass
-from rich import print, inspect
-import json
-import http.client
-from dataclasses import dataclass
+
+from rich import inspect, print
 
 
 @dataclass

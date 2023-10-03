@@ -2,10 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-09-22 19:13:20
 
-import sys
-from rich import inspect
-import itertools
 import asyncio
+import itertools
+import sys
+
+from rich import inspect
 
 
 async def spin(msg: str) -> None:

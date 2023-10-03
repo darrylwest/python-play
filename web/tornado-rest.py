@@ -3,9 +3,10 @@
 # 2023-08-21 22:59:00
 
 import asyncio
-import tornado
 import sys
-from rich import print, inspect
+
+import tornado
+from rich import inspect, print
 
 
 class MainHandler(tornado.web.RequestHandler):

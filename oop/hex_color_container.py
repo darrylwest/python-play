@@ -3,7 +3,8 @@
 # 2023-09-18 22:46:19
 
 import sys
-from rich import print, inspect
+
+from rich import inspect, print
 
 
 class HexColorContainer:

@@ -3,13 +3,13 @@
 # 2023-08-20 23:23:22
 
 import sys
-from rich import print
 
 from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.uix.button import Button
-from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ListProperty
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.widget import Widget
+from rich import print
 
 
 class RootWidget(BoxLayout):

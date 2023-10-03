@@ -3,8 +3,9 @@
 # 2023-09-13 22:36:26
 
 import sys
-from rich import inspect, print
 from typing import NamedTuple, Self
+
+from rich import inspect, print
 
 
 class Config(NamedTuple):

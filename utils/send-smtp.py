@@ -2,11 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-10-01 18:27:33
 
-import sys
-from rich import print
 import smtplib
-from email.message import EmailMessage
+import sys
 from datetime import datetime
+from email.message import EmailMessage
+
+from rich import print
 
 
 def compose():

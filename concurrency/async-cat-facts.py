@@ -6,12 +6,13 @@
 # NOTE: this is far from complete!
 #
 
-import sys
-from rich import print, inspect
 import asyncio
 import json
+import sys
 import time
+
 import aiohttp
+from rich import inspect, print
 
 
 async def worker(name, n, session):

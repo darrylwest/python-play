@@ -3,9 +3,10 @@
 # 2023-08-28 12:56:14
 
 import sys
-from rich import print
-import schedule
 import time
+
+import schedule
+from rich import print
 
 
 def job(num: int):

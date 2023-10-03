@@ -2,10 +2,11 @@
 # dpw@plaza.localdomain
 # 2023-09-18 17:51:31
 
-import sys
-from rich import print, inspect
-from abc import ABC, abstractmethod
 import math
+import sys
+from abc import ABC, abstractmethod
+
+from rich import inspect, print
 
 
 class Shape(ABC):

@@ -4,8 +4,8 @@
 
 import sys
 import time
-from dataclasses import dataclass
 from collections import namedtuple
+from dataclasses import dataclass
 
 
 def notes():

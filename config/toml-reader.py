@@ -3,8 +3,9 @@
 # 2023-08-08 17:43:25
 
 import tomllib
-from rich import inspect
 from pathlib import Path
+
+from rich import inspect
 
 
 def process():

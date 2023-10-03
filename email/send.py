@@ -2,13 +2,17 @@
 # dpw@plaza.localdomain
 # 2023-10-02 17:49:39
 
+import smtplib
+import ssl
 import sys
-from rich import print
-import smtplib, ssl
 import tomllib
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+import random
+
+from rich import print
+
 
 @dataclass
 class Config:
@@ -19,16 +23,18 @@ class Config:
     @classmethod
     def from_dict(cls, cfg: dict):
         return cls(
-            host=f'smtp{cfg.get("EMAIL_HOST")}',
-            user=cfg.get("EMAIL_USER"),
-            pw=cfg.get("EMAIL_PW"),
+            host=f'smtp{cfg.get("email_host")}',
+            user=cfg.get("email_user"),
+            pw=cfg.get("email_pw"),
         )
+
 
 def read_config(filename: str):
     path = Path(filename)
     data = tomllib.loads(path.read_text())
 
     return data
+
 
 def send(ctx: Config, email_to: str, message: str):
     port = 465
@@ -41,23 +47,23 @@ def send(ctx: Config, email_to: str, message: str):
 
 def main(args: list) -> None:
     # print(f'{args}')
-    username = 'dpw500'
-    subject = 'otp...'
-    key = '15a27ab990dc03ac'
-    body = f'{key} at {datetime.utcnow()}'
-    email_to = '1426charlie@gmail.com'
+    username = "dpw500"
+    key = random.randint(100000, 999999)
+    subject = f"otp:"
+    body = f"{key} at {datetime.utcnow()}"
+
+    email_to = "1426charlie@gmail.com"
     # email_to = '7752508168@messaging.sprintpcs.com'
 
     cfg = read_config("email/config.toml")
     config = Config.from_dict(cfg.get(username))
 
-    message = f'From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}'
+    message = f"From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}"
+
     print(message)
 
     send(config, email_to, message)
 
-    
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1:])
-

@@ -3,6 +3,7 @@
 # 2023-08-31 16:29:09
 
 import sys
+
 from rich import inspect
 
 """

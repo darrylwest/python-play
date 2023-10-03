@@ -3,9 +3,9 @@
 # 2023-08-30 13:10:53
 
 import sys
-from rich import print, inspect
 
 import pytest
+from rich import inspect, print
 
 
 class Fruit:

@@ -6,8 +6,8 @@
 
 import os
 import sys
-from rich import print
 
+from rich import print
 
 # Path to your named pipe
 pipe_name = "/tmp/stress-pipe"
