@@ -2,6 +2,7 @@
 # dpw@plaza.localdomain
 # 2023-10-02 17:49:39
 
+import random
 import smtplib
 import ssl
 import sys
@@ -9,7 +10,6 @@ import tomllib
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-import random
 
 from rich import print
 
