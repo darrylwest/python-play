@@ -61,7 +61,7 @@ class EmailResponse:
         table = Table(
             "To", self.sent_to, "From", self.sent_from, box=rich.box.SIMPLE_HEAVY
         )
-        table.add_row("Date", f'[cyan]{sent_at}', "Subject", f"[green3]{self.subject}")
+        table.add_row("Date", f"[cyan]{sent_at}", "Subject", f"[green3]{self.subject}")
 
         console.print(table)
         # console.print(Table(self.body, box=rich.box.SIMPLE))
@@ -94,8 +94,8 @@ def read_all(ctx: Config) -> list[EmailResponse]:
                 resp = EmailResponse(
                     mid=msg.get("X-Message-ID"),
                     # sent_to=ctx.user,
-                    sent_to=msg.get('X-Original-To'),
-                    sent_from=msg.get('Return-Path'),
+                    sent_to=msg.get("X-Original-To"),
+                    sent_from=msg.get("Return-Path"),
                     sent_at=msg.get("X-MC-Ingress-Time"),
                     subject=msg.get("Subject"),
                 )

@@ -6,8 +6,6 @@
 
 from collections import deque
 
-import begin
-
 
 # creates a FIFO queue
 def create_queue():
@@ -20,8 +18,7 @@ def create_queue():
     return q
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     fifo = create_queue()
 
     print(f"queue {fifo} (non-blocking)")

@@ -51,13 +51,13 @@ def main(args: list) -> None:
     body = f"{key} at {datetime.now(tz=timezone.utc)}"
 
     # email_to = "1426charlie@gmail.com"
-    email_to = '7752508168@messaging.sprintpcs.com'
+    email_to = "7752508168@messaging.sprintpcs.com"
     # email_to = 'dpw@raincitysoftware.com'
 
-    cfg = read_config('email/config.toml')
+    cfg = read_config("email/config.toml")
     config = Config.from_dict(cfg.get(username))
 
-    message = f'From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}'
+    message = f"From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}"
 
     print(message)
 

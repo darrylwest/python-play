@@ -4,8 +4,6 @@
 
 from collections import defaultdict
 
-import begin
-
 
 def add_dogs(dd):
     dd["dogs"].append("Fido")
@@ -19,8 +17,7 @@ def add_cats(dd):
     dd["cats"].append("Whiskers")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     print("creates a short lists of dogs and cats")
     dd = defaultdict(list)
 

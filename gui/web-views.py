@@ -5,11 +5,11 @@
 import sys
 
 import webview
-from rich import print, inspect
+from rich import inspect, print
 
 
 def get_elements(window):
-    user = window.get_elements('#rcmloginuser')[0]
+    user = window.get_elements("#rcmloginuser")[0]
     # user['attributes']['value'] = 'dpw500@raincitysoftware.com'
     inspect(user)
     for k, v in user.items():
@@ -24,7 +24,7 @@ def main(args: list) -> None:
     url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com"
 
     window = webview.create_window(
-        title="Web Mail", 
+        title="Web Mail",
         url=url,
         width=1200,
         height=1000,

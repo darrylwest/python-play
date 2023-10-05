@@ -4,8 +4,6 @@
 
 from types import MappingProxyType
 
-import begin
-
 
 def create_writable():
     rw = {"one": 1, "two": 2, "three": 3}
@@ -19,8 +17,7 @@ def create_read_only(mp):
     return read_only
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     w = create_writable()
     ro = create_read_only(w)
 

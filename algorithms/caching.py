@@ -5,8 +5,6 @@
 import time
 from functools import lru_cache
 
-import begin
-
 
 @lru_cache
 def foo(x: int, y: int) -> int:
@@ -15,8 +13,7 @@ def foo(x: int, y: int) -> int:
     return x**y
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     print(f"foo: {foo.__doc__}")
     for _ in range(20):
         t0 = time.time_ns()
