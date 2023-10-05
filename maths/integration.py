@@ -4,7 +4,6 @@
 
 from math import acos, asin, atan, cos, degrees, radians, sin, tan
 
-import begin
 from scipy.constants import e, pi
 from scipy.integrate import fixed_quad, quad, quadrature, romberg
 
@@ -29,7 +28,6 @@ def sin_test():
     print(f"romberg = {romberg(sin, 0, pi)}")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     sin_test()
     ee_test()

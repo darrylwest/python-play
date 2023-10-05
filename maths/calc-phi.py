@@ -5,8 +5,6 @@
 import math
 import random
 
-import begin
-
 
 def calc_phi():
     # the random start value
@@ -21,6 +19,5 @@ def calc_phi():
     print(f"Phi calculation result: {x} after {count} rounds, error: {phi - x}...")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     calc_phi()

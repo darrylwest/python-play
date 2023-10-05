@@ -4,8 +4,6 @@
 
 import time
 
-import begin
-
 
 def fib_generator():
     a, b = 0, 1
@@ -14,8 +12,7 @@ def fib_generator():
         a, b = b, a + b
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     print("Generates an infinite fib sequence...")
     fgen = fib_generator()
     while True:

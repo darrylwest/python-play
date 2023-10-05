@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-07-24 16:14:50
 
-import begin
 import sympy as sym
 
 
@@ -26,7 +25,6 @@ def cubed_test():
     print(f"{y} = {v}")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     # cubed_test()
     rational_test()
