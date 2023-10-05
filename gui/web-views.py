@@ -9,11 +9,7 @@ from rich import inspect, print
 
 
 def get_elements(window):
-    user = window.get_elements("#rcmloginuser")[0]
-    # user['attributes']['value'] = 'dpw500@raincitysoftware.com'
-    inspect(user)
-    for k, v in user.items():
-        print(k, v, type(v))
+    inspect(window)
 
 
 def main(args: list) -> None:
@@ -21,7 +17,10 @@ def main(args: list) -> None:
     # url = 'https://raincitysoftware.com'
     # url = 'https://darrylwest.github.io/'
 
-    url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com"
+    if len(args) > 0:
+        url = args[0]
+    else:
+        url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com"
 
     window = webview.create_window(
         title="Web Mail",
