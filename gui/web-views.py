@@ -5,13 +5,34 @@
 import sys
 
 import webview
-from rich import print
+from rich import print, inspect
+
+
+def get_elements(window):
+    user = window.get_elements('#rcmloginuser')[0]
+    # user['attributes']['value'] = 'dpw500@raincitysoftware.com'
+    inspect(user)
+    for k, v in user.items():
+        print(k, v, type(v))
 
 
 def main(args: list) -> None:
     # print(f'{args}')
-    webview.create_window("howdy yall", "https://pywebview.flowrl.com/")
-    webview.start()
+    # url = 'https://raincitysoftware.com'
+    # url = 'https://darrylwest.github.io/'
+
+    url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com"
+
+    window = webview.create_window(
+        title="Web Mail", 
+        url=url,
+        width=1200,
+        height=1000,
+        frameless=False,
+        js_api=True,
+    )
+
+    webview.start(get_elements, window, debug=True, user_agent="dpw")
 
 
 if __name__ == "__main__":
