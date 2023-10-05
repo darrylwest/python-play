@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-08-06 19:58:19
 
-import begin
 import pendulum
 
 
@@ -21,7 +20,6 @@ def parse():
     print(now, "->", utc)
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     show()
     parse()
