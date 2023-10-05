@@ -4,8 +4,6 @@
 
 import math
 
-import begin
-
 
 def func1(x):
     return 6 / x
@@ -37,7 +35,6 @@ def find_intersection(fn1, fn2, startx, endx):
     return x
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     x = find_intersection(func1, func2, 5.9, 6.1)
     print(x)

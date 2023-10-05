@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-07-26 15:13:54
 
-import begin
 from gmail.gmail import gmail
 
 # need to create a google app-passkey to use this
@@ -18,8 +17,7 @@ def send_gmail(subject, body, to):
     print(f"message {subject} sent to: {to}")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     # read the id and pw from local store...
     print("not ready yet...")
 

@@ -4,8 +4,6 @@
 
 from collections import deque
 
-import begin
-
 
 def create_stack():
     stack = deque()
@@ -17,8 +15,7 @@ def create_stack():
     return stack
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     stack = create_stack()
 
     print(f"stack: {stack}")

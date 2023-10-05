@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-08-01 17:24:50
 
-import begin
 import PySimpleGUI as sg
 
 
@@ -27,6 +26,5 @@ def run():
     window.close()
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     run()

@@ -5,8 +5,6 @@
 import math.cos
 import math.sin
 
-import begin
-
 
 def afn(x, y):
     return cos(y)
@@ -35,7 +33,6 @@ def test(x, y):
         print(f"{fn.__name__}({x},{y}) = {fn(x,y) }")
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     x, y = 5, -7
     test(x, y)

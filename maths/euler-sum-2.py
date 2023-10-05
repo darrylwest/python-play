@@ -4,13 +4,10 @@
 
 import math
 
-import begin
-
 
 def func(x):
     return sum([x**n / math.factorial(n) for n in range(0, 100)])
 
 
-@begin.start
-def main():
+if __name__ == "__main__":
     print(func(3 + 5), func(3) * func(5))

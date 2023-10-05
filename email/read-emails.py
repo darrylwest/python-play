@@ -51,13 +51,20 @@ class EmailResponse:
     body: str = ""
 
     def show(self):
+        if isinstance(self.sent_at, str):
+            ts = float(self.sent_at) / 1_000
+
+            sent_at = datetime.fromtimestamp(ts).isoformat()
+        else:
+            sent_at = ""
+
         table = Table(
             "To", self.sent_to, "From", self.sent_from, box=rich.box.SIMPLE_HEAVY
         )
-        table.add_row("Date", self.sent_at, "Subject", f"[green3]{self.subject}")
+        table.add_row("Date", f"[cyan]{sent_at}", "Subject", f"[green3]{self.subject}")
 
         console.print(table)
-        console.print(Table(self.body, box=rich.box.SIMPLE))
+        # console.print(Table(self.body, box=rich.box.SIMPLE))
 
 
 def read_config(filename: str):
@@ -86,17 +93,18 @@ def read_all(ctx: Config) -> list[EmailResponse]:
 
                 resp = EmailResponse(
                     mid=msg.get("X-Message-ID"),
-                    sent_to=ctx.user,
-                    sent_from=msg.get("from"),
-                    sent_at=msg.get("date"),
-                    subject=msg.get("subject"),
+                    # sent_to=ctx.user,
+                    sent_to=msg.get("X-Original-To"),
+                    sent_from=msg.get("Return-Path"),
+                    sent_at=msg.get("X-MC-Ingress-Time"),
+                    subject=msg.get("Subject"),
                 )
 
                 for part in msg.walk():
                     if part.get_content_type() == "text/plain":
                         body = part.as_string().split("\n")
                         text = "".join([f"{tx}\n" for tx in body[1:] if tx != ""])
-                        resp.body = text
+                        # resp.body = text
 
                 emails.append(resp)
                 resp.show()

@@ -6,8 +6,6 @@
 
 import time
 
-import begin
-
 
 def timer(func):
     def wrapper(*args, **kwargs):
@@ -26,8 +24,7 @@ def myfn(i):
     return "hello " + str(i)
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     print(
         "simulates a long-running function to demonstrate how to create and use a Decorator..."
     )

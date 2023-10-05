@@ -4,8 +4,6 @@
 
 from enum import Enum
 
-import begin
-
 
 class Color(Enum):
     RED = "#FF0000"
@@ -17,8 +15,7 @@ def decode_color(colr: str) -> str:
     return Color[colr.upper()].value
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     colors = ["red", "green", "blue"]
     values = list(map(decode_color, colors))
 

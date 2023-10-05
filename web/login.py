@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-07-31 16:20:54
 
-import begin
 import pyvibe as pv
 
 
@@ -27,7 +26,6 @@ def create_page():
     return page
 
 
-@begin.start
-def main(arg1=None):
+if __name__ == "__main__":
     page = create_page()
     print(page.to_html())
