@@ -10,6 +10,7 @@ from rich import inspect, print
 
 def get_elements(window):
     inspect(window)
+    # user = window
 
 
 def main(args: list) -> None:
@@ -20,7 +21,7 @@ def main(args: list) -> None:
     if len(args) > 0:
         url = args[0]
     else:
-        url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com"
+        url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw@raincitysoftware.com&_pass=mypass"
 
     window = webview.create_window(
         title="Web Mail",

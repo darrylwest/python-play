@@ -8,6 +8,8 @@ import sys
 import tomllib
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from pathlib import Path
 
 from rich import print
@@ -46,22 +48,26 @@ def send(ctx: Config, email_to: str, message: str):
 def main(args: list) -> None:
     # print(f'{args}')
     username = "dpw500"
-    key = random.randint(100000, 999999)
-    subject = f"otp:"
-    body = f"{key} at {datetime.now(tz=timezone.utc)}"
-
     # email_to = "1426charlie@gmail.com"
-    email_to = "7752508168@messaging.sprintpcs.com"
-    # email_to = 'dpw@raincitysoftware.com'
+    # email_to = "7752508168@messaging.sprintpcs.com"
+    email_to = "dpw@raincitysoftware.com"
+
+    msg = MIMEMultipart()
+    msg["From"] = username
+    msg["To"] = email_to
+    msg["Subject"] = "otp..."
+
+    key = random.randint(100000, 999999)
+    body = f"OTP: {key} generated {datetime.now(tz=timezone.utc)}."
+
+    msg.attach(MIMEText(body, "plain"))
 
     cfg = read_config("email/config.toml")
     config = Config.from_dict(cfg.get(username))
 
-    message = f"From: {config.user}\nTo: {email_to}\nSubject: {subject}\n\n{body}"
+    send(config, email_to, msg.as_string())
 
-    print(message)
-
-    send(config, email_to, message)
+    print(f"sent message to {email_to}: {body}")
 
 
 if __name__ == "__main__":
