@@ -4,34 +4,52 @@
 
 import os
 import sys
+import time
 
 import redis
+from redis import Redis
 from rich import inspect, print
+import random
 
 
 def connect():
     # this has to be set in the current env
-    redis_auth = os.getenv("REDISCLI_AUTH")
-    redis_port = os.getenv("REDIS_PORT", 6452)
+    # redis_auth = os.getenv("REDISCLI_AUTH")
+    # redis_port = os.getenv("REDIS_PORT", 6452)
 
     # print(redis_auth)
     # print(redis_port)
 
-    r = redis.Redis(host="localhost", port=redis_port, db=0)  # protocol=3)
-    r.auth(redis_auth)
+    # r = redis.Redis(host="localhost", port=redis_port, db=0)  # protocol=3)
+    r = redis.Redis(host="localhost")
+    # r.auth(redis_auth)
 
     return r
+
+
+def write_pipe(db: Redis, count: int = 1000) -> None:
+    pipe = db.pipeline()
+
+    for n in range(count):
+        key = random.randint(100000, 999999)
+        pipe.set(f"{key}", f"my {key} value # {n}")
+
+    pipe.execute()
 
 
 def main(args: list) -> None:
     db = connect()
     print(db)
 
-    keys = db.keys("*")
-    print(keys)
+    size0 = db.dbsize()
+    print(size0)
 
-    value = db.get(b"mykey")
-    print(value)
+    start_time = time.time()
+    write_pipe(db)
+    end_time = time.time()
+
+    print(f"start: {start_time} end: {end_time} = {end_time - start_time}")
+    print(f"new size: {db.dbsize()}")
 
 
 if __name__ == "__main__":
