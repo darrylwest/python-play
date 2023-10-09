@@ -20,3 +20,8 @@ def format(ctx):
     '''
     ctx.run('black */*.py')
     ctx.run('isort */*.py')
+
+@task
+def archive(ctx):
+    ctx.run('tar czvf data.tgz data/xyz.*')
+

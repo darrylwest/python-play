@@ -5,28 +5,52 @@
 import sys
 
 import webview
+import screeninfo
 from rich import inspect, print
 
 
 def get_elements(window):
-    inspect(window)
+    # inspect(window)
+    # user = window
+    return
 
+def parse(arg: str) -> str:
+    match arg:
+        case 'dpw': 
+            return "https://webmail.dreamhost.com/?clearSession=true&_user=dpw@raincitysoftware.com&_pass=mypass"
+        case 'dpw500': 
+            return "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com&_pass=mypass"
+        case 'rcs':
+            return 'https://raincitysoftware.com'
+        case 'you':
+            return 'https://wwww.youtube.com'
+        case 'python':
+            return 'https://python.org'
+        case 'real':
+            return 'https://realpython.com'
+        case other:
+            return 'https://google.com'
+    
 
 def main(args: list) -> None:
-    # print(f'{args}')
-    # url = 'https://raincitysoftware.com'
     # url = 'https://darrylwest.github.io/'
 
-    if len(args) > 0:
-        url = args[0]
-    else:
-        url = "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com"
+    match len(args):
+        case 0:
+            url = 'https://www.youtube.com/'
+        case 1:
+            url = parse(args[0])
+        case other:
+            if '--url' in args:
+                url = args[1]
+
+    monitor = screeninfo.get_monitors()[0]
 
     window = webview.create_window(
-        title="Web Mail",
+        title="Web",
         url=url,
-        width=1200,
-        height=1000,
+        width=monitor.width - 60,
+        height=monitor.height - 60,
         frameless=False,
         js_api=True,
     )
