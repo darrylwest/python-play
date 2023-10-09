@@ -9,6 +9,8 @@ import time
 from pathlib import Path
 from typing import Callable
 
+from concurrent import futures
+
 import httpx
 
 POP20_CC = ('CN IN US ID BR PK NG BD RU JP MX PH VN ET EG DE IR TR CD FR').split()
@@ -25,11 +27,24 @@ def get_flag(cc: str) -> bytes:
 
     return resp.content
 
+def download(cc: str):
+    image = get_flag(cc)
+    save_flag(image, f'{cc}.gif')
+    print(cc, end=' ', flush=True)
+
+    return cc
+
 def download_many(cc_list: list[str]) -> int:
+    print('download many')
+    with futures.ThreadPoolExecutor(max_workers=3) as executor:
+        res = executor.map(download, sorted(cc_list))
+
+    return len(list(res))
+
+def download_all(cc_list: list[str]) -> int:
+    print('download all')
     for cc in sorted(cc_list):
-        image = get_flag(cc)
-        save_flag(image, f'{cc}.gif')
-        print(cc, end=' ', flush=True)
+        download(cc)
 
     return len(cc_list)
 
@@ -41,5 +56,6 @@ def main(downloader: Callable[[list[str]], int]) -> None:
     print(f'\n{count} downloads in {elapsed:.2f}s')
 
 if __name__ == '__main__':
+    # main(download_all)
     main(download_many)
 
