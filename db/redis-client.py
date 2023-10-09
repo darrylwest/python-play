@@ -3,13 +3,13 @@
 # 2023-08-25 16:09:39
 
 import os
+import random
 import sys
 import time
 
 import redis
 from redis import Redis
 from rich import inspect, print
-import random
 
 
 def connect():
