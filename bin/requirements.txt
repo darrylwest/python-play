@@ -278,7 +278,7 @@ pyvibe==0.0.5
 pywebview==4.1
 PyYAML==6.0
 pyzmq==25.0.0
-redis==4.5.5
+redis==5.0.1
 reflex==0.2.4
 regex==2023.6.3
 requests==2.31.0
