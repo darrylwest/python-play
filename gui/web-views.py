@@ -4,8 +4,8 @@
 
 import sys
 
-import webview
 import screeninfo
+import webview
 from rich import inspect, print
 
 
@@ -14,34 +14,35 @@ def get_elements(window):
     # user = window
     return
 
+
 def parse(arg: str) -> str:
     match arg:
-        case 'dpw': 
+        case "dpw":
             return "https://webmail.dreamhost.com/?clearSession=true&_user=dpw@raincitysoftware.com&_pass=mypass"
-        case 'dpw500': 
+        case "dpw500":
             return "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com&_pass=mypass"
-        case 'rcs':
-            return 'https://raincitysoftware.com'
-        case 'you':
-            return 'https://wwww.youtube.com'
-        case 'python':
-            return 'https://python.org'
-        case 'real':
-            return 'https://realpython.com'
+        case "rcs":
+            return "https://raincitysoftware.com"
+        case "you":
+            return "https://wwww.youtube.com"
+        case "python":
+            return "https://python.org"
+        case "real":
+            return "https://realpython.com"
         case other:
-            return 'https://google.com'
-    
+            return "https://google.com"
+
 
 def main(args: list) -> None:
     # url = 'https://darrylwest.github.io/'
 
     match len(args):
         case 0:
-            url = 'https://www.youtube.com/'
+            url = "https://www.youtube.com/"
         case 1:
             url = parse(args[0])
         case other:
-            if '--url' in args:
+            if "--url" in args:
                 url = args[1]
 
     monitor = screeninfo.get_monitors()[0]

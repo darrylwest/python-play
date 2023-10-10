@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # dpw@plaza.localdomain
-# 2023-10-08 22:13:12
+# 2023-10-09 22:35:13
 
+import asyncio
 import sys
 import time
-from concurrent import futures
 from pathlib import Path
 from typing import Callable
 
-import httpx
+from httpx import AsyncClient
 from rich import print
 
 POP20_CC = ("CN IN US ID BR PK NG BD RU JP MX PH VN ET EG DE IR TR CD FR").split()
@@ -20,36 +20,31 @@ def save_flag(img: bytes, filename: str) -> None:
     (DEST_DIR / filename).write_bytes(img)
 
 
-def get_flag(cc: str) -> bytes:
+def download_all(cc_list: list[str]) -> int:
+    return asyncio.run(supervisor(cc_list))
+
+
+async def get_flag(client: AsyncClient, cc: str) -> bytes:
     url = f"{BASE_URL}/{cc}/{cc}.gif".lower()
-    resp = httpx.get(url, timeout=6.1, follow_redirects=True)
-    resp.raise_for_status()
+    resp = await client.get(url, timeout=6.1, follow_redirects=True)
 
-    return resp.content
+    return resp.read()
 
 
-def download(cc: str):
-    image = get_flag(cc)
+async def download(client: AsyncClient, cc: str):
+    image = await get_flag(client, cc)
     save_flag(image, f"{cc}.gif")
     print(cc, end=" ", flush=True)
 
     return cc
 
 
-def download_many(cc_list: list[str]) -> int:
-    print("download many")
-    with futures.ThreadPoolExecutor(max_workers=3) as executor:
-        res = executor.map(download, sorted(cc_list))
+async def supervisor(cc_list: list[str]) -> int:
+    async with AsyncClient() as client:
+        to_do = [download(client, cc) for cc in sorted(cc_list)]
+        res = await asyncio.gather(*to_do)
 
-    return len(list(res))
-
-
-def download_all(cc_list: list[str]) -> int:
-    print("download all")
-    for cc in sorted(cc_list):
-        download(cc)
-
-    return len(cc_list)
+    return len(res)
 
 
 def main(downloader: Callable[[list[str]], int]) -> None:
@@ -61,5 +56,4 @@ def main(downloader: Callable[[list[str]], int]) -> None:
 
 
 if __name__ == "__main__":
-    # main(download_all)
-    main(download_many)
+    main(download_all)

@@ -11,7 +11,6 @@
 import sys
 
 import pytest
-
 # content of test_emaillib.py
 from emaillib import Email, MailAdminClient
 from rich import print

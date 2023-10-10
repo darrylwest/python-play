@@ -8,7 +8,7 @@ set -eu
 printf "start the redis client\n"
 
 [ -f ./env ] && source ./.env
-[ -f ./db/env ] && source ./db/.env
+[ -f ./db/.env ] && source ./db/.env
 
 redis-cli -p $REDIS_PORT 
 
