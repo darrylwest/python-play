@@ -14,20 +14,20 @@ from rich import inspect, print
 
 def connect():
     # this has to be set in the current env
-    # redis_auth = os.getenv("REDISCLI_AUTH")
-    # redis_port = os.getenv("REDIS_PORT", 6452)
+    redis_auth = os.getenv("REDISCLI_AUTH")
+    redis_port = os.getenv("REDIS_PORT", 6452)
 
-    # print(redis_auth)
-    # print(redis_port)
+    print(redis_auth)
+    print(redis_port)
 
-    # r = redis.Redis(host="localhost", port=redis_port, db=0)  # protocol=3)
-    r = redis.Redis(host="localhost")
-    # r.auth(redis_auth)
+    r = redis.Redis(host="localhost", port=redis_port, db=0)  # protocol=3)
+    # r = redis.Redis(host="localhost")
+    r.auth(redis_auth)
 
     return r
 
 
-def write_pipe(db: Redis, count: int = 1000) -> None:
+def write_pipe(db: Redis, count: int = 10) -> None:
     pipe = db.pipeline()
 
     for n in range(count):
