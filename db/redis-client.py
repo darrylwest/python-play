@@ -5,53 +5,61 @@
 import os
 import random
 import sys
-import time
+from time import time
 
+import asyncio
 import redis
 from redis import Redis
 from rich import inspect, print
 
 
-def connect():
+async def connect():
     # this has to be set in the current env
     redis_auth = os.getenv("REDISCLI_AUTH")
-    redis_port = os.getenv("REDIS_PORT", 6452)
+    redis_port = os.getenv("REDIS_PORT", 6450)
 
-    print(redis_auth)
-    print(redis_port)
+    print(redis_auth, redis_port)
 
-    r = redis.Redis(host="localhost", port=redis_port, db=0)  # protocol=3)
-    # r = redis.Redis(host="localhost")
-    r.auth(redis_auth)
+    r = redis.asyncio.client.Redis(
+        host="localhost", 
+        port=redis_port, 
+        db=0,
+        password=redis_auth,
+    )
+
+    # inspect(r)
 
     return r
 
 
-def write_pipe(db: Redis, count: int = 10) -> None:
-    pipe = db.pipeline()
+async def write_pipe(db: Redis, count: int = 100) -> None:
+    async with db.pipeline(transaction=True) as pipe:
+        for n in range(count):
+            key = random.randint(100000, 999999)
+            pipe.set(f"{key}", f"my {key} value # {n}")
 
-    for n in range(count):
-        key = random.randint(100000, 999999)
-        pipe.set(f"{key}", f"my {key} value # {n}")
+        resp = await pipe.execute()
 
-    pipe.execute()
+    return resp
 
-
-def main(args: list) -> None:
-    db = connect()
+async def main(args: list) -> None:
+    db = await connect()
     print(db)
 
-    size0 = db.dbsize()
+    size0 = await db.dbsize()
     print(size0)
 
-    start_time = time.time()
-    write_pipe(db)
-    end_time = time.time()
+    start_time = time()
+    await write_pipe(db)
+    end_time = time()
 
     print(f"start: {start_time} end: {end_time} = {end_time - start_time}")
-    print(f"new size: {db.dbsize()}")
+    size1 = await db.dbsize()
+    print(f"new size: {size1}")
+
+    await db.aclose()
 
 
 if __name__ == "__main__":
     # read the .env file?
-    main(sys.argv[1:])
+    asyncio.run(main(sys.argv[1:]))
