@@ -5,11 +5,17 @@
 
 set -eu
 
-deps='aiohttp "httpx[http2]" rich mpire faker "redis[hiredis]" textual screeninfo  pywebview pyinvoke black pytest isort'
+[ `uname` != "Linux" ] && {
+    echo "should only run this script on Linux machines..."
+    exit -1
+}
+
+deps='bpython aiohttp "httpx[http2]" rich mpire faker "redis[hiredis]" textual screeninfo  pywebview pyinvoke black pytest isort'
 
 for dep in $deps
 do
     echo $dep
+    python -m pip install $dep
 done
 
 exit $?
