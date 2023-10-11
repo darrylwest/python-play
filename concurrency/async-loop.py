@@ -7,10 +7,12 @@ import datetime
 
 
 async def loop():
-    while True:
+    count = 5
+    print(f'will loop {count} times...')
+    for n in range(count):
         nxt = asyncio.sleep(2)
 
-        print(f"this is my job: {datetime.datetime.now()}")
+        print(f"{n+1}: this is my job: {datetime.datetime.now()}")
 
         await nxt
 
