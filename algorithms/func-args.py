@@ -4,9 +4,6 @@
 #
 import math
 
-import numpy as np
-import sympy as sym
-
 
 def foo(x, *args, **kwargs):
     print(f"x = {x}")

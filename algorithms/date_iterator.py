@@ -4,7 +4,6 @@
 
 from datetime import date, timedelta
 
-import typer
 from rich.console import Console
 
 
@@ -43,4 +42,5 @@ def test_sequence():
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main()
+
