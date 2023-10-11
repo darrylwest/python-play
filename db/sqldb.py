@@ -11,7 +11,6 @@
 import sqlite3
 from contextlib import closing
 
-import typer
 from rich import print
 
 
@@ -27,12 +26,12 @@ def query(conn, query):
     return rows
 
 
-def main(dbpath: str) -> None:
+def main():
     path = "db/user.db"
-    with closing(connect(dbpath)) as conn:
+    with closing(connect(path)) as conn:
         rows = query(conn, "select * from user")
         print(rows)
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main()

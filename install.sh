@@ -5,7 +5,7 @@
 
 set -eu
 
-deps='aiohttp "httpx[http2] rich mpire'
+deps='aiohttp "httpx[http2] rich mpire faker "redis[hiredis]"'
 
 exit $?
 

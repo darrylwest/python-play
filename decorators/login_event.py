@@ -5,7 +5,6 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-import typer
 
 
 def hide_field(field) -> str:
@@ -94,4 +93,7 @@ def test_event():
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    user = 'dpw'
+    pw = 'testps'
+
+    main(user, pw)
