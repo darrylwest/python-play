@@ -2,12 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-08-25 16:09:39
 
+import asyncio
 import os
 import random
 import sys
 from time import time
 
-import asyncio
 import redis
 from redis import Redis
 from rich import inspect, print
@@ -21,8 +21,8 @@ async def connect():
     print(redis_auth, redis_port)
 
     r = redis.asyncio.client.Redis(
-        host="localhost", 
-        port=redis_port, 
+        host="localhost",
+        port=redis_port,
         db=0,
         password=redis_auth,
     )
@@ -41,6 +41,7 @@ async def write_pipe(db: Redis, count: int = 100) -> None:
         resp = await pipe.execute()
 
     return resp
+
 
 async def main(args: list) -> None:
     db = await connect()

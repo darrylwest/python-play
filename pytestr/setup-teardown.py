@@ -48,4 +48,4 @@ def test_email_received(sending_user, receiving_user):
 
 
 if __name__ == "__main__":
-    print(f"run this: pytest -s {argv[0]}")
+    print(f"run this: pytest -s {sys.argv[0]}")

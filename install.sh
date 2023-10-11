@@ -5,7 +5,7 @@
 
 set -eu
 
-deps='aiohttp "httpx[http2] rich mpire faker "redis[hiredis]"'
+deps='aiohttp "httpx[http2] rich mpire faker "redis[hiredis]" textual screeninfo  pywebview pyinvoke black pytest isort'
 
 exit $?
 

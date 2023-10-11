@@ -3,7 +3,6 @@
 # 2023-08-10 14:51:10
 
 
-
 class Movie:
     def __init__(self, rating: int):
         if Movie.validate(rating):

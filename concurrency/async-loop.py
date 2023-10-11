@@ -8,7 +8,7 @@ import datetime
 
 async def loop():
     count = 5
-    print(f'will loop {count} times...')
+    print(f"will loop {count} times...")
     for n in range(count):
         nxt = asyncio.sleep(2)
 

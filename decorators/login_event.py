@@ -6,7 +6,6 @@ from dataclasses import dataclass
 from datetime import datetime
 
 
-
 def hide_field(field) -> str:
     """redact the password"""
     return "**redacted**"
@@ -93,7 +92,7 @@ def test_event():
 
 
 if __name__ == "__main__":
-    user = 'dpw'
-    pw = 'testps'
+    user = "dpw"
+    pw = "testps"
 
     main(user, pw)

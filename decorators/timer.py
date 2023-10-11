@@ -4,7 +4,7 @@
 
 # see https://medium.com/@mkuhikar/python-decorators-advanced-67420a5b7278 for notes on Decorators
 
-from time import time, sleep, monotonic
+from time import monotonic, sleep, time
 
 
 def timer(func):
