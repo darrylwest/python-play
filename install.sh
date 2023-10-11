@@ -5,7 +5,12 @@
 
 set -eu
 
-deps='aiohttp "httpx[http2] rich mpire faker "redis[hiredis]" textual screeninfo  pywebview pyinvoke black pytest isort'
+deps='aiohttp "httpx[http2]" rich mpire faker "redis[hiredis]" textual screeninfo  pywebview pyinvoke black pytest isort'
+
+for dep in $deps
+do
+    echo $dep
+done
 
 exit $?
 
