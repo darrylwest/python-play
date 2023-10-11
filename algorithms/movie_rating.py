@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-08-10 14:51:10
 
-import typer
 
 
 class Movie:
@@ -40,4 +39,4 @@ def main(rating: int) -> None:
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main(2)
