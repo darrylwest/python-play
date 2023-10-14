@@ -2,6 +2,8 @@
 # dpw@plaza.localdomain
 # 2023-10-13 22:35:01
 
+# NOTE: pub/sub is good for fire and forget, but streams are much better for database replication ops
+
 import asyncio
 import redis.asyncio as redis
 
