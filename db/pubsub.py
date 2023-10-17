@@ -5,16 +5,16 @@
 # NOTE: pub/sub is good for fire and forget, but streams are much better for database replication ops
 
 import asyncio
-import redis.asyncio as redis
 
+import redis.asyncio as redis
 from rich import print
 
 STOPWORD = "STOP"
 
+
 class UserPubSub:
     def __init__(self, client: redis.Redis):
         self.client = client
-
 
     async def listener(self, channel: redis.client.PubSub):
         while True:
@@ -25,26 +25,24 @@ class UserPubSub:
                     print("(Reader) STOP")
                     break
 
-                match message.get('channel'):
-                    case b'user:update':
-                        key = message.get('data')
+                match message.get("channel"):
+                    case b"user:update":
+                        key = message.get("data")
                         jstr = await self.client.get(key)
-                        print(f'update: {jstr}')
-                    case b'user:remove':
-                        key = message.get('data')
-                        print(f'remove: {key}')
+                        print(f"update: {jstr}")
+                    case b"user:remove":
+                        key = message.get("data")
+                        print(f"remove: {key}")
                     case other:
-                        print(f'ERROR: {other}')
-
-
+                        print(f"ERROR: {other}")
 
     async def start(self) -> None:
         r = self.client
         pong = await r.ping()
-        assert pong, 'database ping failed'
+        assert pong, "database ping failed"
 
         async with r.pubsub() as pubsub:
-            await pubsub.subscribe("user:update","user:remove")
+            await pubsub.subscribe("user:update", "user:remove")
 
             future = asyncio.create_task(self.listener(pubsub))
 
@@ -55,8 +53,10 @@ class UserPubSub:
 
         await r.aclose()
 
-if __name__ == '__main__':
-    print('''[green3]Do this from redis cli...
+
+if __name__ == "__main__":
+    print(
+        """[green3]Do this from redis cli...
 
     [cyan]redis-cli -a testpw
 
@@ -66,13 +66,14 @@ if __name__ == '__main__':
 
     # then stop the service...
     publish user:update STOP
-    ''')
+    """
+    )
 
-    redis_auth = 'testpw'
+    redis_auth = "testpw"
     redis_port = 6379
 
     r = redis.Redis(
-        host='localhost',
+        host="localhost",
         port=redis_port,
         db=1,
         password=redis_auth,
@@ -82,4 +83,3 @@ if __name__ == '__main__':
     pubsub = UserPubSub(r)
 
     asyncio.run(pubsub.start())
-
