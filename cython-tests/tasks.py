@@ -10,6 +10,8 @@ def build(ctx):
     info = get_paths()
     include = info['include']
 
+    ctx.run('cython hello.pyx')
+
     cmd = f'gcc -shared -pthread -fPIC -fwrapv -O2 -Wall -fno-strict-aliasing -lm -I{include} -o hello.so hello.c'
     ctx.run(cmd)
 
