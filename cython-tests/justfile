@@ -1,0 +1,6 @@
+
+# build the project
+build:
+    cython hello.pyx
+    gcc -shared -pthread -fPIC -fwrapv -O2 -Wall -fno-strict-aliasing -lm -I/home/dpw/.pyenv/versions/3.12.0/include/python3.12 -o hello.so hello.c
+
