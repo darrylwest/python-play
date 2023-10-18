@@ -1,4 +1,9 @@
 
+
+
 def hello():
-    print('hello cython world')
+    cdef int i
+    i = 3
+
+    print(f'{i} hello cython world')
 
