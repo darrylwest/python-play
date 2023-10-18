@@ -25,3 +25,6 @@ def format(ctx):
 def archive(ctx):
     ctx.run('tar czvf data.tgz data/xyz.*')
 
+@task
+def emails(ctx):
+    ctx.run('./email/check.py')

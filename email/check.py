@@ -129,7 +129,7 @@ def main(args: list) -> None:
         dpw.verbose = True
 
     emails = read_all(dpw500)
-    emails = read_all(dpw)
+    # emails = read_all(dpw)
 
 
 if __name__ == "__main__":
