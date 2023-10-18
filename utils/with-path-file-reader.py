@@ -2,6 +2,8 @@
 # dpw@plaza.localdomain
 # 2023-06-11 15:33:29
 
+# https://realpython.com/python-pathlib/#reading-and-writing-files
+
 from pathlib import Path
 
 
