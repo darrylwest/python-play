@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# dpw@plaza.localdomain
+# 2023-10-18 19:11:24
+#
+#
+
+INC=/Library/Frameworks/Python.framework/Versions/3.12/include/python3.12
+
+gcc -v -shared -pthread -fPIC -fwrapv -O2 -Wall -fno-strict-aliasing -lm -I/Library/Frameworks/Python.framework/Versions/3.12/include/python3.12 -o hello.so hello.c
