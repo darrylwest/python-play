@@ -6,8 +6,12 @@
 
 # @see spec: https://docs.python.org/3.8/library/string.html#formatspec
 
+import string
+import webbrowser
+
 print("hello {} has {}".format("larry", "5 cats"))
 
+print(string.ascii_letters, string.digits)
 
 t = "this is the '{}' for my string."
 
@@ -26,3 +30,5 @@ for i in range(3, 13):
 
 spec = "https://docs.python.org/3.8/library/string.html#formatspec"
 print("\nThe format spec at {}".format(spec))
+
+webbrowser.open(spec)

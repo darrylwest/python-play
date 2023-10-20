@@ -13,7 +13,7 @@ def build(ctx):
     print("building...")
     inspect(ctx)
 
-@task
+@task(aliases=['black'])
 def format(ctx):
     '''
     run black on all python files
@@ -25,6 +25,6 @@ def format(ctx):
 def archive(ctx):
     ctx.run('tar czvf data.tgz data/xyz.*')
 
-@task
+@task(aliases=['email', 'check'])
 def emails(ctx):
     ctx.run('./email/check.py')
