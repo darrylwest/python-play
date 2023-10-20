@@ -3,6 +3,7 @@
 # 2023-10-19 22:49:50
 
 import asyncio
+import os
 import sys
 
 import redis.asyncio as redis
@@ -10,13 +11,12 @@ from rich import print
 
 
 class UserStream:
-    """UserStream listener."""
+    """UserStream listener start listening to the latest message."""
 
     def __init__(self, client=None, name="ustream", last_id="$"):
         self.client = client
         self.name = name
         self.last_id = last_id
-        self.max_length = 500
         self.keep_running = True
 
     async def start(self):
@@ -53,6 +53,18 @@ class UserStream:
 
         return resp
 
+    async def len(self) -> int:
+        size = await self.client.xlen(self.name)
+
+        return size
+
+    async def trim(self, maxlen=500) -> int:
+        db = self.client
+
+        print(f"trim {self.name} messages to {maxlen}")
+
+        return await db.xtrim(self.name, maxlen=maxlen)
+
     async def process(self, item) -> bytes:
         id, resp = item
 
@@ -64,27 +76,35 @@ class UserStream:
     async def listen(self, timeout=5000):
         db = self.client
 
+        print("listening...")
         while self.keep_running:
             ss = {self.name: self.last_id}
 
             resp = await db.xread(ss, count=10, block=timeout)
 
-            len = 0
-
             for key in resp.keys():
-                len += 1
-                print(key)
                 jlist = resp.get(key).pop()
 
                 for item in jlist:
                     self.last_id = await self.process(item)
 
-            if len > 0:
-                await db.xtrim(self.name, maxlen=self.max_length)
-
         await db.aclose()
 
 
-if __name__ == "__main__":
+async def run():
+    print(f"pid: {os.getpid()}")
     stream = UserStream()
-    asyncio.run(stream.start())
+    task = await stream.start()
+
+    await stream.trim(20)
+
+    sz = await stream.len()
+    print(f"current length: {sz} messages...")
+
+    # now create an add loop to update, remove, len and trim
+
+    await task
+
+
+if __name__ == "__main__":
+    asyncio.run(run())
