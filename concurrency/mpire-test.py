@@ -11,7 +11,7 @@ from rich import print
 
 def time_consuming_fn(x):
     time.sleep(1)
-    return ...
+    return x
 
 
 def main(args: list) -> None:
@@ -25,6 +25,7 @@ def main(args: list) -> None:
         # insights = pool.get_insights()
 
     t1 = time.time_ns()
+    print(results)
 
     # print(insights)
 
