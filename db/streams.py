@@ -13,7 +13,7 @@ from rich import print
 class UserStream:
     """UserStream listener start listening to the latest message."""
 
-    def __init__(self, client=None, name="ustream", last_id="$"):
+    def __init__(self, client=None, name="UserStream", last_id="$"):
         self.client = client
         self.name = name
         self.last_id = last_id
@@ -21,8 +21,8 @@ class UserStream:
 
     async def start(self):
         if self.client is None:
-            redis_auth = "testpw"
-            redis_port = 6379
+            redis_auth = os.getenv('REDISCLI_AUTH')
+            redis_port = os.getenv('REDIS_PORT')
 
             self.client = redis.Redis(
                 host="localhost",
