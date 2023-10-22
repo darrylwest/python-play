@@ -27,7 +27,7 @@ def query(conn, query):
 
 
 def main():
-    path = "db/user.db"
+    path = "db/users.db"
     with closing(connect(path)) as conn:
         rows = query(conn, "select * from user")
         print(rows)
