@@ -21,8 +21,8 @@ class UserStream:
 
     async def start(self):
         if self.client is None:
-            redis_auth = os.getenv('REDISCLI_AUTH')
-            redis_port = os.getenv('REDIS_PORT')
+            redis_auth = os.getenv("REDISCLI_AUTH")
+            redis_port = os.getenv("REDIS_PORT")
 
             self.client = redis.Redis(
                 host="localhost",

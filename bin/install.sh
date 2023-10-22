@@ -12,11 +12,13 @@ python3 -m pip install --upgrade pip
 # repl: ptpython
 # pip3 install --upgrade jupyterlab-vim
 
-packages="numpy sympy scipy matplotlib seaborn plotly pandas begins bokeh dask pymc3 statsmodels sklearn gmpy2 redis schedule requests httpx pyvibe black isort"
+# packages="numpy sympy scipy seaborn pandas bokeh dask pymc3 sklearn gmpy2"
+# packages="matplotlib plotly statsmodels "redis[hiredis]" 
+packages="schedule requests httpx pyvibe black isort"
 
 for p in $packages
 do
-    python3 -m pip install -U $p
+    python3 -m pip install --upgrade $p
 done
 
 exit $?

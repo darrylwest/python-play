@@ -2,12 +2,12 @@
 # dpw@plaza.localdomain
 # 2023-10-21 13:33:16
 
-from rich import inspect
-from mpire import WorkerPool
+import math
+import random
 import time
 
-import random
-import math
+from mpire import WorkerPool
+from rich import inspect
 
 
 def calc_pi(x: int):
@@ -19,7 +19,6 @@ def calc_pi(x: int):
     # values* possible y values
 
     for _ in range(samples):
-
         # Randomly generated x and y values from a
         # uniform distribution
         # Range of x and y values is -1 to 1
@@ -27,7 +26,6 @@ def calc_pi(x: int):
         rand_y = random.uniform(-1, 1)
 
         origin_dist = rand_x**2 + rand_y**2
-
 
         # Distance between (x, y) from the origin
 
@@ -48,7 +46,7 @@ def calc_pi(x: int):
     return pi
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     t0 = time.perf_counter()
     with WorkerPool(n_jobs=10) as pool:
         results = pool.map(calc_pi, range(20), progress_bar=True)
@@ -57,8 +55,6 @@ if __name__ == '__main__':
     print(results)
     estimate = sum(results) / len(results)
 
+    print(f"estimate: {estimate}, actual: {math.pi}, error: {math.pi - estimate}")
 
-    print(f'estimate: {estimate}, actual: {math.pi}, error: {math.pi - estimate}')
-
-    print(f'duration: {t1 - t0}')
-
+    print(f"duration: {t1 - t0}")
