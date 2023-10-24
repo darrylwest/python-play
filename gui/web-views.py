@@ -17,8 +17,6 @@ def get_elements(window):
 
 def parse(arg: str) -> str:
     match arg:
-        case "dpw":
-            return "https://webmail.dreamhost.com/?clearSession=true&_user=dpw@raincitysoftware.com&_pass=mypass"
         case "dpw500":
             return "https://webmail.dreamhost.com/?clearSession=true&_user=dpw500@raincitysoftware.com&_pass=mypass"
         case "rcs":

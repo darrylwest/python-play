@@ -96,7 +96,7 @@ async def run():
     stream = UserStream()
     task = await stream.start()
 
-    await stream.trim(20)
+    await stream.trim(100)
 
     sz = await stream.len()
     print(f"current length: {sz} messages...")
