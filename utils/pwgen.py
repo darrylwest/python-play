@@ -5,8 +5,6 @@
 import secrets
 import string
 
-import typer
-
 # secrets is preferrable to random (see PEP506)
 # a better approach would be to implement rules, like at least 2 upper, 2 lower, 2 numbers, 2 chars, no repeats, etc
 
@@ -32,4 +30,4 @@ def main():
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main()
