@@ -28,12 +28,20 @@
 * [x] async unix socket client/server
 * [x] app config 
 
+## Cryptography 
+
+* [pyca/cryptography](https://cryptography.io/en/latest/)
+* [ecdsa](https://pypi.org/project/ecdsa/)
+* [ecpy](https://pypi.org/project/ECPy/)
+
 ## utilities
 
-[free APIs](https://apipheny.io/free-api/#apis-without-key)
-[randomapi APIs](https://randomapi.com/)
-[ptpython REPLhelp](https://towardsdatascience.com/ptpython-a-better-python-repl-6e21df1eb648) 'ptpython --vi'
-[google colab](https://colab.research.google.com/)
+* [free APIs](https://apipheny.io/free-api/#apis-without-key)
+* [randomapi APIs](https://randomapi.com/)
+* [ptpython REPLhelp](https://towardsdatascience.com/ptpython-a-better-python-repl-6e21df1eb648) 'ptpython --vi'
+* [google colab](https://colab.research.google.com/)
+* fast-ecdsa: A CFFI-based ECDSA implementation that is much faster than ecdsa.
+* starkbank-ecdsa: A pure-Python ECDSA implementation that is faster than ecdsa and supports more features.
 
 ## Machine Learning
 
@@ -78,5 +86,5 @@
 
 see [gui alternatives](docs/gui-alternatives)
 
-###### darryl.west | 2023-09-01
+###### darryl.west | 2023-11-04
 
