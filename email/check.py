@@ -119,7 +119,7 @@ def main(args: list) -> None:
     # print(f'{args}')
     cfg = read_config("email/config.toml")
     dpw500 = Config.from_dict(cfg.get("dpw500"))
-    dpw = Config.from_dict(cfg.get("dpw"))
+    dw = Config.from_dict(cfg.get("dw"))
 
     if "--version" in args:
         print(f"{sys.argv[0]}, Version: {VERSION}")
@@ -129,7 +129,7 @@ def main(args: list) -> None:
         dpw.verbose = True
 
     emails = read_all(dpw500)
-    # emails = read_all(dpw)
+    emails = read_all(dw)
 
 
 if __name__ == "__main__":
