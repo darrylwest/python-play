@@ -15,7 +15,7 @@ python3 -m pip install --upgrade pip
 # python3 -m pip install --upgrade "redis[hiredis]"
 
 # packages='numpy sympy scipy seaborn pandas bokeh dask pymc3 sklearn gmpy2'
-packages='schedule requests httpx pyvibe black isort matplotlib plotly statsmodels'
+packages='clicky schedule requests httpx pyvibe black isort matplotlib plotly statsmodels'
 
 for p in $packages
 do
