@@ -3,6 +3,7 @@
 # 2023-07-04 16:00:45
 
 import sys
+import time
 from datetime import datetime, timezone
 
 date_strings = [
@@ -28,6 +29,14 @@ def run():
         print(ts, "->", dt, dt.toordinal(), dt.isoformat(timespec="microseconds"))
 
 
+def monotonic():
+    last = time.monotonic_ns()
+    for n in range(100):
+        now = time.monotonic_ns()
+        print(f"{n}: monotonic nanos: {time.monotonic_ns()} diff: {now-last}")
+        last = time.monotonic_ns()
+
+
 def show_now():
     now = datetime.now(tz=timezone.utc)
     print(f"now: {now} -> {now.isoformat()}")
@@ -44,6 +53,7 @@ def main(args: list):
     show_now()
     run()
     show_now()
+    monotonic()
 
 
 if __name__ == "__main__":
