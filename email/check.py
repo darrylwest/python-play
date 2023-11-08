@@ -120,6 +120,7 @@ def main(args: list) -> None:
     cfg = read_config("email/config.toml")
     dpw500 = Config.from_dict(cfg.get("dpw500"))
     dw = Config.from_dict(cfg.get("dw"))
+    dwest = Config.from_dict(cfg.get("dwest"))
 
     if "--version" in args:
         print(f"{sys.argv[0]}, Version: {VERSION}")
