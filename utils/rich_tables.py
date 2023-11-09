@@ -2,7 +2,6 @@
 # dpw@plaza.localdomain
 # 2023-08-14 22:30:16
 
-import typer
 from rich.console import Console
 from rich.table import Table
 
@@ -18,4 +17,4 @@ def main():
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main()
