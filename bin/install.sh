@@ -7,7 +7,7 @@ set -eu
 
 #
 #
-python3 -m pip install --upgrade pip
+# python -m pip install --upgrade pip
 
 # repl: ptpython
 # pip3 install --upgrade jupyterlab-vim
@@ -19,7 +19,8 @@ packages='clicky schedule requests httpx pyvibe black isort matplotlib plotly st
 
 for p in $packages
 do
-    python3 -m pip install --upgrade $p
+    echo "$p ##### ##### ##### ##### ##### ##### ##### ##### ##### #####"
+    python -m pip install --upgrade $p
 done
 
 exit $?
