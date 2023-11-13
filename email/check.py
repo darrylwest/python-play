@@ -127,10 +127,12 @@ def main(args: list) -> None:
 
     if "--verbose" in args:
         dpw500.verbose = True
-        dpw.verbose = True
+        dw.verbose = True
+        dwest.verbose = True
 
     emails = read_all(dpw500)
     emails = read_all(dw)
+    emails = read_all(dwest)
 
 
 if __name__ == "__main__":
