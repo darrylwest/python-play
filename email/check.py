@@ -16,7 +16,7 @@ import rich
 from rich.console import Console
 from rich.table import Table
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 
 console = Console()
 
@@ -121,6 +121,7 @@ def main(args: list) -> None:
     dpw500 = Config.from_dict(cfg.get("dpw500"))
     dw = Config.from_dict(cfg.get("dw"))
     dwest = Config.from_dict(cfg.get("dwest"))
+    dpw = Config.from_dict(cfg.get("dpw"))
 
     if "--version" in args:
         print(f"{sys.argv[0]}, Version: {VERSION}")
@@ -132,7 +133,10 @@ def main(args: list) -> None:
 
     emails = read_all(dpw500)
     emails = read_all(dw)
-    emails = read_all(dwest)
+    # emails = read_all(dwest)
+    emails = read_all(dpw)
+
+    print("checked...")
 
 
 if __name__ == "__main__":
