@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3.12
 # dpw@plaza.local
 # 2023-11-24 19:09:14
 
