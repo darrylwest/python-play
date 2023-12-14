@@ -4,12 +4,12 @@
 
 import socket
 
-import typer
 from rich import print
 
 
-def connect(port: int = 15000):
-    host = socket.gethostbyname(socket.gethostname())
+def connect(port: int = 16000):
+    # host = socket.gethostbyname(socket.gethostname())
+    host = '127.0.0.1'
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -35,4 +35,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main()

@@ -6,7 +6,6 @@ import socket
 import subprocess
 import threading
 
-import typer
 from rich.console import Console
 
 # TODO list
@@ -16,9 +15,9 @@ from rich.console import Console
 
 console = Console()
 
-
 def create_socket(port: int = 16000):
-    host = socket.gethostbyname(socket.gethostname())
+    # host = socket.gethostbyname(socket.gethostname())
+    host = '0.0.0.0'
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
@@ -100,4 +99,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    main()
